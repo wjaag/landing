@@ -83,17 +83,5 @@
 <?php
 /**
  * Fallback menu – kotwice sekcji landing page'a.
+ * (definicja w functions.php — patrz autoserwis_menu_fallback)
  */
-function autoserwis_menu_fallback( $args ) {
-	$items = array(
-		home_url( '/#uslugi' )  => __( 'Usługi', 'autoserwis' ),
-		home_url( '/#proces' )  => __( 'Jak działamy', 'autoserwis' ),
-		home_url( '/uslugi/' )  => __( 'Zakres usług', 'autoserwis' ),
-		home_url( '/#kontakt' ) => __( 'Kontakt', 'autoserwis' ),
-	);
-	echo '<ul class="' . esc_attr( $args['menu_class'] ) . '">';
-	foreach ( $items as $href => $label ) {
-		echo '<li><a href="' . esc_url( $href ) . '">' . esc_html( $label ) . '</a></li>';
-	}
-	echo '</ul>';
-}

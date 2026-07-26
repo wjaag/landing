@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AUTOSERWIS_VERSION', '1.1.0' );
+define( 'AUTOSERWIS_VERSION', '1.1.1' );
 
 /* -------------------------------------------------------------------------
  * Konfiguracja motywu
@@ -129,6 +129,26 @@ function autoserwis_get( $key, $default = '' ) {
  */
 function autoserwis_tel( $phone ) {
 	return 'tel:' . preg_replace( '/\s+/', '', $phone );
+}
+
+/**
+ * Fallback menu – kotwice sekcji landing page'a.
+ * WAŻNE: musi być w functions.php (nie w header.php), bo Customizer
+ * wywołuje wp_nav_menu z tym callbackiem w żądaniach AJAX (selective
+ * refresh), w których pliki szablonów nie są ładowane.
+ */
+function autoserwis_menu_fallback( $args ) {
+	$items = array(
+		home_url( '/#uslugi' )  => __( 'Usługi', 'autoserwis' ),
+		home_url( '/#proces' )  => __( 'Jak działamy', 'autoserwis' ),
+		home_url( '/uslugi/' )  => __( 'Zakres usług', 'autoserwis' ),
+		home_url( '/#kontakt' ) => __( 'Kontakt', 'autoserwis' ),
+	);
+	echo '<ul class="' . esc_attr( $args['menu_class'] ) . '">';
+	foreach ( $items as $href => $label ) {
+		echo '<li><a href="' . esc_url( $href ) . '">' . esc_html( $label ) . '</a></li>';
+	}
+	echo '</ul>';
 }
 
 /* -------------------------------------------------------------------------
