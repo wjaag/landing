@@ -1,0 +1,13 @@
+# Local environment and WordPress runtime artefacts
+.env
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+wp-content/debug.log
+wp-content/object-cache.php
+backups/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
