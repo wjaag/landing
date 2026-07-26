@@ -74,6 +74,12 @@
 				{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
 			);
 			revealEls.forEach((el) => io.observe(el));
+
+			// Siatka bezpieczeństwa: gdyby observer nie zadziałał,
+			// pokaż wszystko po 2,5 s zamiast zostawiać pustą stronę.
+			setTimeout(() => {
+				revealEls.forEach((el) => el.classList.add('is-visible'));
+			}, 2500);
 		} else {
 			revealEls.forEach((el) => el.classList.add('is-visible'));
 		}
