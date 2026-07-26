@@ -86,14 +86,14 @@
  */
 function autoserwis_menu_fallback( $args ) {
 	$items = array(
-		'#uslugi'  => __( 'Usługi', 'autoserwis' ),
-		'#proces'  => __( 'Jak działamy', 'autoserwis' ),
-		'#zakres'  => __( 'Zakres usług', 'autoserwis' ),
-		'#kontakt' => __( 'Kontakt', 'autoserwis' ),
+		home_url( '/#uslugi' )  => __( 'Usługi', 'autoserwis' ),
+		home_url( '/#proces' )  => __( 'Jak działamy', 'autoserwis' ),
+		home_url( '/uslugi/' )  => __( 'Zakres usług', 'autoserwis' ),
+		home_url( '/#kontakt' ) => __( 'Kontakt', 'autoserwis' ),
 	);
 	echo '<ul class="' . esc_attr( $args['menu_class'] ) . '">';
 	foreach ( $items as $href => $label ) {
-		echo '<li><a href="' . esc_url( home_url( '/' ) . $href ) . '">' . esc_html( $label ) . '</a></li>';
+		echo '<li><a href="' . esc_url( $href ) . '">' . esc_html( $label ) . '</a></li>';
 	}
 	echo '</ul>';
 }

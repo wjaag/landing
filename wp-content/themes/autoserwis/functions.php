@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AUTOSERWIS_VERSION', '1.0.2' );
+define( 'AUTOSERWIS_VERSION', '1.1.0' );
 
 /* -------------------------------------------------------------------------
  * Konfiguracja motywu
@@ -94,7 +94,7 @@ function autoserwis_customize_register( $wp_customize ) {
 		'address_hint'   => array( __( 'Wskazówka dojazdu', 'autoserwis' ), 'skrzyżowanie ulic Sowińskiego i Kusocińskiego' ),
 		'hours_week'     => array( __( 'Godziny (pon.–pt.)', 'autoserwis' ), '09:00 – 17:00' ),
 		'hours_saturday' => array( __( 'Godziny (sobota)', 'autoserwis' ), '09:00 – 14:00' ),
-		'map_embed'      => array( __( 'Adres URL mapy (iframe src)', 'autoserwis' ), 'https://maps.google.com/maps?q=Sowi%C5%84skiego%2026%2C%20Szczecin&t=&z=15&ie=UTF8&iwloc=&output=embed' ),
+		'map_embed'      => array( __( 'Adres URL mapy (iframe src)', 'autoserwis' ), 'https://www.google.com/maps?q=ul.+Sowi%C5%84skiego+26,+Szczecin&z=15&output=embed' ),
 	);
 
 	foreach ( $fields as $key => $data ) {
@@ -113,9 +113,15 @@ add_action( 'customize_register', 'autoserwis_customize_register' );
 
 /**
  * Pomocnik: pobierz ustawienie kontaktowe.
+ * Gdy w bazie zapisano pustą wartość, wraca do wartości domyślnej —
+ * dzięki temu np. mapa nigdy nie dostanie pustego adresu URL.
  */
 function autoserwis_get( $key, $default = '' ) {
-	return get_theme_mod( "autoserwis_{$key}", $default );
+	$value = get_theme_mod( "autoserwis_{$key}", $default );
+	if ( '' === trim( (string) $value ) ) {
+		return $default;
+	}
+	return $value;
 }
 
 /**
@@ -124,6 +130,23 @@ function autoserwis_get( $key, $default = '' ) {
 function autoserwis_tel( $phone ) {
 	return 'tel:' . preg_replace( '/\s+/', '', $phone );
 }
+
+/* -------------------------------------------------------------------------
+ * Strona „Usługi” – tworzona automatycznie przy aktywacji motywu
+ * ---------------------------------------------------------------------- */
+function autoserwis_create_services_page() {
+	if ( get_page_by_path( 'uslugi' ) ) {
+		return;
+	}
+	wp_insert_post( array(
+		'post_title'   => __( 'Usługi', 'autoserwis' ),
+		'post_name'    => 'uslugi',
+		'post_status'  => 'publish',
+		'post_type'    => 'page',
+		'post_content' => '', // Treść renderuje szablon page-uslugi.php.
+	) );
+}
+add_action( 'after_switch_theme', 'autoserwis_create_services_page' );
 
 /* -------------------------------------------------------------------------
  * Porządki – lżejszy <head>

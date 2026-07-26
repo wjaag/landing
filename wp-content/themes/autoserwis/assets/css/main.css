@@ -732,7 +732,7 @@ p { margin: 0; }
 /* ----------------------------------------------------------------
    9. Mapa
 ---------------------------------------------------------------- */
-.map { line-height: 0; border-top: 3px solid var(--c-red); }
+.map { position: relative; line-height: 0; border-top: 3px solid var(--c-red); }
 .map iframe {
 	width: 100%;
 	height: clamp(320px, 45vw, 460px);
@@ -742,6 +742,108 @@ p { margin: 0; }
 	transition: filter 400ms ease;
 }
 .map:hover iframe { filter: none; }
+.map__external {
+	position: absolute;
+	right: 16px;
+	bottom: 16px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 10px 16px;
+	border-radius: var(--r-sm);
+	background: var(--c-black);
+	color: var(--c-white);
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 1.4;
+	box-shadow: var(--shadow-md);
+	transition: background-color var(--t-fast), transform var(--t-fast);
+}
+.map__external:hover { background: var(--c-red); transform: translateY(-2px); }
+
+/* ----------------------------------------------------------------
+   9b. Podstrona „Usługi”
+---------------------------------------------------------------- */
+.breadcrumbs {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 24px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--c-gray-400);
+}
+.breadcrumbs a { color: var(--c-gray-600); transition: color var(--t-fast); }
+.breadcrumbs a:hover { color: var(--c-red); }
+.breadcrumbs span:last-child { color: var(--c-black); }
+
+.page-hero {
+	background:
+		radial-gradient(1200px 500px at 85% -10%, rgba(217, 35, 35, 0.06), transparent 60%),
+		linear-gradient(180deg, var(--c-gray-100), var(--c-white) 70%);
+	padding-bottom: clamp(24px, 4vw, 48px);
+}
+.page-hero .section-head { margin-bottom: 0; }
+
+.services-full__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 20px;
+}
+.service-detail {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--c-gray-200);
+	border-radius: var(--r-lg);
+	overflow: hidden;
+	background: var(--c-white);
+	transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-fast);
+}
+.service-detail:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-md);
+	border-color: transparent;
+}
+.service-detail--featured { border-color: rgba(217, 35, 35, 0.4); }
+
+.service-detail__media { position: relative; margin: 0; }
+.service-detail__media img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+
+.service-detail__body { display: grid; gap: 10px; align-content: start; padding: 24px; flex: 1; }
+.service-detail__num { font-size: 12px; font-weight: 800; color: var(--c-red); letter-spacing: 0.08em; }
+.service-detail__body h2 { font-size: 20px; font-weight: 900; }
+.service-detail__body > p { color: var(--c-gray-600); font-size: 14.5px; }
+
+.service-detail__list { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.service-detail__list li {
+	position: relative;
+	padding-left: 22px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--c-graphite);
+}
+.service-detail__list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 7px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--c-red);
+	box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.14);
+}
+
+.services-cta { background: var(--c-gray-100); }
+.services-cta__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 28px;
+	flex-wrap: wrap;
+}
+.services-cta .section-head__lead { margin-top: 10px; }
+.services-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* ----------------------------------------------------------------
    10. Stopka
@@ -794,6 +896,7 @@ p { margin: 0; }
 	.service-card { grid-column: span 3; }
 	.service-card--featured { grid-column: span 6; }
 	.process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.services-full__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -812,6 +915,7 @@ p { margin: 0; }
 	.process-grid { grid-template-columns: 1fr; }
 	.service-card,
 	.service-card--featured { grid-column: span 6; min-height: 280px; }
+	.services-full__grid { grid-template-columns: 1fr; }
 	.hero__phones { width: 100%; flex-wrap: wrap; gap: 12px 20px; }
 	.hero__book { width: 100%; }
 	.site-footer__bottom { flex-direction: column; }

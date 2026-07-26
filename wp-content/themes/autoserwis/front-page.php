@@ -190,8 +190,8 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 						<?php esc_html_e( 'Świadczymy profesjonalne usługi. Wiedza poparta 30-letnim doświadczeniem pozwala nam zapewnić ich najwyższą jakość.', 'autoserwis' ); ?>
 					</p>
 				</header>
-				<a class="button button--secondary" href="#kontakt">
-					<?php esc_html_e( 'Skontaktuj się z nami', 'autoserwis' ); ?> <span aria-hidden="true">→</span>
+				<a class="button button--secondary" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>">
+					<?php esc_html_e( 'Sprawdź szczegóły', 'autoserwis' ); ?> <span aria-hidden="true">→</span>
 				</a>
 			</div>
 
@@ -322,11 +322,14 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 	============================================================ -->
 	<section class="map" id="mapa" aria-label="<?php esc_attr_e( 'Mapa dojazdu', 'autoserwis' ); ?>">
 		<iframe
-			src="<?php echo esc_url( autoserwis_get( 'map_embed', 'https://maps.google.com/maps?q=Sowi%C5%84skiego%2026%2C%20Szczecin&t=&z=15&ie=UTF8&iwloc=&output=embed' ) ); ?>"
+			src="<?php echo esc_url( autoserwis_get( 'map_embed', 'https://www.google.com/maps?q=ul.+Sowi%C5%84skiego+26,+Szczecin&z=15&output=embed' ) ); ?>"
 			title="<?php esc_attr_e( 'Mapa — Auto Sikora, ul. Sowińskiego 26, Szczecin', 'autoserwis' ); ?>"
 			loading="lazy"
 			referrerpolicy="no-referrer-when-downgrade"
 			allowfullscreen></iframe>
+		<a class="map__external" href="https://www.google.com/maps/search/?api=1&query=ul.+Sowi%C5%84skiego+26,+Szczecin" target="_blank" rel="noopener">
+			<?php esc_html_e( 'Otwórz w Google Maps', 'autoserwis' ); ?> <span aria-hidden="true">↗</span>
+		</a>
 	</section>
 
 </main>
