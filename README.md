@@ -12,7 +12,9 @@ wp-content/themes/autoserwis/
 ├── functions.php        # enqueue, Customizer, schema.org (JSON-LD), porządki w <head>
 ├── header.php           # sticky header (glassmorphism) + drawer mobilny
 ├── front-page.php       # landing: hero, proces, zakres usług, kontakt, mapa
-├── page-uslugi.php      # podstrona /uslugi/ — pełna lista usług (tworzona automatycznie)
+├── page-uslugi.php      # podstrona /uslugi/ — pełna lista usług
+├── page-jak-dzialamy.php# podstrona /jak-dzialamy/ — proces + statystyki
+├── page-kontakt.php     # podstrona /kontakt/ — dane kontaktowe + mapa
 ├── footer.php           # stopka
 ├── index.php            # szablon awaryjny
 └── assets/
@@ -47,9 +49,10 @@ preview/index.html       # statyczny podgląd (1:1 z markupem motywu) — bez WP
 
 ## Podgląd bez WordPressa
 
-Otwórz `preview/index.html` (strona główna) oraz `preview/uslugi.html`
-(pełna lista usług) w przeglądarce — to statyczne kopie markupu motywu
-korzystające z tych samych plików CSS/JS/obrazów.
+Otwórz w przeglądarce: `preview/index.html` (strona główna),
+`preview/uslugi.html`, `preview/jak-dzialamy.html`, `preview/kontakt.html`
+— to statyczne kopie markupu motywu korzystające z tych samych plików
+CSS/JS/obrazów.
 
 ## Zdjęcia
 

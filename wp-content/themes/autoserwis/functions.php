@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AUTOSERWIS_VERSION', '1.1.1' );
+define( 'AUTOSERWIS_VERSION', '1.2.0' );
 
 /* -------------------------------------------------------------------------
  * Konfiguracja motywu
@@ -139,10 +139,10 @@ function autoserwis_tel( $phone ) {
  */
 function autoserwis_menu_fallback( $args ) {
 	$items = array(
-		home_url( '/#uslugi' )  => __( 'Usługi', 'autoserwis' ),
-		home_url( '/#proces' )  => __( 'Jak działamy', 'autoserwis' ),
-		home_url( '/uslugi/' )  => __( 'Zakres usług', 'autoserwis' ),
-		home_url( '/#kontakt' ) => __( 'Kontakt', 'autoserwis' ),
+		home_url( '/uslugi/' )       => __( 'Usługi', 'autoserwis' ),
+		home_url( '/jak-dzialamy/' ) => __( 'Jak działamy', 'autoserwis' ),
+		home_url( '/#zakres' )       => __( 'Zakres usług', 'autoserwis' ),
+		home_url( '/kontakt/' )      => __( 'Kontakt', 'autoserwis' ),
 	);
 	echo '<ul class="' . esc_attr( $args['menu_class'] ) . '">';
 	foreach ( $items as $href => $label ) {
@@ -152,21 +152,28 @@ function autoserwis_menu_fallback( $args ) {
 }
 
 /* -------------------------------------------------------------------------
- * Strona „Usługi” – tworzona automatycznie przy aktywacji motywu
+ * Podstrony sekcji – tworzone automatycznie przy aktywacji motywu
  * ---------------------------------------------------------------------- */
-function autoserwis_create_services_page() {
-	if ( get_page_by_path( 'uslugi' ) ) {
-		return;
+function autoserwis_create_pages() {
+	$pages = array(
+		'uslugi'       => __( 'Usługi', 'autoserwis' ),
+		'jak-dzialamy' => __( 'Jak działamy', 'autoserwis' ),
+		'kontakt'      => __( 'Kontakt', 'autoserwis' ),
+	);
+	foreach ( $pages as $slug => $title ) {
+		if ( get_page_by_path( $slug ) ) {
+			continue;
+		}
+		wp_insert_post( array(
+			'post_title'   => $title,
+			'post_name'    => $slug,
+			'post_status'  => 'publish',
+			'post_type'    => 'page',
+			'post_content' => '', // Treść renderują szablony page-{slug}.php.
+		) );
 	}
-	wp_insert_post( array(
-		'post_title'   => __( 'Usługi', 'autoserwis' ),
-		'post_name'    => 'uslugi',
-		'post_status'  => 'publish',
-		'post_type'    => 'page',
-		'post_content' => '', // Treść renderuje szablon page-uslugi.php.
-	) );
 }
-add_action( 'after_switch_theme', 'autoserwis_create_services_page' );
+add_action( 'after_switch_theme', 'autoserwis_create_pages' );
 
 /* -------------------------------------------------------------------------
  * Porządki – lżejszy <head>

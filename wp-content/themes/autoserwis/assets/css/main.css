@@ -846,6 +846,127 @@ p { margin: 0; }
 .services-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* ----------------------------------------------------------------
+   9c. Podstrona „Jak działamy”
+---------------------------------------------------------------- */
+.process-full__list {
+	display: grid;
+	gap: 18px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	max-width: 880px;
+}
+.process-detail {
+	position: relative;
+	display: flex;
+	gap: 24px;
+	padding: 28px;
+	border: 1px solid var(--c-gray-200);
+	border-radius: var(--r-lg);
+	background: var(--c-white);
+	transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-fast);
+}
+.process-detail:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow-md);
+	border-color: transparent;
+}
+.process-detail__num {
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 16px;
+	background: var(--c-gray-100);
+	color: var(--c-red);
+	font-size: 16px;
+	font-weight: 900;
+	transition: background-color var(--t-fast), color var(--t-fast);
+}
+.process-detail:hover .process-detail__num { background: var(--c-red); color: var(--c-white); }
+.process-detail__body { display: grid; gap: 8px; }
+.process-detail__body h2 { font-size: 20px; font-weight: 900; }
+.process-detail__body > p { color: var(--c-gray-600); font-size: 14.5px; }
+
+/* Statystyki */
+.why-us { background: var(--c-gray-100); }
+.stats-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+}
+.stat-card {
+	display: grid;
+	gap: 6px;
+	padding: 28px;
+	border-radius: var(--r-lg);
+	background: var(--c-graphite);
+	color: var(--c-white);
+}
+.stat-card strong {
+	font-size: clamp(2.4rem, 2rem + 2vw, 3.4rem);
+	font-weight: 900;
+	letter-spacing: -0.03em;
+	color: var(--c-red);
+	line-height: 1;
+}
+.stat-card span { color: var(--c-gray-400); font-size: 14.5px; }
+
+/* ----------------------------------------------------------------
+   9d. Podstrona „Kontakt”
+---------------------------------------------------------------- */
+.contact-page__grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+	align-items: start;
+}
+.contact-card {
+	display: grid;
+	gap: 12px;
+	align-content: start;
+	padding: 28px;
+	border: 1px solid var(--c-gray-200);
+	border-radius: var(--r-lg);
+	background: var(--c-white);
+	transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-fast);
+}
+.contact-card:hover {
+	transform: translateY(-4px);
+	box-shadow: var(--shadow-md);
+	border-color: transparent;
+}
+.contact-card h2 { font-size: 19px; font-weight: 900; }
+.contact-card > p { color: var(--c-gray-600); font-size: 14.5px; }
+.contact-card small { font-size: 12.5px; }
+.contact-card .contact-item__num { background: rgba(217, 35, 35, 0.1); }
+.contact-card__note { color: var(--c-gray-600); font-size: 14px; }
+.contact-card__phones { display: grid; gap: 12px; padding-block: 6px; }
+.contact-card .button { justify-self: start; }
+.contact-card__link {
+	justify-self: start;
+	font-size: 14px;
+	font-weight: 700;
+	border-bottom: 2px solid var(--c-red);
+	padding-bottom: 2px;
+	transition: color var(--t-fast);
+}
+.contact-card__link:hover { color: var(--c-red); }
+.contact-card__hours { display: grid; gap: 10px; margin: 0; }
+.contact-card__hours div {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	font-size: 14px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--c-gray-200);
+}
+.contact-card__hours div:last-child { border-bottom: 0; padding-bottom: 0; }
+.contact-card__hours dt { color: var(--c-gray-600); }
+.contact-card__hours dd { margin: 0; font-weight: 800; }
+
+/* ----------------------------------------------------------------
    10. Stopka
 ---------------------------------------------------------------- */
 .site-footer { background: var(--c-black); color: var(--c-white); }
@@ -897,6 +1018,8 @@ p { margin: 0; }
 	.service-card--featured { grid-column: span 6; }
 	.process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.services-full__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.contact-page__grid { grid-template-columns: 1fr 1fr; }
+	.stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -916,6 +1039,9 @@ p { margin: 0; }
 	.service-card,
 	.service-card--featured { grid-column: span 6; min-height: 280px; }
 	.services-full__grid { grid-template-columns: 1fr; }
+	.contact-page__grid { grid-template-columns: 1fr; }
+	.stats-grid { grid-template-columns: 1fr; }
+	.process-detail { flex-direction: column; gap: 14px; }
 	.hero__phones { width: 100%; flex-wrap: wrap; gap: 12px 20px; }
 	.hero__book { width: 100%; }
 	.site-footer__bottom { flex-direction: column; }

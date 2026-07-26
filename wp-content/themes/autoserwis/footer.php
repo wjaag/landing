@@ -17,10 +17,10 @@ $tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 		</div>
 
 		<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Menu w stopce', 'autoserwis' ); ?>">
-			<a href="<?php echo esc_url( home_url( '/#uslugi' ) ); ?>"><?php esc_html_e( 'Usługi', 'autoserwis' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/#proces' ) ); ?>"><?php esc_html_e( 'Jak działamy', 'autoserwis' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>"><?php esc_html_e( 'Zakres usług', 'autoserwis' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/#kontakt' ) ); ?>"><?php esc_html_e( 'Kontakt', 'autoserwis' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>"><?php esc_html_e( 'Usługi', 'autoserwis' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/jak-dzialamy/' ) ); ?>"><?php esc_html_e( 'Jak działamy', 'autoserwis' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/#zakres' ) ); ?>"><?php esc_html_e( 'Zakres usług', 'autoserwis' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php esc_html_e( 'Kontakt', 'autoserwis' ); ?></a>
 		</nav>
 
 		<div class="site-footer__contact">

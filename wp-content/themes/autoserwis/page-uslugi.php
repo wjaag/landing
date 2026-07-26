@@ -183,7 +183,7 @@ $services = array(
 				<a class="button button--primary" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
 					<?php echo esc_html( $tel_mob ); ?> <span aria-hidden="true">→</span>
 				</a>
-				<a class="button button--secondary" href="<?php echo esc_url( home_url( '/#kontakt' ) ); ?>">
+				<a class="button button--secondary" href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>">
 					<?php esc_html_e( 'Dane kontaktowe', 'autoserwis' ); ?>
 				</a>
 			</div>
