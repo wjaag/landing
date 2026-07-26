@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AUTOSERWIS_VERSION', '1.0.0' );
+define( 'AUTOSERWIS_VERSION', '1.0.2' );
 
 /* -------------------------------------------------------------------------
  * Konfiguracja motywu

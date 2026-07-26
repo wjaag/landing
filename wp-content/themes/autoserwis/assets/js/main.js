@@ -58,30 +58,39 @@
 
 	/* ------------------------------------------------------------
 	 * Scroll reveal (IntersectionObserver)
+	 * Ukrywanie elementów następuje TUTAJ (klasa .reveal-init),
+	 * nigdy w samym CSS — dzięki temu bez JS treść jest widoczna.
 	 * ---------------------------------------------------------- */
 	const revealEls = document.querySelectorAll('.reveal');
-	if (revealEls.length) {
-		if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-			const io = new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('is-visible');
-							io.unobserve(entry.target);
-						}
-					});
-				},
-				{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-			);
-			revealEls.forEach((el) => io.observe(el));
+	if (
+		revealEls.length &&
+		'IntersectionObserver' in window &&
+		!window.matchMedia('(prefers-reduced-motion: reduce)').matches
+	) {
+		const io = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('is-visible');
+						io.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+		);
 
-			// Siatka bezpieczeństwa: gdyby observer nie zadziałał,
-			// pokaż wszystko po 2,5 s zamiast zostawiać pustą stronę.
-			setTimeout(() => {
-				revealEls.forEach((el) => el.classList.add('is-visible'));
-			}, 2500);
-		} else {
+		revealEls.forEach((el) => {
+			// Nie ukrywaj elementów, które są już w kadrze przy starcie.
+			const rect = el.getBoundingClientRect();
+			if (rect.top > window.innerHeight * 0.9) {
+				el.classList.add('reveal-init');
+				io.observe(el);
+			}
+		});
+
+		// Siatka bezpieczeństwa: po 3 s pokaż wszystko bezwarunkowo.
+		setTimeout(() => {
 			revealEls.forEach((el) => el.classList.add('is-visible'));
-		}
+		}, 3000);
 	}
 })();
