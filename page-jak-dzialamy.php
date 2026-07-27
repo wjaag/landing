@@ -98,7 +98,7 @@ $steps = array(
 	</section>
 
 	<!-- Dlaczego my -->
-	<section class="section why-us">
+	<section class="section section--alt why-us">
 		<div class="container">
 			<header class="section-head reveal">
 				<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Dlaczego my', 'autoserwis' ); ?></p>
@@ -125,7 +125,7 @@ $steps = array(
 	</section>
 
 	<!-- CTA -->
-	<section class="section services-cta">
+	<section class="section section--alt services-cta">
 		<div class="container services-cta__inner reveal">
 			<div>
 				<h2 class="section-head__title">

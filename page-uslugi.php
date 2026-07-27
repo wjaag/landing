@@ -170,7 +170,7 @@ $services = array(
 	</section>
 
 	<!-- CTA -->
-	<section class="section services-cta">
+	<section class="section section--alt services-cta">
 		<div class="container services-cta__inner reveal">
 			<div>
 				<h2 class="section-head__title">

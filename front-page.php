@@ -136,7 +136,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 	<!-- ============================================================
 	     ZAKRES USŁUG
 	============================================================ -->
-	<section class="section services" id="zakres">
+	<section class="section section--alt services" id="zakres">
 		<div class="container">
 			<div class="services__head reveal">
 				<header class="section-head section-head--left">

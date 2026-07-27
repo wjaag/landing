@@ -108,6 +108,12 @@ p { margin: 0; }
 
 .section { padding-block: clamp(48px, 5.5vw, 80px); }
 
+/* Naprzemienne tła sekcji.
+   Sąsiadujące sekcje „alt" wracają na biel, żeby dwa identyczne
+   tła nigdy się nie zetknęły — niezależnie od kolejności w szablonie. */
+.section--alt { background: var(--c-gray-100); }
+.section--alt + .section--alt { background: var(--c-white); }
+
 .section:not(.hero) {
 	position: relative;
 	border-top: 1px solid var(--c-gray-200);
@@ -944,7 +950,6 @@ p { margin: 0; }
 	box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.14);
 }
 
-.services-cta { background: var(--c-gray-100); }
 .services-cta__inner {
 	display: flex;
 	align-items: center;
@@ -1000,7 +1005,6 @@ p { margin: 0; }
 .process-detail__body > p { color: var(--c-gray-600); font-size: 14.5px; }
 
 /* Statystyki */
-.why-us { background: var(--c-gray-100); }
 .stats-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
