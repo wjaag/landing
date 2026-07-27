@@ -53,33 +53,14 @@ $services = autoserwis_services();
 							<?php endif; ?>
 						</figure>
 						<div class="service-detail__body">
-							<?php // Na mobile ta część leży na zdjęciu i zostaje po rozwinięciu. ?>
-							<div class="service-detail__head">
-								<h2 class="service-detail__heading">
-									<span class="service-detail__num"><?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
-									<span class="service-detail__title"><?php echo esc_html( $service['title'] ); ?></span>
-								</h2>
-								<?php // Skrót widoczny tylko na zwiniętej karcie (mobile). ?>
-								<span class="service-detail__short"><?php echo esc_html( $service['desc'] ); ?></span>
-							</div>
-
-							<div class="service-detail__more" id="usluga-<?php echo esc_attr( $service['slug'] ); ?>-tresc">
-								<p><?php echo esc_html( $service['desc'] ); ?></p>
-								<ul class="service-detail__list">
-									<?php foreach ( $service['items'] as $item ) : ?>
-										<li><?php echo esc_html( $item ); ?></li>
-									<?php endforeach; ?>
-								</ul>
-							</div>
-
-							<?php // Przycisk działa tylko na wąskich ekranach — na desktopie CSS go ukrywa. ?>
-							<button type="button" class="service-detail__toggle" data-service-toggle
-								aria-expanded="false" aria-controls="usluga-<?php echo esc_attr( $service['slug'] ); ?>-tresc">
-								<span class="service-detail__toggle-text sr-only"
-									data-label-more="<?php echo esc_attr( sprintf( __( 'Pokaż szczegóły: %s', 'autoserwis' ), $service['title'] ) ); ?>"
-									data-label-less="<?php echo esc_attr( sprintf( __( 'Zwiń szczegóły: %s', 'autoserwis' ), $service['title'] ) ); ?>"><?php echo esc_html( sprintf( __( 'Pokaż szczegóły: %s', 'autoserwis' ), $service['title'] ) ); ?></span>
-								<span class="service-detail__chevron" aria-hidden="true"></span>
-							</button>
+							<span class="service-detail__num"><?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+							<h2><?php echo esc_html( $service['title'] ); ?></h2>
+							<p><?php echo esc_html( $service['desc'] ); ?></p>
+							<ul class="service-detail__list">
+								<?php foreach ( $service['items'] as $item ) : ?>
+									<li><?php echo esc_html( $item ); ?></li>
+								<?php endforeach; ?>
+							</ul>
 						</div>
 					</article>
 				<?php endforeach; ?>

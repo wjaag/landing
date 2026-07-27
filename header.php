@@ -5,10 +5,9 @@
  * @package autoserwis
  */
 ?><!doctype html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<script>document.documentElement.classList.remove( 'no-js' );</script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
 </head>

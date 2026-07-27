@@ -108,65 +108,6 @@
 	}
 
 	/* ------------------------------------------------------------
-	 * Rozwijane kafelki usług (tylko wąskie ekrany)
-	 *
-	 * Zwijanie włącza JS, nie CSS — bez skryptu treść zostaje
-	 * widoczna, a wyszukiwarki widzą pełny opis usługi.
-	 * ---------------------------------------------------------- */
-	const serviceCards = document.querySelectorAll('.service-detail');
-	const compactQuery = window.matchMedia('(max-width: 900px)');
-
-	if (serviceCards.length) {
-		const syncLabel = (toggle, open) => {
-			const text = toggle.querySelector('.service-detail__toggle-text');
-			if (!text) return;
-			const label = open ? text.dataset.labelLess : text.dataset.labelMore;
-			if (label) text.textContent = label;
-		};
-
-		const setOpen = (card, open) => {
-			const toggle = card.querySelector('[data-service-toggle]');
-			card.classList.toggle('is-open', open);
-			if (toggle) {
-				toggle.setAttribute('aria-expanded', String(open));
-				syncLabel(toggle, open);
-			}
-		};
-
-		// Karta wskazana kotwicą ma być od razu rozwinięta.
-		const openFromHash = () => {
-			if (!compactQuery.matches) return;
-			const id = decodeURIComponent(window.location.hash).slice(1);
-			if (!id) return;
-			const target = document.getElementById(id);
-			if (target && target.classList.contains('service-detail')) setOpen(target, true);
-		};
-
-		serviceCards.forEach((card) => {
-			const toggle = card.querySelector('[data-service-toggle]');
-			if (!toggle) return;
-			toggle.addEventListener('click', () => setOpen(card, !card.classList.contains('is-open')));
-		});
-
-		// Powrót na szeroki ekran: stan otwarcia przestaje mieć znaczenie,
-		// bo CSS pokazuje wtedy pełne karty.
-		const onBreakpoint = () => {
-			if (compactQuery.matches) return;
-			serviceCards.forEach((card) => setOpen(card, false));
-		};
-
-		// Starsze Safari/iOS nie ma addEventListener na MediaQueryList.
-		if (typeof compactQuery.addEventListener === 'function') {
-			compactQuery.addEventListener('change', onBreakpoint);
-		} else if (typeof compactQuery.addListener === 'function') {
-			compactQuery.addListener(onBreakpoint);
-		}
-
-		window.addEventListener('hashchange', openFromHash);
-		openFromHash();
-	}
-
-	/* ------------------------------------------------------------
 	 * Scroll reveal (IntersectionObserver)
 	 * Ukrywanie elementów następuje TUTAJ (klasa .reveal-init),
 	 * nigdy w samym CSS — dzięki temu bez JS treść jest widoczna.
