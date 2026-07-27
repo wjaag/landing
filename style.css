@@ -1,16 +1,17 @@
 /*
-Theme Name: Auto Sikora – Landing
-Theme URI: https://autosikora.szczecin.pl/
-Author: Auto Sikora
-Description: Nowoczesny, lekki motyw typu landing page dla warsztatu samochodowego Auto Sikora w Szczecinie. Zbudowany w oparciu o natywne funkcje WordPressa – bez page builderów i zewnętrznych zależności.
-Version: 1.6.1
+Theme Name: AutoSerwis Landing
+Theme URI: https://github.com/wjaag/landing
+Author: wjaag
+Author URI: https://github.com/wjaag
+Description: Lekki motyw typu landing page dla warsztatów samochodowych, serwisów blacharsko-lakierniczych i firm usługowych. Zbudowany na natywnych funkcjach WordPressa — bez zewnętrznych zależności i bez kreatora stron. Zawiera stronę główną z sekcjami usług i kontaktu, podstrony oferty, procesu i kontaktu, sekcję FAQ, dane strukturalne dla lokalnej firmy oraz wsparcie edytora blokowego. Dane warsztatu (telefony, adres, godziny, mapa) zmienisz w Personalizacji, bez dotykania kodu.
+Version: 2.0.0
 Requires at least: 6.0
 Tested up to: 6.6
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: autoserwis
-Tags: one-column, custom-menu, custom-logo, translation-ready
+Tags: one-column, custom-menu, custom-logo, custom-colors, translation-ready, block-styles, wide-blocks, editor-style, threaded-comments, full-width-template
 */
 
 /*
