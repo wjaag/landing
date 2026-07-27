@@ -17,10 +17,9 @@ $tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 		</div>
 
 		<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Menu w stopce', 'autoserwis' ); ?>">
-			<a href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>"><?php esc_html_e( 'Usługi', 'autoserwis' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/jak-dzialamy/' ) ); ?>"><?php esc_html_e( 'Jak działamy', 'autoserwis' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/#zakres' ) ); ?>"><?php esc_html_e( 'Zakres usług', 'autoserwis' ); ?></a>
-			<a href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>"><?php esc_html_e( 'Kontakt', 'autoserwis' ); ?></a>
+			<?php foreach ( autoserwis_menu_items() as $footer_href => $footer_label ) : ?>
+				<a href="<?php echo esc_url( $footer_href ); ?>"><?php echo esc_html( $footer_label ); ?></a>
+			<?php endforeach; ?>
 		</nav>
 
 		<div class="site-footer__contact">

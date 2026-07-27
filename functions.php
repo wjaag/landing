@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AUTOSERWIS_VERSION', '1.2.1' );
+define( 'AUTOSERWIS_VERSION', '1.3.0' );
 
 /* -------------------------------------------------------------------------
  * Konfiguracja motywu
@@ -138,17 +138,49 @@ function autoserwis_tel( $phone ) {
  * refresh), w których pliki szablonów nie są ładowane.
  */
 function autoserwis_menu_fallback( $args ) {
-	$items = array(
-		home_url( '/uslugi/' )       => __( 'Usługi', 'autoserwis' ),
-		home_url( '/jak-dzialamy/' ) => __( 'Jak działamy', 'autoserwis' ),
-		home_url( '/#zakres' )       => __( 'Zakres usług', 'autoserwis' ),
-		home_url( '/kontakt/' )      => __( 'Kontakt', 'autoserwis' ),
-	);
+	$items = autoserwis_menu_items();
+
 	echo '<ul class="' . esc_attr( $args['menu_class'] ) . '">';
 	foreach ( $items as $href => $label ) {
-		echo '<li><a href="' . esc_url( $href ) . '">' . esc_html( $label ) . '</a></li>';
+		$is_current = autoserwis_menu_is_current( $href );
+		$li_class   = $is_current ? ' class="current-menu-item"' : '';
+		$aria       = $is_current ? ' aria-current="page"' : '';
+		echo '<li' . $li_class . '><a href="' . esc_url( $href ) . '"' . $aria . '>' . esc_html( $label ) . '</a></li>'; // phpcs:ignore WordPress.Security.EscapeOutput
 	}
 	echo '</ul>';
+}
+
+/**
+ * Pozycje menu motywu (nagłówek, menu mobilne, stopka).
+ *
+ * @return array Mapa: adres URL => etykieta.
+ */
+function autoserwis_menu_items() {
+	return array(
+		home_url( '/' )              => __( 'Główna', 'autoserwis' ),
+		home_url( '/uslugi/' )       => __( 'Usługi', 'autoserwis' ),
+		home_url( '/jak-dzialamy/' ) => __( 'Jak działamy', 'autoserwis' ),
+		home_url( '/kontakt/' )      => __( 'Kontakt', 'autoserwis' ),
+	);
+}
+
+/**
+ * Czy dany adres menu wskazuje aktualnie wyświetlaną stronę?
+ */
+function autoserwis_menu_is_current( $href ) {
+	$path = trim( (string) wp_parse_url( $href, PHP_URL_PATH ), '/' );
+	$home = trim( (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH ), '/' );
+
+	// Obsługa instalacji w podkatalogu – odcinamy ścieżkę bazową.
+	if ( '' !== $home && 0 === strpos( $path, $home ) ) {
+		$path = trim( substr( $path, strlen( $home ) ), '/' );
+	}
+
+	if ( '' === $path ) {
+		return is_front_page();
+	}
+
+	return is_page( $path );
 }
 
 /* -------------------------------------------------------------------------
