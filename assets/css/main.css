@@ -1299,8 +1299,19 @@ p { margin: 0; }
 .contact-card .contact-item__icon { background: rgba(217, 35, 35, 0.1); }
 .contact-card:hover .contact-item__icon { background: var(--c-red); color: var(--c-white); }
 .contact-card__note { color: var(--c-gray-600); font-size: 14px; }
-.contact-card__phones { display: grid; gap: 12px; padding-block: 6px; }
 .contact-card .button { justify-self: start; }
+
+/* Przycisk z wyborem numeru w karcie kontaktu — lista otwiera się
+   w górę, bo karta stoi nisko w siatce. */
+.contact-card .call-menu { justify-self: start; margin-top: 4px; }
+.contact-card .call-menu__list {
+	top: auto;
+	bottom: calc(100% + 10px);
+	right: auto;
+	left: 0;
+	transform: translateY(6px);
+}
+.contact-card .call-menu.is-open .call-menu__list { transform: translateY(0); }
 .contact-card__link {
 	justify-self: start;
 	font-size: 14px;

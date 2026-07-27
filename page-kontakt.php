@@ -8,8 +8,6 @@
 
 get_header();
 
-$tel_mob  = autoserwis_get( 'phone_mobile', '509 499 101' );
-$tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 ?>
 
 <main id="main">
@@ -45,19 +43,13 @@ $tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M21.5 16.9v2.6a1.8 1.8 0 0 1-2 1.8 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.9 4.6a1.8 1.8 0 0 1 1.8-2h2.6a1.8 1.8 0 0 1 1.8 1.6c.1.9.3 1.8.6 2.7a1.8 1.8 0 0 1-.4 1.9L8.1 10a15 15 0 0 0 5.6 5.6l1.2-1.2a1.8 1.8 0 0 1 1.9-.4c.9.3 1.8.5 2.7.6a1.8 1.8 0 0 1 1.6 1.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 					<h2><?php esc_html_e( 'Zadzwoń do nas', 'autoserwis' ); ?></h2>
 					<p class="contact-card__note"><?php esc_html_e( 'Najszybsza droga — od razu ustalimy, co dalej.', 'autoserwis' ); ?></p>
-					<div class="contact-card__phones">
-						<a class="hero__phone" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
-							<small><?php esc_html_e( 'Komórkowy', 'autoserwis' ); ?></small>
-							<strong><?php echo esc_html( $tel_mob ); ?></strong>
-						</a>
-						<a class="hero__phone" href="<?php echo esc_attr( autoserwis_tel( $tel_land ) ); ?>">
-							<small><?php esc_html_e( 'Stacjonarny', 'autoserwis' ); ?></small>
-							<strong><?php echo esc_html( $tel_land ); ?></strong>
-						</a>
-					</div>
-					<a class="button button--primary" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
-						<?php esc_html_e( 'Zadzwoń teraz', 'autoserwis' ); ?> <span aria-hidden="true">→</span>
-					</a>
+					<?php
+					get_template_part( 'template-parts/call-menu', null, array(
+						'label' => __( 'Zadzwoń teraz', 'autoserwis' ),
+						'class' => 'contact-card__call',
+						'icon'  => false,
+					) );
+					?>
 				</div>
 
 				<div class="contact-card reveal" style="--d:.08s">
