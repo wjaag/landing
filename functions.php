@@ -130,6 +130,76 @@ function autoserwis_get( $key, $default = '' ) {
 }
 
 /**
+ * Adres URL logo motywu (assets/images/logo.png).
+ *
+ * Zwraca pusty ciąg, gdy pliku nie ma — dzięki temu nagłówek nie
+ * pokaże zepsutego obrazka, tylko wróci do napisu AUTO SIKORA.
+ * Wynik jest zapamiętywany, bo nagłówek pyta o logo przy każdym żądaniu.
+ *
+ * @return string Adres URL logo albo pusty ciąg.
+ */
+function autoserwis_logo_url() {
+	static $url = null;
+
+	if ( null === $url ) {
+		$url = file_exists( get_template_directory() . '/assets/images/logo.png' )
+			? get_template_directory_uri() . '/assets/images/logo.png'
+			: '';
+	}
+
+	return $url;
+}
+
+/**
+ * Atrybuty width/height logo — bez nich przeglądarka nie zna proporcji
+ * i układ nagłówka przeskakuje po wczytaniu obrazka (CLS).
+ *
+ * @return string Gotowy fragment atrybutów albo pusty ciąg.
+ */
+function autoserwis_logo_size_attr() {
+	static $attr = null;
+
+	if ( null === $attr ) {
+		$attr = '';
+		$path = get_template_directory() . '/assets/images/logo.png';
+
+		if ( file_exists( $path ) ) {
+			$size = @getimagesize( $path ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
+			if ( $size ) {
+				$attr = sprintf( 'width="%d" height="%d"', (int) $size[0], (int) $size[1] );
+			}
+		}
+	}
+
+	return $attr;
+}
+
+/**
+ * Favicon motywu (assets/images/favicon.ico).
+ *
+ * WordPress ma własną ikonę witryny (Customizer → Tożsamość witryny),
+ * więc gdy jest ustawiona, zostawiamy ją w spokoju.
+ */
+function autoserwis_favicon() {
+	if ( has_site_icon() ) {
+		return;
+	}
+
+	$path = get_template_directory() . '/assets/images/favicon.ico';
+	if ( ! file_exists( $path ) ) {
+		return;
+	}
+
+	$url = get_template_directory_uri() . '/assets/images/favicon.ico';
+	printf(
+		'<link rel="icon" href="%1$s" sizes="any"><link rel="shortcut icon" href="%1$s">' . "\n",
+		esc_url( $url )
+	);
+}
+add_action( 'wp_head', 'autoserwis_favicon' );
+add_action( 'admin_head', 'autoserwis_favicon' );
+
+/**
  * Pomocnik: numer telefonu w formacie tel: (bez spacji).
  */
 function autoserwis_tel( $phone ) {

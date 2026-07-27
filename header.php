@@ -20,8 +20,16 @@
 	<div class="container site-header__inner">
 
 		<a class="site-header__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
-			<?php if ( has_custom_logo() ) : ?>
-				<?php the_custom_logo(); ?>
+			<?php
+			// Kolejność: logo z Customizera > plik motywu > napis zapasowy.
+			if ( has_custom_logo() ) :
+				the_custom_logo();
+			elseif ( autoserwis_logo_url() ) :
+				?>
+				<img class="site-header__logo" src="<?php echo esc_url( autoserwis_logo_url() ); ?>"
+					alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
+					<?php echo autoserwis_logo_size_attr(); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+					decoding="async">
 			<?php else : ?>
 				<span class="site-header__logo-text">
 					AUTO<em>SIKORA</em>

@@ -240,7 +240,8 @@ p { margin: 0; }
 .site-header__logo-text em { font-style: normal; color: var(--c-red); }
 .site-header__logo-text--light { color: var(--c-white); }
 
-.custom-logo { height: 52px; width: auto; max-width: 220px; object-fit: contain; }
+.custom-logo,
+.site-header__logo { height: 52px; width: auto; max-width: 220px; object-fit: contain; }
 
 .site-header__nav { margin-inline: auto; }
 
@@ -1131,6 +1132,8 @@ p { margin: 0; }
 	.mobile-menu-toggle { display: flex; }
 	.site-header__call span { display: none; }
 	.site-header__call { width: 44px; padding-inline: 0; border-radius: 50%; }
+	.custom-logo,
+	.site-header__logo { height: 42px; max-width: 160px; }
 	.contact__grid { grid-template-columns: 1fr; }
 	.contact__map { position: static; }
 	.contact__map iframe { height: clamp(300px, 60vw, 420px); }
