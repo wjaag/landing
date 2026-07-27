@@ -83,9 +83,12 @@
 			?>
 		</nav>
 		<div class="mobile-menu__footer">
-			<a class="button button--primary" href="<?php echo esc_attr( autoserwis_tel( autoserwis_get( 'phone_mobile', '509 499 101' ) ) ); ?>">
-				<?php esc_html_e( 'Zadzwoń', 'autoserwis' ); ?> · <?php echo esc_html( autoserwis_get( 'phone_mobile', '509 499 101' ) ); ?>
-			</a>
+			<?php
+			get_template_part( 'template-parts/call-menu', null, array(
+				'label' => __( 'Zadzwoń teraz', 'autoserwis' ),
+				'class' => 'mobile-menu__call',
+			) );
+			?>
 		</div>
 	</div>
 </div>
