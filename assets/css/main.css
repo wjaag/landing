@@ -66,6 +66,10 @@ body {
 
 body.menu-open { overflow: hidden; }
 
+/* Nic nie może wypchnąć strony w bok — poziome przewijanie zawsze
+   oznacza błąd układu, nie funkcję. */
+html, body { overflow-x: hidden; }
+
 img { display: block; max-width: 100%; height: auto; }
 
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
@@ -391,9 +395,10 @@ p { margin: 0; }
 	gap: clamp(24px, 3vw, 48px);
 	align-items: stretch;
 }
+.hero__top > * { min-width: 0; }
 
 /* Prawa kolumna: zdjęcie warsztatu + telefony pod nim. */
-.hero__aside { display: grid; }
+.hero__aside { display: grid; min-width: 0; }
 
 .hero__title { font-size: var(--fs-h1); font-weight: 900; }
 .hero__title .accent { display: block; }
@@ -412,10 +417,12 @@ p { margin: 0; }
 	padding-top: 12px;
 	border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
+.hero__phones > * { min-width: 0; }
 .hero__phone {
 	display: flex;
 	align-items: center;
 	gap: 9px;
+	min-width: 0;
 	padding: 8px 12px;
 	border: 1px solid rgba(255, 255, 255, 0.22);
 	border-radius: 999px;
@@ -449,7 +456,7 @@ p { margin: 0; }
 	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.65);
 }
-.hero__phone strong { font-size: 14px; font-weight: 800; white-space: nowrap; }
+.hero__phone strong { font-size: clamp(12.5px, 3.2vw, 14px); font-weight: 800; white-space: nowrap; }
 .hero__phone:hover small { color: rgba(255, 255, 255, 0.85); }
 
 /* Case cards */
@@ -590,7 +597,7 @@ p { margin: 0; }
 }
 .hero__facts {
 	display: grid;
-	grid-template-columns: 1.6fr 1fr 1fr;
+	grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
 	gap: 1px;
 }
 .hero__fact { display: grid; gap: 2px; min-width: 0; padding-right: 12px; }
@@ -602,7 +609,7 @@ p { margin: 0; }
 	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.6);
 }
-.hero__fact strong { font-size: 13.5px; font-weight: 800; line-height: 1.3; }
+.hero__fact strong { font-size: 13.5px; font-weight: 800; line-height: 1.3; overflow-wrap: anywhere; }
 
 /* ----------------------------------------------------------------
    6. Proces
@@ -770,7 +777,7 @@ p { margin: 0; }
 
 .contact__calls {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr));
 	gap: 14px;
 	margin-top: 28px;
 }
@@ -778,6 +785,7 @@ p { margin: 0; }
 	display: flex;
 	align-items: center;
 	gap: 16px;
+	min-width: 0;
 	padding: 20px 24px;
 	border: 1px solid rgba(255, 255, 255, 0.14);
 	border-radius: var(--r-md);
@@ -1114,7 +1122,7 @@ p { margin: 0; }
 	.service-card--featured { grid-column: span 6; }
 	.process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.services-full__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-	.contact-page__grid { grid-template-columns: 1fr 1fr; }
+	.contact-page__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 	.stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
@@ -1129,9 +1137,10 @@ p { margin: 0; }
 }
 
 @media (max-width: 640px) {
+	.container { width: min(calc(100% - 32px), var(--container)); }
 	.hero__figure { aspect-ratio: 4 / 3; }
 	.hero__overlay { gap: 10px; padding: 12px; }
-	.hero__facts { grid-template-columns: 1fr 1fr; gap: 8px 12px; }
+	.hero__facts { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 12px; }
 	.hero__fact:first-child { grid-column: 1 / -1; }
 	.hero__fact + .hero__fact { border-left: 0; padding-left: 0; }
 	.hero__fact:nth-child(2) { border-top: 1px solid rgba(255, 255, 255, 0.2); padding-top: 8px; }
@@ -1151,9 +1160,12 @@ p { margin: 0; }
 	.process-detail { flex-direction: column; gap: 14px; }
 }
 @media (max-width: 460px) {
+	.container { width: min(calc(100% - 24px), var(--container)); }
 	.case-grid { grid-template-columns: 1fr; }
 	.case-card { min-height: 140px; }
-	.hero__figure { min-height: 360px; }
+	.hero__figure { aspect-ratio: auto; min-height: 380px; }
+	.hero__overlay { padding: 10px; }
 	.hero__phones { grid-template-columns: 1fr; gap: 6px; }
+	.hero__phone strong { font-size: 14px; }
 }
 
