@@ -684,10 +684,16 @@ p { margin: 0; }
 
 .contact .section-head__lead { color: var(--c-gray-400); }
 
-.contact__call {
-	display: inline-grid;
-	gap: 4px;
+.contact__calls {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+	gap: 14px;
 	margin-top: 28px;
+}
+.contact__call {
+	display: grid;
+	align-content: start;
+	gap: 4px;
 	padding: 20px 26px;
 	border: 1px solid rgba(255, 255, 255, 0.14);
 	border-radius: var(--r-md);
@@ -696,14 +702,14 @@ p { margin: 0; }
 }
 .contact__call:hover { border-color: var(--c-red); background: rgba(217, 35, 35, 0.1); transform: translateY(-2px); }
 .contact__call span { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-gray-400); }
-.contact__call strong { font-size: clamp(22px, 2.4vw, 30px); font-weight: 900; }
+.contact__call strong { font-size: clamp(20px, 1.9vw, 26px); font-weight: 900; white-space: nowrap; }
 .contact__call strong span { font-size: inherit; color: var(--c-red); }
 
 .contact__map-hint { margin-top: 24px; color: var(--c-gray-400); font-size: 14.5px; }
 .contact__map-hint a { margin-left: 6px; color: var(--c-white); font-weight: 700; border-bottom: 2px solid var(--c-red); padding-bottom: 2px; transition: color var(--t-fast); }
 .contact__map-hint a:hover { color: var(--c-red); }
 
-.contact__list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.contact__list { display: grid; gap: 14px; margin: 32px 0 0; padding: 0; list-style: none; }
 .contact-item {
 	display: flex;
 	gap: 20px;
@@ -745,6 +751,28 @@ p { margin: 0; }
 	transition: filter 400ms ease;
 }
 .map:hover iframe { filter: none; }
+
+/* Mapa osadzona w siatce sekcji „Kontakt”. */
+.contact__map {
+	position: sticky;
+	top: 96px;
+	line-height: 0;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 3px solid var(--c-red);
+	border-radius: var(--r-md);
+	overflow: hidden;
+	background: rgba(255, 255, 255, 0.03);
+	scroll-margin-top: 96px;
+}
+.contact__map iframe {
+	width: 100%;
+	height: clamp(420px, 52vw, 620px);
+	border: 0;
+	display: block;
+	filter: grayscale(1) contrast(1.05);
+	transition: filter 400ms ease;
+}
+.contact__map:hover iframe { filter: none; }
 .map__external {
 	position: absolute;
 	right: 16px;
@@ -1031,6 +1059,8 @@ p { margin: 0; }
 	.site-header__call span { display: none; }
 	.site-header__call { width: 44px; padding-inline: 0; border-radius: 50%; }
 	.contact__grid { grid-template-columns: 1fr; }
+	.contact__map { position: static; }
+	.contact__map iframe { height: clamp(300px, 60vw, 420px); }
 	.site-footer__inner { grid-template-columns: 1fr; gap: 28px; }
 }
 

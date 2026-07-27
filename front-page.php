@@ -271,65 +271,68 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					<?php esc_html_e( 'Opowiedz nam, co dzieje się z samochodem. Ustalimy, co należy zrobić i umówimy dogodny termin wizyty.', 'autoserwis' ); ?>
 				</p>
 
-				<a class="contact__call" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
-					<span><?php esc_html_e( 'Zadzwoń do nas', 'autoserwis' ); ?></span>
-					<strong><?php echo esc_html( $tel_mob ); ?> <span aria-hidden="true">→</span></strong>
-				</a>
+				<div class="contact__calls">
+					<a class="contact__call" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
+						<span><?php esc_html_e( 'Komórkowy', 'autoserwis' ); ?></span>
+						<strong><?php echo esc_html( $tel_mob ); ?> <span aria-hidden="true">→</span></strong>
+					</a>
+					<a class="contact__call" href="<?php echo esc_attr( autoserwis_tel( $tel_land ) ); ?>">
+						<span><?php esc_html_e( 'Stacjonarny', 'autoserwis' ); ?></span>
+						<strong><?php echo esc_html( $tel_land ); ?> <span aria-hidden="true">→</span></strong>
+					</a>
+				</div>
 
 				<p class="contact__map-hint">
 					<?php esc_html_e( 'Wolisz najpierw sprawdzić lokalizację?', 'autoserwis' ); ?>
 					<a href="#mapa"><?php esc_html_e( 'Zobacz mapę', 'autoserwis' ); ?> <span aria-hidden="true">↓</span></a>
 				</p>
+
+				<ul class="contact__list">
+					<li class="contact-item">
+						<span class="contact-item__num">01</span>
+						<div>
+							<h3><?php esc_html_e( 'Adres', 'autoserwis' ); ?></h3>
+							<p>
+								<?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?><br>
+								<small><?php echo esc_html( autoserwis_get( 'address_hint', 'skrzyżowanie ulic Sowińskiego i Kusocińskiego' ) ); ?></small>
+							</p>
+						</div>
+					</li>
+					<li class="contact-item">
+						<span class="contact-item__num">02</span>
+						<div>
+							<h3><?php esc_html_e( 'Godziny otwarcia', 'autoserwis' ); ?></h3>
+							<p>
+								<?php esc_html_e( 'Pon.–Pt.:', 'autoserwis' ); ?> <?php echo esc_html( autoserwis_get( 'hours_week', '09:00 – 17:00' ) ); ?><br>
+								<?php esc_html_e( 'Sobota:', 'autoserwis' ); ?> <?php echo esc_html( autoserwis_get( 'hours_saturday', '09:00 – 14:00' ) ); ?>
+							</p>
+						</div>
+					</li>
+					<li class="contact-item">
+						<span class="contact-item__num">03</span>
+						<div>
+							<h3><?php esc_html_e( 'Telefony', 'autoserwis' ); ?></h3>
+							<p>
+								<a href="<?php echo esc_attr( autoserwis_tel( $tel_land ) ); ?>"><?php echo esc_html( $tel_land ); ?></a> · <?php esc_html_e( 'stacjonarny', 'autoserwis' ); ?><br>
+								<a href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>"><?php echo esc_html( $tel_mob ); ?></a> · <?php esc_html_e( 'komórkowy', 'autoserwis' ); ?>
+							</p>
+						</div>
+					</li>
+				</ul>
 			</div>
 
-			<ul class="contact__list reveal reveal--delay">
-				<li class="contact-item">
-					<span class="contact-item__num">01</span>
-					<div>
-						<h3><?php esc_html_e( 'Adres', 'autoserwis' ); ?></h3>
-						<p>
-							<?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?><br>
-							<small><?php echo esc_html( autoserwis_get( 'address_hint', 'skrzyżowanie ulic Sowińskiego i Kusocińskiego' ) ); ?></small>
-						</p>
-					</div>
-				</li>
-				<li class="contact-item">
-					<span class="contact-item__num">02</span>
-					<div>
-						<h3><?php esc_html_e( 'Godziny otwarcia', 'autoserwis' ); ?></h3>
-						<p>
-							<?php esc_html_e( 'Pon.–Pt.:', 'autoserwis' ); ?> <?php echo esc_html( autoserwis_get( 'hours_week', '09:00 – 17:00' ) ); ?><br>
-							<?php esc_html_e( 'Sobota:', 'autoserwis' ); ?> <?php echo esc_html( autoserwis_get( 'hours_saturday', '09:00 – 14:00' ) ); ?>
-						</p>
-					</div>
-				</li>
-				<li class="contact-item">
-					<span class="contact-item__num">03</span>
-					<div>
-						<h3><?php esc_html_e( 'Telefony', 'autoserwis' ); ?></h3>
-						<p>
-							<a href="<?php echo esc_attr( autoserwis_tel( $tel_land ) ); ?>"><?php echo esc_html( $tel_land ); ?></a> · <?php esc_html_e( 'stacjonarny', 'autoserwis' ); ?><br>
-							<a href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>"><?php echo esc_html( $tel_mob ); ?></a> · <?php esc_html_e( 'komórkowy', 'autoserwis' ); ?>
-						</p>
-					</div>
-				</li>
-			</ul>
+			<div class="contact__map reveal reveal--delay" id="mapa">
+				<iframe
+					src="<?php echo esc_url( autoserwis_get( 'map_embed', 'https://www.google.com/maps?q=ul.+Sowi%C5%84skiego+26,+Szczecin&z=15&output=embed' ) ); ?>"
+					title="<?php esc_attr_e( 'Mapa — Auto Sikora, ul. Sowińskiego 26, Szczecin', 'autoserwis' ); ?>"
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					allowfullscreen></iframe>
+				<a class="map__external" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Sowi%C5%84skiego+26,+Szczecin" target="_blank" rel="noopener">
+					<?php esc_html_e( 'Otwórz w Google Maps', 'autoserwis' ); ?> <span aria-hidden="true">↗</span>
+				</a>
+			</div>
 		</div>
-	</section>
-
-	<!-- ============================================================
-	     MAPA
-	============================================================ -->
-	<section class="map" id="mapa" aria-label="<?php esc_attr_e( 'Mapa dojazdu', 'autoserwis' ); ?>">
-		<iframe
-			src="<?php echo esc_url( autoserwis_get( 'map_embed', 'https://www.google.com/maps?q=ul.+Sowi%C5%84skiego+26,+Szczecin&z=15&output=embed' ) ); ?>"
-			title="<?php esc_attr_e( 'Mapa — Auto Sikora, ul. Sowińskiego 26, Szczecin', 'autoserwis' ); ?>"
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"
-			allowfullscreen></iframe>
-		<a class="map__external" href="https://www.google.com/maps/search/?api=1&query=ul.+Sowi%C5%84skiego+26,+Szczecin" target="_blank" rel="noopener">
-			<?php esc_html_e( 'Otwórz w Google Maps', 'autoserwis' ); ?> <span aria-hidden="true">↗</span>
-		</a>
 	</section>
 
 </main>
