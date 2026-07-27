@@ -117,7 +117,12 @@ add_action( 'customize_register', 'autoserwis_customize_register' );
  * dzięki temu np. mapa nigdy nie dostanie pustego adresu URL.
  */
 function autoserwis_get( $key, $default = '' ) {
-	$value = get_theme_mod( "autoserwis_{$key}", $default );
+	// UWAGA: świadomie omijamy get_theme_mod(). Ta funkcja przepuszcza wartość
+	// przez sprintf(), więc znak „%” w treści (np. %C5%84 w zakodowanym adresie
+	// mapy) wywołuje ValueError i zabija renderowanie strony.
+	$mods  = get_theme_mods();
+	$value = isset( $mods[ "autoserwis_{$key}" ] ) ? $mods[ "autoserwis_{$key}" ] : '';
+
 	if ( '' === trim( (string) $value ) ) {
 		return $default;
 	}

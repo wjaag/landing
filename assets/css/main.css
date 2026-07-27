@@ -675,6 +675,17 @@ p { margin: 0; }
 .contact.section::before { background: var(--c-red); }
 .contact.section { border-top-color: var(--c-graphite-2); }
 
+/* Czerwony pasek zamykający sekcję — spójny z górną krawędzią mapy. */
+.contact.section::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 3px;
+	background: var(--c-red);
+}
+
 .contact__grid {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -720,7 +731,8 @@ p { margin: 0; }
 	transition: border-color var(--t-fast), background-color var(--t-fast);
 }
 .contact-item:hover { border-color: rgba(217, 35, 35, 0.5); background: rgba(255, 255, 255, 0.05); }
-.contact-item__num {
+.contact-item__num,
+.contact-item__icon {
 	flex-shrink: 0;
 	display: grid;
 	place-items: center;
@@ -732,6 +744,8 @@ p { margin: 0; }
 	font-size: 13px;
 	font-weight: 900;
 }
+.contact-item__icon svg { display: block; }
+.contact-item:hover .contact-item__icon { background: rgba(217, 35, 35, 0.24); }
 .contact-item h3 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
 .contact-item p { color: var(--c-gray-400); font-size: 14.5px; }
 .contact-item p a { color: var(--c-white); font-weight: 700; transition: color var(--t-fast); }
