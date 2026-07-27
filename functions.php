@@ -35,6 +35,23 @@ add_action( 'after_setup_theme', 'autoserwis_setup' );
 /* -------------------------------------------------------------------------
  * Zasoby (CSS/JS)
  * ---------------------------------------------------------------------- */
+/**
+ * Wersja pliku statycznego na podstawie czasu modyfikacji.
+ *
+ * Ręcznie podbijana stała bywa zapominana przy edycji CSS/JS, przez co
+ * przeglądarki serwują stare pliki. Czas modyfikacji zmienia się sam,
+ * więc każda zmiana od razu trafia do użytkownika.
+ *
+ * @param string $relative Ścieżka względem katalogu motywu.
+ * @return string Wersja do parametru ?ver=.
+ */
+function autoserwis_asset_version( $relative ) {
+	$path = get_template_directory() . '/' . ltrim( $relative, '/' );
+	$time = file_exists( $path ) ? filemtime( $path ) : false;
+
+	return $time ? AUTOSERWIS_VERSION . '.' . $time : AUTOSERWIS_VERSION;
+}
+
 function autoserwis_enqueue_assets() {
 	// Font: Inter (subset latin-ext dla polskich znaków).
 	wp_enqueue_style(
@@ -48,14 +65,14 @@ function autoserwis_enqueue_assets() {
 		'autoserwis-main',
 		get_template_directory_uri() . '/assets/css/main.css',
 		array( 'autoserwis-fonts' ),
-		AUTOSERWIS_VERSION
+		autoserwis_asset_version( 'assets/css/main.css' )
 	);
 
 	wp_enqueue_script(
 		'autoserwis-main',
 		get_template_directory_uri() . '/assets/js/main.js',
 		array(),
-		AUTOSERWIS_VERSION,
+		autoserwis_asset_version( 'assets/js/main.js' ),
 		array(
 			'strategy'  => 'defer',
 			'in_footer' => true,
