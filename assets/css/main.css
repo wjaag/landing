@@ -278,8 +278,70 @@ p { margin: 0; }
 .primary-menu .current-menu-item > a { color: var(--c-red); }
 .primary-menu .current-menu-item > a::after { transform: scaleX(1); transform-origin: left; }
 
-.site-header__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.site-header__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin-left: auto; }
 .site-header__call { min-height: 44px; padding-inline: 18px; font-size: 14px; }
+
+/* Wybór numeru telefonu */
+.call-menu { position: relative; }
+.call-menu__list {
+	position: absolute;
+	top: calc(100% + 10px);
+	right: 0;
+	z-index: 1200;
+	display: grid;
+	gap: 4px;
+	width: max-content;
+	min-width: 232px;
+	padding: 10px;
+	border: 1px solid var(--c-gray-200);
+	border-radius: var(--r-md);
+	background: var(--c-white);
+	box-shadow: var(--shadow-md);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-6px);
+	transition: opacity var(--t-fast), transform var(--t-fast), visibility var(--t-fast);
+}
+.call-menu__list[hidden] { display: grid; }
+.call-menu.is-open .call-menu__list { opacity: 1; visibility: visible; transform: translateY(0); }
+.call-menu__label {
+	padding: 4px 10px 8px;
+	font-size: 10.5px;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--c-gray-400);
+}
+.call-menu__item {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px;
+	border-radius: var(--r-sm);
+	transition: background-color var(--t-fast);
+}
+.call-menu__item:hover { background: var(--c-gray-100); }
+.call-menu__icon {
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 10px;
+	background: rgba(217, 35, 35, 0.1);
+	color: var(--c-red);
+}
+.call-menu__icon svg { display: block; }
+.call-menu__item:hover .call-menu__icon { background: var(--c-red); color: var(--c-white); }
+.call-menu__text { display: grid; gap: 1px; min-width: 0; line-height: 1.25; }
+.call-menu__text small {
+	font-size: 10.5px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--c-gray-400);
+}
+.call-menu__text strong { font-size: 15px; font-weight: 800; white-space: nowrap; }
 
 /* Hamburger */
 .mobile-menu-toggle {
@@ -978,6 +1040,64 @@ p { margin: 0; }
 	box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.14);
 }
 
+/* Rozwijanie kafelka — przycisk pokazuje się dopiero na wąskich ekranach
+   (klasę .is-collapsible nadaje JS, więc bez skryptu treść zostaje). */
+.service-detail__toggle { display: none; }
+
+@media (max-width: 900px) {
+	.service-detail__toggle {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		width: 100%;
+		margin-top: 14px;
+		padding: 11px 14px;
+		border: 1px solid var(--c-gray-200);
+		border-radius: var(--r-sm);
+		background: var(--c-white);
+		color: var(--c-black);
+		font-size: 13.5px;
+		font-weight: 800;
+		cursor: pointer;
+		transition: border-color var(--t-fast), background-color var(--t-fast);
+	}
+	.service-detail__toggle:hover { border-color: var(--c-red); color: var(--c-red); }
+	.service-detail__toggle-icon {
+		position: relative;
+		flex-shrink: 0;
+		width: 11px;
+		height: 11px;
+	}
+	.service-detail__toggle-icon::before,
+	.service-detail__toggle-icon::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 11px;
+		height: 2px;
+		border-radius: 2px;
+		background: currentColor;
+		transition: transform var(--t-fast);
+	}
+	.service-detail__toggle-icon::after { transform: rotate(90deg); }
+
+	.service-detail.is-collapsible .service-detail__more {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 280ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+	.service-detail.is-collapsible .service-detail__more > * { overflow: hidden; }
+	.service-detail.is-collapsible.is-open .service-detail__more { grid-template-rows: 1fr; }
+	.service-detail.is-collapsible.is-open .service-detail__toggle-icon::after { transform: rotate(0deg); }
+	.service-detail.is-collapsible .service-detail__list { margin-top: 12px; }
+}
+
+@media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+	.service-detail.is-collapsible .service-detail__more { transition: none; }
+}
+
 /* Kafelek wskazany kotwicą — krótkie podświetlenie po skoku. */
 .service-detail:target {
 	border-color: var(--c-red);
@@ -1138,8 +1258,10 @@ p { margin: 0; }
 @media (max-width: 900px) {
 	.site-header__nav { display: none; }
 	.mobile-menu-toggle { display: flex; }
+	.site-header__inner { gap: 12px; }
 	.site-header__call span { display: none; }
 	.site-header__call { width: 44px; padding-inline: 0; border-radius: 50%; }
+	.site-header__actions { gap: 8px; }
 	.custom-logo,
 	.site-header__logo { height: 42px; max-width: 160px; }
 	.contact__grid { grid-template-columns: 1fr; }

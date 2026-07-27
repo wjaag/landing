@@ -55,12 +55,22 @@ $services = autoserwis_services();
 						<div class="service-detail__body">
 							<span class="service-detail__num"><?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
 							<h2><?php echo esc_html( $service['title'] ); ?></h2>
-							<p><?php echo esc_html( $service['desc'] ); ?></p>
-							<ul class="service-detail__list">
-								<?php foreach ( $service['items'] as $item ) : ?>
-									<li><?php echo esc_html( $item ); ?></li>
-								<?php endforeach; ?>
-							</ul>
+
+							<div class="service-detail__more" id="usluga-<?php echo esc_attr( $service['slug'] ); ?>-tresc">
+								<p><?php echo esc_html( $service['desc'] ); ?></p>
+								<ul class="service-detail__list">
+									<?php foreach ( $service['items'] as $item ) : ?>
+										<li><?php echo esc_html( $item ); ?></li>
+									<?php endforeach; ?>
+								</ul>
+							</div>
+
+							<?php // Przycisk działa tylko na wąskich ekranach — na desktopie CSS go ukrywa. ?>
+							<button type="button" class="service-detail__toggle" data-service-toggle
+								aria-expanded="false" aria-controls="usluga-<?php echo esc_attr( $service['slug'] ); ?>-tresc">
+								<span class="service-detail__toggle-text" data-label-more="<?php esc_attr_e( 'Pokaż szczegóły', 'autoserwis' ); ?>" data-label-less="<?php esc_attr_e( 'Zwiń szczegóły', 'autoserwis' ); ?>"><?php esc_html_e( 'Pokaż szczegóły', 'autoserwis' ); ?></span>
+								<span class="service-detail__toggle-icon" aria-hidden="true"></span>
+							</button>
 						</div>
 					</article>
 				<?php endforeach; ?>
