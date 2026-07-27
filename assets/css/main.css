@@ -935,6 +935,8 @@ p { margin: 0; }
 .service-detail {
 	display: flex;
 	flex-direction: column;
+	/* Nagłówek jest przyklejony — bez zapasu kotwica chowa się pod nim. */
+	scroll-margin-top: 96px;
 	border: 1px solid var(--c-gray-200);
 	border-radius: var(--r-lg);
 	overflow: hidden;
@@ -974,6 +976,12 @@ p { margin: 0; }
 	border-radius: 50%;
 	background: var(--c-red);
 	box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.14);
+}
+
+/* Kafelek wskazany kotwicą — krótkie podświetlenie po skoku. */
+.service-detail:target {
+	border-color: var(--c-red);
+	box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.16);
 }
 
 .services-cta__inner {

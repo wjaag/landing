@@ -89,7 +89,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					<span class="hero__cases-sub"><?php esc_html_e( 'Najczęstsze przypadki', 'autoserwis' ); ?></span>
 				</p>
 				<div class="case-grid">
-					<a class="case-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>">
+					<a class="case-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'po-kolizji' ) ); ?>">
 						<img class="case-card__bg" src="<?php echo esc_url( "$img/service-collision.webp" ); ?>" alt="" aria-hidden="true" loading="lazy" decoding="async" width="900" height="600">
 						<span class="case-card__veil" aria-hidden="true"></span>
 						<span class="case-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="24" height="24"><path d="M2 12h3l1.6-4.2A2 2 0 0 1 8.5 6.5h7a2 2 0 0 1 1.9 1.3L19 12h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12h16v4.5a1 1 0 0 1-1 1h-1.5a1 1 0 0 1-1-1V16h-9v.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m13 2-2.4 4.5h3.2L11.5 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -99,7 +99,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 						</span>
 						<span class="case-card__arrow" aria-hidden="true">↗</span>
 					</a>
-					<a class="case-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>" style="--d:.06s">
+					<a class="case-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'mechanika' ) ); ?>" style="--d:.06s">
 						<img class="case-card__bg" src="<?php echo esc_url( "$img/service-mechanics.webp" ); ?>" alt="" aria-hidden="true" loading="lazy" decoding="async" width="900" height="600">
 						<span class="case-card__veil" aria-hidden="true"></span>
 						<span class="case-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="24" height="24"><path d="M15.5 3.8a5 5 0 0 0-6.1 6.6L3.6 16.2a2 2 0 0 0 2.8 2.8l5.8-5.8a5 5 0 0 0 6.6-6.1l-2.9 2.9-2.8-.7-.7-2.8 2.9-2.9Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -109,7 +109,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 						</span>
 						<span class="case-card__arrow" aria-hidden="true">↗</span>
 					</a>
-					<a class="case-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>" style="--d:.12s">
+					<a class="case-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'blacharstwo' ) ); ?>" style="--d:.12s">
 						<img class="case-card__bg" src="<?php echo esc_url( "$img/service-bodywork.webp" ); ?>" alt="" aria-hidden="true" loading="lazy" decoding="async" width="900" height="600">
 						<span class="case-card__veil" aria-hidden="true"></span>
 						<span class="case-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="24" height="24"><path d="m14.5 2.5 7 7-3 3-7-7 3-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m11.5 5.5-8 8a2.1 2.1 0 0 0 0 3l1 1a2.1 2.1 0 0 0 3 0l8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -119,7 +119,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 						</span>
 						<span class="case-card__arrow" aria-hidden="true">↗</span>
 					</a>
-					<a class="case-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>" style="--d:.18s">
+					<a class="case-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'lakiernictwo' ) ); ?>" style="--d:.18s">
 						<img class="case-card__bg" src="<?php echo esc_url( "$img/service-paint.webp" ); ?>" alt="" aria-hidden="true" loading="lazy" decoding="async" width="900" height="600">
 						<span class="case-card__veil" aria-hidden="true"></span>
 						<span class="case-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="24" height="24"><path d="M4 3h9v5H4V3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 5.5h4a2 2 0 0 1 2 2V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 8v3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M5.5 11.5h5a1.5 1.5 0 0 1 1.5 1.5v7a1.5 1.5 0 0 1-1.5 1.5h-5A1.5 1.5 0 0 1 4 20v-7a1.5 1.5 0 0 1 1.5-1.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
@@ -157,7 +157,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 			</div>
 
 			<div class="service-grid">
-				<a class="service-card service-card--featured reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>">
+				<a class="service-card service-card--featured reveal" href="<?php echo esc_url( autoserwis_service_url( 'odszkodowania' ) ); ?>">
 					<img src="<?php echo esc_url( "$img/extra-legal.webp" ); ?>" alt="<?php esc_attr_e( 'Dochodzenie odszkodowań po kolizji', 'autoserwis' ); ?>" loading="lazy" decoding="async" width="900" height="600">
 					<span class="service-card__overlay"></span>
 					<span class="service-card__tag"><?php esc_html_e( 'Najczęściej wybierane', 'autoserwis' ); ?></span>
@@ -169,7 +169,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					</span>
 				</a>
 
-				<a class="service-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>" style="--d:.06s">
+				<a class="service-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'klimatyzacja' ) ); ?>" style="--d:.06s">
 					<img src="<?php echo esc_url( "$img/extra-ac.webp" ); ?>" alt="<?php esc_attr_e( 'Serwis klimatyzacji samochodowej', 'autoserwis' ); ?>" loading="lazy" decoding="async" width="900" height="600">
 					<span class="service-card__overlay"></span>
 					<span class="service-card__content">
@@ -180,7 +180,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					</span>
 				</a>
 
-				<a class="service-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>" style="--d:.12s">
+				<a class="service-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'auto-zastepcze' ) ); ?>" style="--d:.12s">
 					<img src="<?php echo esc_url( "$img/extra-replacement.webp" ); ?>" alt="<?php esc_attr_e( 'Auto zastępcze na czas naprawy', 'autoserwis' ); ?>" loading="lazy" decoding="async" width="900" height="600">
 					<span class="service-card__overlay"></span>
 					<span class="service-card__content">
@@ -191,7 +191,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					</span>
 				</a>
 
-				<a class="service-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>" style="--d:.18s">
+				<a class="service-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'skup-pojazdow' ) ); ?>" style="--d:.18s">
 					<img src="<?php echo esc_url( "$img/extra-buyout.webp" ); ?>" alt="<?php esc_attr_e( 'Skup pojazdów', 'autoserwis' ); ?>" loading="lazy" decoding="async" width="900" height="600">
 					<span class="service-card__overlay"></span>
 					<span class="service-card__content">
@@ -202,7 +202,7 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					</span>
 				</a>
 
-				<a class="service-card reveal" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>" style="--d:.24s">
+				<a class="service-card reveal" href="<?php echo esc_url( autoserwis_service_url( 'konserwacja' ) ); ?>" style="--d:.24s">
 					<img src="<?php echo esc_url( "$img/extra-maintenance.webp" ); ?>" alt="<?php esc_attr_e( 'Konserwacja pojazdów', 'autoserwis' ); ?>" loading="lazy" decoding="async" width="900" height="600">
 					<span class="service-card__overlay"></span>
 					<span class="service-card__content">
