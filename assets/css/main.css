@@ -1044,9 +1044,10 @@ p { margin: 0; }
 .service-detail__media img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 
 .service-detail__body { display: grid; gap: 10px; align-content: start; padding: 24px; flex: 1; }
+.service-detail__heading { display: grid; gap: 4px; }
 .service-detail__num { font-size: 12px; font-weight: 800; color: var(--c-red); letter-spacing: 0.08em; }
-.service-detail__body h2 { font-size: 20px; font-weight: 900; }
-.service-detail__body > p { color: var(--c-gray-600); font-size: 14.5px; }
+.service-detail__title { display: block; font-size: 20px; font-weight: 900; line-height: 1.25; }
+.service-detail__more > p { color: var(--c-gray-600); font-size: 14.5px; }
 
 .service-detail__list { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
 .service-detail__list li {
@@ -1091,105 +1092,110 @@ p { margin: 0; }
 .service-detail__short { display: none; }
 
 @media (max-width: 900px) {
-	/* ---- Wersja skrócona: wiersz listy (jak Pogoda iOS) ---- */
+	/* ---- Karta usługi: kafelek ze zdjęciem, rozwijany ---- */
+
+	/* Bez JS pełna treść zostaje widoczna. */
+	.no-js .service-detail__toggle { display: none; }
+	.no-js .service-detail .service-detail__more { grid-template-rows: 1fr; opacity: 1; }
+
 	.service-detail {
 		position: relative;
 		display: block;
-		height: 200px;
-		min-height: 0;
 		border-color: transparent;
-		border-radius: 18px;
+		border-radius: 16px;
+		overflow: hidden;
 		background: var(--c-graphite);
-		transition: min-height 300ms cubic-bezier(0.22, 1, 0.36, 1),
-			border-radius 300ms ease, box-shadow var(--t-fast);
+		transition: box-shadow var(--t-fast);
 	}
 	.service-detail:hover { transform: none; }
-	.service-detail:active { transform: scale(0.988); }
+	.service-detail:active { transform: scale(0.99); }
 
-	/* Zdjęcie jako tło wiersza. */
-	.service-detail .service-detail__media {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
+	/* Zdjęcie: stała proporcja zamiast wysokości karty — nagłówek leży
+	   na nim, a rozwinięta treść dokłada się pod spodem. */
+	.service-detail__media {
+		position: relative;
+		height: 132px;
 	}
-	.service-detail .service-detail__media img {
+	.service-detail__media img {
 		width: 100%;
 		height: 100%;
 		aspect-ratio: auto;
 		object-fit: cover;
 	}
-	.service-detail .service-detail__media::after {
+	.service-detail__media::after {
 		content: "";
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(180deg, rgba(10, 10, 10, 0.28) 0%, rgba(10, 10, 10, 0.62) 52%, rgba(10, 10, 10, 0.92) 100%);
+		background: linear-gradient(180deg, rgba(10, 10, 10, 0.72) 0%, rgba(10, 10, 10, 0.34) 55%, rgba(10, 10, 10, 0.52) 100%);
 	}
-	/* Plakietka rozprasza w wierszu — wraca po rozwinięciu. */
 	.service-detail .service-card__tag { display: none; }
 
-	.service-detail .service-detail__body {
-		position: relative;
-		z-index: 1;
-		display: flex;
-		flex-direction: column;
-		/* Treść przy dolnej krawędzi — zdjęcie zostaje odsłonięte u góry. */
-		justify-content: flex-end;
-		gap: 4px;
-		height: 200px;
-		padding: 18px 62px 18px 20px;
+	/* Nagłówek leży na zdjęciu — przy zwiniętej i rozwiniętej karcie. */
+	.service-detail__body { display: block; padding: 0; }
+	.service-detail__head {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 2;
+		display: grid;
+		gap: 3px;
+		padding: 14px 56px 14px 16px;
 		color: var(--c-white);
 	}
-	/* Numer zabiera miejsce, a nic nie wnosi w skrócie. */
-	.service-detail .service-detail__num { display: none; }
-	.service-detail .service-detail__body h2 {
-		/* Jedna linia z wielokropkiem — dzięki temu wszystkie wiersze
-		   mają identyczną wysokość niezależnie od długości tytułu. */
+	.service-detail__heading { display: grid; gap: 2px; }
+	.service-detail .service-detail__num {
+		display: block;
+		font-size: 10.5px;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		color: rgba(255, 255, 255, 0.62);
+	}
+	.service-detail .service-detail__title {
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
-		font-size: 18.5px;
+		font-size: 16px;
 		line-height: 1.25;
 		color: var(--c-white);
-		text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+		text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
 	}
 	.service-detail .service-detail__short {
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
-		font-size: 13px;
+		font-size: 12.5px;
 		font-weight: 600;
-		line-height: 1.4;
+		line-height: 1.35;
 		color: rgba(255, 255, 255, 0.78);
+		text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
 	}
+	/* Po rozwinięciu opis wraca w treści — na zdjęciu zostaje sam tytuł. */
+	.service-detail.is-open .service-detail__short { display: none; }
 
-	/* Cały wiersz klikalny. */
-	.service-detail .service-detail__toggle {
+	/* Przycisk: całe zdjęcie klikalne, strzałka po prawej. */
+	.service-detail__toggle {
 		position: absolute;
-		inset: 0;
+		top: 0;
+		left: 0;
+		right: 0;
 		z-index: 3;
 		display: block;
 		width: 100%;
+		height: 132px;
 		padding: 0;
 		border: 0;
 		background: none;
 		cursor: pointer;
 	}
-	.service-detail .service-detail__toggle:focus-visible {
-		outline: 2px solid var(--c-red);
-		outline-offset: 3px;
-		border-radius: 16px;
-	}
+	.service-detail__toggle:focus-visible { outline: 2px solid var(--c-red); outline-offset: -4px; }
 
-	/* Ikona w kwadracie z zaokrągleniem — ten sam język co ikony
-	   w hero i sekcji kontaktu (kółka motyw rezerwuje dla przycisków). */
-	/* Ikona w kwadracie z zaokrągleniem — ten sam język co ikony
-	   w hero i sekcji kontaktu. Strzałka w dół = rozwiń. */
 	.service-detail__chevron {
 		position: absolute;
-		right: 16px;
-		bottom: 16px;
+		top: 14px;
+		right: 14px;
 		width: 28px;
 		height: 28px;
 		border-radius: 9px;
@@ -1211,88 +1217,31 @@ p { margin: 0; }
 		transform: rotate(45deg);
 	}
 	.service-detail:active .service-detail__chevron { background: var(--c-red); border-color: var(--c-red); }
+	.service-detail.is-open .service-detail__chevron { transform: rotate(180deg); }
 
-	.no-js .service-detail .service-detail__more { grid-template-rows: 1fr; opacity: 1; }
-	.no-js .service-detail__toggle { display: none; }
-
+	/* Treść rozwijana — pod zdjęciem, na białym tle. */
 	.service-detail .service-detail__more {
 		display: grid;
 		grid-template-rows: 0fr;
-		opacity: 0;
-		transition: grid-template-rows 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+		background: var(--c-white);
+		transition: grid-template-rows 300ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.service-detail .service-detail__more > * { overflow: hidden; }
+	.service-detail.is-open .service-detail__more { grid-template-rows: 1fr; }
+	.service-detail .service-detail__more > p {
+		padding: 18px 20px 0;
+		color: var(--c-gray-600);
+		font-size: 14.5px;
+	}
+	.service-detail .service-detail__list { margin: 0; padding: 14px 20px 20px; }
+	.service-detail .service-detail__list li { color: var(--c-graphite); }
 
-	/* ---- Wersja pełna: dokładnie karta z wersji na komputer ---- */
 	.service-detail.is-open {
-		height: auto;
-		min-height: 0;
-		border: 1px solid var(--c-gray-200);
-		border-radius: var(--r-lg);
+		border-color: var(--c-gray-200);
 		background: var(--c-white);
 		box-shadow: var(--shadow-md);
 	}
 	.service-detail.is-open.service-detail--featured { border-color: rgba(217, 35, 35, 0.4); }
-	.service-detail.is-open .service-detail__media {
-		position: relative;
-		inset: auto;
-		height: auto;
-	}
-	.service-detail.is-open .service-detail__media img {
-		aspect-ratio: 16 / 9;
-		height: auto;
-	}
-	.service-detail.is-open .service-detail__media::after { display: none; }
-	.service-detail.is-open .service-card__tag { display: inline-flex; z-index: 2; }
-
-	.service-detail.is-open .service-detail__body {
-		display: grid;
-		gap: 10px;
-		align-content: start;
-		height: auto;
-		min-height: 0;
-		padding: 24px;
-		color: inherit;
-	}
-	.service-detail.is-open .service-detail__num {
-		display: block;
-		color: var(--c-red);
-		font-size: 12px;
-		letter-spacing: 0.08em;
-	}
-	.service-detail.is-open .service-detail__body h2 {
-		display: block;
-		-webkit-line-clamp: none;
-		overflow: visible;
-		font-size: 20px;
-		color: var(--c-black);
-		text-shadow: none;
-	}
-	/* Skrót ustępuje pełnemu opisowi. */
-	.service-detail.is-open .service-detail__short { display: none; }
-	.service-detail.is-open .service-detail__more {
-		grid-template-rows: 1fr;
-		opacity: 1;
-	}
-	.service-detail.is-open .service-detail__more > p { color: var(--c-gray-600); font-size: 14.5px; }
-	.service-detail.is-open .service-detail__list li { color: var(--c-graphite); }
-
-	/* Po rozwinięciu przycisk kurczy się do rogu zdjęcia, żeby nie
-	   przechwytywał kliknięć w treść karty. */
-	.service-detail.is-open .service-detail__toggle {
-		inset: 0 0 auto auto;
-		width: 44px;
-		height: 44px;
-		margin: 8px 8px 0 0;
-	}
-	.service-detail.is-open .service-detail__chevron {
-		top: 16px;
-		right: 16px;
-		bottom: auto;
-		border-color: rgba(255, 255, 255, 0.2);
-		background: rgba(0, 0, 0, 0.42);
-		transform: rotate(180deg);
-	}
 }
 
 @media (max-width: 900px) and (prefers-reduced-motion: reduce) {
