@@ -1,40 +1,15 @@
 <?php
 /**
- * Stopka strony.
+ * Zamknięcie dokumentu.
+ *
+ * Landing page kończy się sekcją „Kontakt” — motyw celowo nie ma stopki.
+ * Wywołanie wp_footer() musi zostać: bez niego WordPress nie wstawi
+ * skryptów motywu ani paska administracyjnego.
  *
  * @package autoserwis
  */
 
-$tel_mob  = autoserwis_get( 'phone_mobile', '509 499 101' );
-$tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
+wp_footer();
 ?>
-
-<footer class="site-footer">
-	<div class="container site-footer__inner">
-		<div class="site-footer__brand">
-			<span class="site-header__logo-text site-header__logo-text--light">AUTO<em>SIKORA</em></span>
-			<p><?php esc_html_e( 'Warsztat samochodowy', 'autoserwis' ); ?></p>
-		</div>
-
-		<nav class="site-footer__nav" aria-label="<?php esc_attr_e( 'Menu w stopce', 'autoserwis' ); ?>">
-			<?php foreach ( autoserwis_menu_items() as $footer_href => $footer_label ) : ?>
-				<a href="<?php echo esc_url( $footer_href ); ?>"><?php echo esc_html( $footer_label ); ?></a>
-			<?php endforeach; ?>
-		</nav>
-
-		<div class="site-footer__contact">
-			<a href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>"><?php echo esc_html( $tel_mob ); ?></a>
-			<a href="<?php echo esc_attr( autoserwis_tel( $tel_land ) ); ?>"><?php echo esc_html( $tel_land ); ?></a>
-			<p><?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?></p>
-		</div>
-	</div>
-
-	<div class="container site-footer__bottom">
-		<p>&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?> Auto Sikora. <?php esc_html_e( 'Wszelkie prawa zastrzeżone.', 'autoserwis' ); ?></p>
-		<a class="site-footer__top" href="#top" aria-label="<?php esc_attr_e( 'Wróć na górę', 'autoserwis' ); ?>">↑</a>
-	</div>
-</footer>
-
-<?php wp_footer(); ?>
 </body>
 </html>

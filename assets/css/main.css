@@ -399,7 +399,7 @@ p { margin: 0; }
 	flex-wrap: wrap;
 	align-items: stretch;
 	gap: 16px;
-	margin-top: 32px;
+	margin-top: clamp(20px, 2.6vw, 28px);
 }
 
 .hero__phones {
@@ -447,33 +447,75 @@ p { margin: 0; }
 .case-card {
 	position: relative;
 	display: flex;
-	gap: 14px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+	min-height: 168px;
 	padding: 18px;
-	border: 1px solid var(--c-gray-200);
 	border-radius: var(--r-md);
-	background: var(--c-white);
-	transition: border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+	overflow: hidden;
+	isolation: isolate;
+	background: var(--c-black);
+	color: var(--c-white);
+	box-shadow: var(--shadow-sm);
+	transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.case-card__bg {
+	position: absolute;
+	inset: 0;
+	z-index: -2;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transform: scale(1.02);
+	transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.case-card__veil {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: linear-gradient(180deg, rgba(10, 10, 10, 0.35) 0%, rgba(10, 10, 10, 0.72) 55%, rgba(10, 10, 10, 0.92) 100%);
+	transition: background var(--t-fast);
 }
 .case-card:hover {
-	border-color: var(--c-red);
 	transform: translateY(-3px);
 	box-shadow: var(--shadow-md);
 }
-.case-card__num {
-	font-size: 12px;
-	font-weight: 800;
-	color: var(--c-red);
-	letter-spacing: 0.06em;
+.case-card:hover .case-card__bg { transform: scale(1.09); }
+.case-card:hover .case-card__veil {
+	background: linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(120, 12, 12, 0.62) 55%, rgba(160, 16, 16, 0.9) 100%);
 }
-.case-card__body { display: grid; gap: 2px; font-size: 13.5px; color: var(--c-gray-600); }
-.case-card__body strong { font-size: 15px; color: var(--c-black); }
+.case-card__icon {
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	background: rgba(255, 255, 255, 0.12);
+	backdrop-filter: blur(6px);
+	color: var(--c-white);
+	transition: background-color var(--t-fast), border-color var(--t-fast);
+}
+.case-card__icon svg { display: block; }
+.case-card:hover .case-card__icon { background: var(--c-red); border-color: var(--c-red); }
+.case-card__body {
+	display: grid;
+	gap: 3px;
+	margin-top: auto;
+	font-size: 13px;
+	line-height: 1.45;
+	color: rgba(255, 255, 255, 0.76);
+}
+.case-card__body strong { font-size: 16px; font-weight: 800; color: var(--c-white); }
 .case-card__arrow {
-	margin-left: auto;
-	align-self: flex-start;
-	color: var(--c-gray-400);
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	color: rgba(255, 255, 255, 0.55);
 	transition: color var(--t-fast), transform var(--t-fast);
 }
-.case-card:hover .case-card__arrow { color: var(--c-red); transform: translate(2px, -2px); }
+.case-card:hover .case-card__arrow { color: var(--c-white); transform: translate(2px, -2px); }
 
 /* Hero media */
 .hero__media { display: grid; gap: 20px; }
@@ -702,18 +744,32 @@ p { margin: 0; }
 	margin-top: 28px;
 }
 .contact__call {
-	display: grid;
-	align-content: start;
-	gap: 4px;
-	padding: 20px 26px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 20px 24px;
 	border: 1px solid rgba(255, 255, 255, 0.14);
 	border-radius: var(--r-md);
 	background: rgba(255, 255, 255, 0.04);
 	transition: border-color var(--t-fast), background-color var(--t-fast), transform var(--t-fast);
 }
 .contact__call:hover { border-color: var(--c-red); background: rgba(217, 35, 35, 0.1); transform: translateY(-2px); }
-.contact__call span { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-gray-400); }
-.contact__call strong { font-size: clamp(20px, 1.9vw, 26px); font-weight: 900; white-space: nowrap; }
+.contact__call-icon {
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 12px;
+	background: rgba(217, 35, 35, 0.14);
+	color: var(--c-red);
+	transition: background-color var(--t-fast), color var(--t-fast);
+}
+.contact__call-icon svg { display: block; }
+.contact__call:hover .contact__call-icon { background: var(--c-red); color: var(--c-white); }
+.contact__call-text { display: grid; gap: 4px; min-width: 0; }
+.contact__call-text > span { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-gray-400); }
+.contact__call strong { font-size: clamp(19px, 1.7vw, 24px); font-weight: 900; white-space: nowrap; }
 .contact__call strong span { font-size: inherit; color: var(--c-red); }
 
 .contact__map-hint { margin-top: 24px; color: var(--c-gray-400); font-size: 14.5px; }
@@ -1014,43 +1070,7 @@ p { margin: 0; }
 /* ----------------------------------------------------------------
    10. Stopka
 ---------------------------------------------------------------- */
-.site-footer { background: var(--c-black); color: var(--c-white); }
-.site-footer__inner {
-	display: grid;
-	grid-template-columns: 1.2fr 1fr 1fr;
-	gap: 32px;
-	padding-block: clamp(40px, 5vw, 64px);
-}
-.site-footer__brand p { margin-top: 8px; color: var(--c-gray-400); font-size: 13.5px; }
-.site-footer__nav { display: grid; gap: 10px; align-content: start; }
-.site-footer__nav a { color: var(--c-gray-400); font-size: 14.5px; font-weight: 600; transition: color var(--t-fast); }
-.site-footer__nav a:hover { color: var(--c-white); }
-.site-footer__contact { display: grid; gap: 8px; align-content: start; }
-.site-footer__contact a { font-size: 16px; font-weight: 800; transition: color var(--t-fast); }
-.site-footer__contact a:hover { color: var(--c-red); }
-.site-footer__contact p { color: var(--c-gray-400); font-size: 13.5px; }
-
-.site-footer__bottom {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 16px;
-	padding-block: 20px;
-	border-top: 1px solid rgba(255, 255, 255, 0.08);
-	color: var(--c-gray-400);
-	font-size: 13px;
-}
-.site-footer__top {
-	display: grid;
-	place-items: center;
-	width: 42px;
-	height: 42px;
-	border-radius: 50%;
-	border: 1px solid rgba(255, 255, 255, 0.14);
-	color: var(--c-white);
-	transition: background-color var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
-}
-.site-footer__top:hover { background: var(--c-red); border-color: var(--c-red); transform: translateY(-3px); }
+/* Motyw nie ma stopki — landing kończy się sekcją „Kontakt”. */
 
 /* ----------------------------------------------------------------
    11. Responsywność
@@ -1075,7 +1095,6 @@ p { margin: 0; }
 	.contact__grid { grid-template-columns: 1fr; }
 	.contact__map { position: static; }
 	.contact__map iframe { height: clamp(300px, 60vw, 420px); }
-	.site-footer__inner { grid-template-columns: 1fr; gap: 28px; }
 }
 
 @media (max-width: 640px) {
@@ -1091,5 +1110,4 @@ p { margin: 0; }
 	.process-detail { flex-direction: column; gap: 14px; }
 	.hero__phones { width: 100%; flex-wrap: wrap; gap: 12px 20px; }
 	.hero__book { width: 100%; }
-	.site-footer__bottom { flex-direction: column; }
 }
