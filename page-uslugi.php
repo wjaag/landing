@@ -93,9 +93,12 @@ $services = autoserwis_services();
 				<p class="section-head__lead"><?php esc_html_e( 'Opowiedz nam, co dzieje się z samochodem — na pewno coś wymyślimy.', 'autoserwis' ); ?></p>
 			</div>
 			<div class="services-cta__actions">
-				<a class="button button--primary" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
-					<?php echo esc_html( $tel_mob ); ?> <span aria-hidden="true">→</span>
-				</a>
+				<?php
+				get_template_part( 'template-parts/call-menu', null, array(
+					'label' => __( 'Zadzwoń teraz', 'autoserwis' ),
+					'class' => 'services-cta__call',
+				) );
+				?>
 				<a class="button button--secondary" href="<?php echo esc_url( home_url( '/kontakt/' ) ); ?>">
 					<?php esc_html_e( 'Dane kontaktowe', 'autoserwis' ); ?>
 				</a>

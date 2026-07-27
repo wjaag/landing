@@ -49,16 +49,28 @@
 	/* ------------------------------------------------------------
 	 * Wybór numeru telefonu w nagłówku
 	 * ---------------------------------------------------------- */
-	const callMenu = document.querySelector('[data-call-menu]');
+	// Menu może być kilka na stronie (nagłówek + sekcje CTA).
+	const callMenus = document.querySelectorAll('[data-call-menu]');
 
-	if (callMenu) {
-		const callToggle = callMenu.querySelector('[data-call-toggle]');
-		const callList = callMenu.querySelector('.call-menu__list');
+	if (callMenus.length) {
+		const closeAll = (except) => {
+			callMenus.forEach((menu) => {
+				if (menu === except) return;
+				menu.classList.remove('is-open');
+				const t = menu.querySelector('[data-call-toggle]');
+				if (t) t.setAttribute('aria-expanded', 'false');
+			});
+		};
 
-		if (callToggle && callList) {
+		callMenus.forEach((callMenu) => {
+			const callToggle = callMenu.querySelector('[data-call-toggle]');
+			const callList = callMenu.querySelector('.call-menu__list');
+			if (!callToggle || !callList) return;
+
 			callList.removeAttribute('hidden');
 
 			const setCallOpen = (open) => {
+				if (open) closeAll(callMenu);
 				callMenu.classList.toggle('is-open', open);
 				callToggle.setAttribute('aria-expanded', String(open));
 			};
@@ -68,11 +80,8 @@
 				setCallOpen(!callMenu.classList.contains('is-open'));
 			});
 
-			// Klik poza menu zamyka listę.
 			document.addEventListener('click', (e) => {
-				if (!callMenu.contains(e.target)) {
-					setCallOpen(false);
-				}
+				if (!callMenu.contains(e.target)) setCallOpen(false);
 			});
 
 			document.addEventListener('keydown', (e) => {
@@ -82,11 +91,10 @@
 				}
 			});
 
-			// Po wybraniu numeru lista nie ma już powodu zostawać otwarta.
 			callList.querySelectorAll('a').forEach((a) => {
 				a.addEventListener('click', () => setCallOpen(false));
 			});
-		}
+		});
 	}
 
 	/* ------------------------------------------------------------
