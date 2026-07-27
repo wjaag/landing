@@ -124,36 +124,6 @@ $steps = array(
 		</div>
 	</section>
 
-	<!-- FAQ -->
-	<section class="section faq" id="faq">
-		<div class="container">
-			<header class="section-head reveal">
-				<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Pytania i odpowiedzi', 'autoserwis' ); ?></p>
-				<h2 class="section-head__title">
-					<?php esc_html_e( 'Najczęściej pytacie', 'autoserwis' ); ?>
-					<span class="accent"><?php esc_html_e( 'o to.', 'autoserwis' ); ?></span>
-				</h2>
-				<p class="section-head__lead">
-					<?php esc_html_e( 'Zebraliśmy pytania, które słyszymy w warsztacie najczęściej. Jeśli nie ma tu Twojego — zadzwoń, chętnie wyjaśnimy.', 'autoserwis' ); ?>
-				</p>
-			</header>
-
-			<div class="faq-list">
-				<?php foreach ( autoserwis_faq() as $i => $item ) : ?>
-					<details class="faq-item reveal"<?php echo 0 === $i ? ' open' : ''; ?> style="--d:<?php echo esc_attr( min( $i, 4 ) * 0.05 ); ?>s">
-						<summary class="faq-item__question">
-							<span><?php echo esc_html( $item['q'] ); ?></span>
-							<span class="faq-item__icon" aria-hidden="true"></span>
-						</summary>
-						<div class="faq-item__answer">
-							<p><?php echo esc_html( $item['a'] ); ?></p>
-						</div>
-					</details>
-				<?php endforeach; ?>
-			</div>
-		</div>
-	</section>
-
 	<!-- CTA -->
 	<section class="section section--alt services-cta">
 		<div class="container services-cta__inner reveal">

@@ -365,37 +365,6 @@ function autoserwis_schema_breadcrumbs() {
 }
 
 /**
- * Pytania i odpowiedzi — tylko na stronie, która je wyświetla.
- * Google może pokazać je bezpośrednio w wynikach wyszukiwania.
- *
- * @return array|null
- */
-function autoserwis_schema_faq() {
-	if ( ! is_page( 'jak-dzialamy' ) || ! function_exists( 'autoserwis_faq' ) ) {
-		return null;
-	}
-
-	$items = array();
-
-	foreach ( autoserwis_faq() as $item ) {
-		$items[] = array(
-			'@type'          => 'Question',
-			'name'           => $item['q'],
-			'acceptedAnswer' => array(
-				'@type' => 'Answer',
-				'text'  => $item['a'],
-			),
-		);
-	}
-
-	return array(
-		'@type'      => 'FAQPage',
-		'@id'        => get_permalink() . '#faq',
-		'mainEntity' => $items,
-	);
-}
-
-/**
  * Jeden graf zamiast kilku osobnych bloków — łatwiej go powiązać
  * odwołaniami (@id) i mniej waży.
  */
@@ -405,11 +374,6 @@ function autoserwis_schema() {
 	$breadcrumbs = autoserwis_schema_breadcrumbs();
 	if ( $breadcrumbs ) {
 		$graph[] = $breadcrumbs;
-	}
-
-	$faq = autoserwis_schema_faq();
-	if ( $faq ) {
-		$graph[] = $faq;
 	}
 
 	$graph[] = array(

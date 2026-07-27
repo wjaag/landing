@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AUTOSERWIS_VERSION', '2.0.0' );
+define( 'AUTOSERWIS_VERSION', '1.6.1' );
 
 /* -------------------------------------------------------------------------
  * Konfiguracja motywu
@@ -25,13 +25,6 @@ function autoserwis_setup() {
 	) );
 	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' ) );
 	add_theme_support( 'responsive-embeds' );
-	add_theme_support( 'automatic-feed-links' );
-
-	// Edytor blokowy: podgląd w edytorze ma odpowiadać stronie.
-	add_theme_support( 'align-wide' );
-	add_theme_support( 'wp-block-styles' );
-	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/css/editor.css' );
 
 	register_nav_menus( array(
 		'primary' => __( 'Menu główne', 'autoserwis' ),
@@ -270,91 +263,6 @@ function autoserwis_services() {
 				__( 'Konserwacja profili zamkniętych', 'autoserwis' ),
 				__( 'Przeglądy okresowe i sezonowe', 'autoserwis' ),
 			),
-		),
-	);
-}
-
-/**
- * Czy stroną zarządza kreator (Elementor, Beaver Builder, Divi, WPBakery)?
- *
- * Kreatory dostarczają własny nagłówek strony i układ, więc motyw nie
- * dokłada wtedy swojego tytułu ani okruszków — inaczej pojawiłyby się
- * dwa nagłówki nad tą samą treścią.
- *
- * @param int|null $post_id Identyfikator strony (domyślnie bieżąca).
- * @return bool
- */
-function autoserwis_is_page_builder( $post_id = null ) {
-	$post_id = $post_id ? $post_id : get_the_ID();
-
-	if ( ! $post_id ) {
-		return false;
-	}
-
-	// Elementor.
-	if ( did_action( 'elementor/loaded' ) && get_post_meta( $post_id, '_elementor_edit_mode', true ) ) {
-		return true;
-	}
-
-	// Beaver Builder.
-	if ( get_post_meta( $post_id, '_fl_builder_enabled', true ) ) {
-		return true;
-	}
-
-	// Divi.
-	if ( function_exists( 'et_pb_is_pagebuilder_used' ) && et_pb_is_pagebuilder_used( $post_id ) ) {
-		return true;
-	}
-
-	// WPBakery.
-	if ( get_post_meta( $post_id, '_wpb_vc_js_status', true ) === 'true' ) {
-		return true;
-	}
-
-	return false;
-}
-
-/**
- * Najczęstsze pytania klientów.
- *
- * Wspólne źródło dla sekcji na stronie i danych strukturalnych FAQPage,
- * dzięki którym pytania mogą pojawić się bezpośrednio w wynikach Google.
- *
- * @return array Lista par pytanie/odpowiedź.
- */
-function autoserwis_faq() {
-	return array(
-		array(
-			'q' => __( 'Ile kosztuje naprawa?', 'autoserwis' ),
-			'a' => __( 'Wycena zależy od zakresu prac, dlatego zawsze zaczynamy od oględzin i diagnozy. Po sprawdzeniu auta przedstawiamy konkretną kwotę i zakres napraw — dopiero wtedy decydujesz, czy zlecasz nam pracę. Nie doliczamy kosztów bez Twojej zgody.', 'autoserwis' ),
-		),
-		array(
-			'q' => __( 'Czy trzeba się wcześniej umawiać?', 'autoserwis' ),
-			'a' => __( 'Zalecamy telefon przed wizytą — dzięki temu przygotujemy stanowisko i nie będziesz czekać. Drobne sprawy, jak sprawdzenie klimatyzacji czy szybka diagnoza, obsługujemy zwykle od ręki.', 'autoserwis' ),
-		),
-		array(
-			'q' => __( 'Jak długo potrwa naprawa?', 'autoserwis' ),
-			'a' => __( 'Prosty serwis, wymiana oleju czy klocków to zwykle jeden dzień. Naprawy blacharsko-lakiernicze i szkody powypadkowe trwają dłużej, bo lakier musi odpowiednio związać. Termin podajemy przy wycenie i informujemy o każdej zmianie.', 'autoserwis' ),
-		),
-		array(
-			'q' => __( 'Czy dostanę auto zastępcze?', 'autoserwis' ),
-			'a' => __( 'Tak, na czas naprawy udostępniamy auto zastępcze. Przy szkodach z OC sprawcy koszt najczęściej pokrywa ubezpieczyciel, a formalności załatwiamy za Ciebie.', 'autoserwis' ),
-		),
-		array(
-			'q' => __( 'Czy rozliczacie się bezgotówkowo z ubezpieczycielem?', 'autoserwis' ),
-			'a' => __( 'Tak. Przy szkodach komunikacyjnych rozliczamy się bezpośrednio z ubezpieczycielem — nie musisz wykładać własnych pieniędzy ani pilnować dokumentów. Zajmujemy się wyceną, zgłoszeniem i korespondencją.', 'autoserwis' ),
-		),
-		array(
-			'q' => __( 'Czy naprawa w warsztacie poza siecią traci gwarancję producenta?', 'autoserwis' ),
-			'a' => __( 'Nie. Zgodnie z przepisami Unii Europejskiej możesz serwisować auto poza autoryzowaną stacją bez utraty gwarancji, o ile prace wykonuje się zgodnie z zaleceniami producenta i na częściach odpowiedniej jakości. Tak właśnie pracujemy i wystawiamy pełną dokumentację.', 'autoserwis' ),
-		),
-		array(
-			'q' => __( 'Jakich części używacie?', 'autoserwis' ),
-			'a' => __( 'Domyślnie montujemy części oryginalne lub renomowanych producentów o jakości porównywalnej z oryginałem. Jeśli zależy Ci na tańszym zamienniku, powiemy wprost, na czym polega różnica — wybór zawsze należy do Ciebie.', 'autoserwis' ),
-		),
-		array(
-			'q' => __( 'Czy pomożecie uzyskać odszkodowanie?', 'autoserwis' ),
-			'a' => __( 'Tak. Analizujemy dokumentację szkody, reprezentujemy Cię przed ubezpieczycielem i walczymy o dopłaty do zaniżonych odszkodowań. Mamy na koncie ponad 100 wygranych spraw.', 'autoserwis' ),
 		),
 	);
 }
