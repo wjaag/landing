@@ -959,16 +959,6 @@ p { margin: 0; }
 /* ----------------------------------------------------------------
    9. Mapa
 ---------------------------------------------------------------- */
-.map { position: relative; line-height: 0; border-top: 3px solid var(--c-red); }
-.map iframe {
-	width: 100%;
-	height: clamp(320px, 45vw, 460px);
-	border: 0;
-	display: block;
-	filter: grayscale(1) contrast(1.05);
-	transition: filter 400ms ease;
-}
-.map:hover iframe { filter: none; }
 
 /* Mapa osadzona w siatce sekcji „Kontakt”. */
 .contact__map {
@@ -1085,7 +1075,6 @@ p { margin: 0; }
 	background: var(--c-red);
 	box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.14);
 }
-
 
 /* Kafelek wskazany kotwicą — krótkie podświetlenie po skoku. */
 .service-detail:target {
@@ -1273,16 +1262,37 @@ p { margin: 0; }
 ---------------------------------------------------------------- */
 .contact-page__grid {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 16px;
-	align-items: stretch;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: clamp(24px, 3vw, 48px);
+	align-items: start;
 }
+.contact-page__cards { display: grid; gap: 14px; }
+
+/* Mapa trzyma się widoku przy przewijaniu listy kafelków. */
+.contact-page__map {
+	position: sticky;
+	top: 96px;
+	line-height: 0;
+	border: 1px solid var(--c-gray-200);
+	border-top: 3px solid var(--c-red);
+	border-radius: var(--r-lg);
+	overflow: hidden;
+	scroll-margin-top: 96px;
+}
+.contact-page__map iframe {
+	width: 100%;
+	height: clamp(420px, 58vh, 640px);
+	border: 0;
+	display: block;
+	filter: grayscale(1) contrast(1.05);
+	transition: filter 400ms ease;
+}
+.contact-page__map:hover iframe { filter: none; }
 .contact-card {
 	display: grid;
 	gap: 12px;
 	align-content: start;
-	height: 100%;
-	padding: 28px;
+	padding: 26px 28px;
 	border: 1px solid var(--c-gray-200);
 	border-radius: var(--r-lg);
 	background: var(--c-white);
@@ -1300,11 +1310,11 @@ p { margin: 0; }
 .contact-card .contact-item__icon { background: rgba(217, 35, 35, 0.1); }
 .contact-card:hover .contact-item__icon { background: var(--c-red); color: var(--c-white); }
 .contact-card__note { color: var(--c-gray-600); font-size: 14px; }
-.contact-card .button { justify-self: start; margin-top: auto; }
+.contact-card .button { justify-self: start; margin-top: 4px; }
 
 /* Przycisk z wyborem numeru w karcie kontaktu — lista otwiera się
    w górę, bo karta stoi nisko w siatce. */
-.contact-card .call-menu { justify-self: start; margin-top: auto; padding-top: 4px; }
+.contact-card .call-menu { justify-self: start; margin-top: 4px; }
 .contact-card .call-menu__list {
 	top: auto;
 	bottom: calc(100% + 10px);
@@ -1315,8 +1325,7 @@ p { margin: 0; }
 .contact-card .call-menu.is-open .call-menu__list { transform: translateY(0); }
 .contact-card__link {
 	justify-self: start;
-	margin-top: auto;
-	padding-top: 4px;
+	margin-top: 2px;
 	font-size: 14px;
 	font-weight: 700;
 	border-bottom: 2px solid var(--c-red);
@@ -1354,7 +1363,9 @@ p { margin: 0; }
 	.service-card--featured { grid-column: span 6; }
 	.process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.services-full__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-	.contact-page__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+	.contact-page__grid { grid-template-columns: 1fr; }
+	.contact-page__map { position: static; }
+	.contact-page__map iframe { height: clamp(300px, 60vw, 420px); }
 	.stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 

@@ -34,11 +34,11 @@ get_header();
 		</div>
 	</section>
 
-	<!-- Dane kontaktowe -->
+	<!-- Dane kontaktowe i mapa -->
 	<section class="section contact-page">
-		<div class="container">
-			<div class="contact-page__grid">
+		<div class="container contact-page__grid">
 
+			<div class="contact-page__cards">
 				<div class="contact-card contact-card--phones reveal">
 					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M21.5 16.9v2.6a1.8 1.8 0 0 1-2 1.8 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.9 4.6a1.8 1.8 0 0 1 1.8-2h2.6a1.8 1.8 0 0 1 1.8 1.6c.1.9.3 1.8.6 2.7a1.8 1.8 0 0 1-.4 1.9L8.1 10a15 15 0 0 0 5.6 5.6l1.2-1.2a1.8 1.8 0 0 1 1.9-.4c.9.3 1.8.5 2.7.6a1.8 1.8 0 0 1 1.6 1.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 					<h2><?php esc_html_e( 'Zadzwoń do nas', 'autoserwis' ); ?></h2>
@@ -82,22 +82,21 @@ get_header();
 						</div>
 					</dl>
 				</div>
-
 			</div>
-		</div>
-	</section>
 
-	<!-- Mapa -->
-	<section class="map" id="mapa" aria-label="<?php esc_attr_e( 'Mapa dojazdu', 'autoserwis' ); ?>">
-		<iframe
-			src="<?php echo esc_url( autoserwis_get( 'map_embed', 'https://www.google.com/maps?q=ul.+Sowi%C5%84skiego+26,+Szczecin&z=15&output=embed' ) ); ?>"
-			title="<?php esc_attr_e( 'Mapa — Auto Sikora, ul. Sowińskiego 26, Szczecin', 'autoserwis' ); ?>"
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"
-			allowfullscreen></iframe>
-		<a class="map__external" href="https://www.google.com/maps/search/?api=1&query=ul.+Sowi%C5%84skiego+26,+Szczecin" target="_blank" rel="noopener">
-			<?php esc_html_e( 'Otwórz w Google Maps', 'autoserwis' ); ?> <span aria-hidden="true">↗</span>
-		</a>
+			<div class="contact-page__map reveal reveal--delay" id="mapa">
+				<iframe
+					src="<?php echo esc_url( autoserwis_get( 'map_embed', 'https://www.google.com/maps?q=ul.+Sowi%C5%84skiego+26,+Szczecin&z=15&output=embed' ) ); ?>"
+					title="<?php esc_attr_e( 'Mapa — Auto Sikora, ul. Sowińskiego 26, Szczecin', 'autoserwis' ); ?>"
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					allowfullscreen></iframe>
+				<a class="map__external" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Sowi%C5%84skiego+26,+Szczecin" target="_blank" rel="noopener">
+					<?php esc_html_e( 'Otwórz w Google Maps', 'autoserwis' ); ?> <span aria-hidden="true">↗</span>
+				</a>
+			</div>
+
+		</div>
 	</section>
 
 </main>
