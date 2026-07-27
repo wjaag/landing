@@ -1354,6 +1354,37 @@ p { margin: 0; }
 /* Motyw nie ma stopki — landing kończy się sekcją „Kontakt”. */
 
 /* ----------------------------------------------------------------
+   10b. Stopka — podpis autora
+---------------------------------------------------------------- */
+.site-credit {
+	padding-block: 18px;
+	border-top: 1px solid var(--c-gray-200);
+	background: var(--c-white);
+}
+.site-credit p {
+	text-align: right;
+	color: var(--c-gray-400);
+	font-size: 12.5px;
+	letter-spacing: 0.01em;
+}
+.site-credit a {
+	color: var(--c-gray-600);
+	font-weight: 600;
+	transition: color var(--t-fast);
+}
+.site-credit a:hover { color: var(--c-red); }
+
+/* Strona główna kończy się ciemną sekcją kontaktu — stopka
+   przejmuje jej tło, żeby nie tworzyć jasnego paska na styku. */
+.home .site-credit {
+	border-top-color: var(--c-graphite-2);
+	background: var(--c-graphite);
+}
+.home .site-credit p { color: rgba(255, 255, 255, 0.45); }
+.home .site-credit a { color: rgba(255, 255, 255, 0.72); }
+.home .site-credit a:hover { color: var(--c-red); }
+
+/* ----------------------------------------------------------------
    11. Responsywność
 ---------------------------------------------------------------- */
 @media (max-width: 1080px) {
