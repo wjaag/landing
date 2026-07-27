@@ -134,47 +134,6 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 	</section>
 
 	<!-- ============================================================
-	     PROCES
-	============================================================ -->
-	<section class="section process" id="proces">
-		<div class="container">
-			<header class="section-head reveal">
-				<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Jak działamy', 'autoserwis' ); ?></p>
-				<h2 class="section-head__title">
-					<?php esc_html_e( 'Prosty proces.', 'autoserwis' ); ?>
-					<span class="accent"><?php esc_html_e( 'Zadowolony klient.', 'autoserwis' ); ?></span>
-				</h2>
-				<p class="section-head__lead">
-					<?php esc_html_e( 'Bez zbędnych formalności. Kontaktujesz się z nami, ustalamy zakres prac, a my zajmujemy się resztą.', 'autoserwis' ); ?>
-				</p>
-			</header>
-
-			<ol class="process-grid">
-				<li class="process-step reveal">
-					<span class="process-step__num">01</span>
-					<h3><?php esc_html_e( 'Kontakt', 'autoserwis' ); ?></h3>
-					<p><?php esc_html_e( 'Zadzwoń do nas i opowiedz, czego potrzebuje Twój samochód. Umówimy się na wizytę.', 'autoserwis' ); ?></p>
-				</li>
-				<li class="process-step reveal" style="--d:.08s">
-					<span class="process-step__num">02</span>
-					<h3><?php esc_html_e( 'Diagnoza', 'autoserwis' ); ?></h3>
-					<p><?php esc_html_e( 'Oglądamy samochód, oceniamy zakres naprawy i przedstawiamy Ci konkretne rozwiązanie.', 'autoserwis' ); ?></p>
-				</li>
-				<li class="process-step reveal" style="--d:.16s">
-					<span class="process-step__num">03</span>
-					<h3><?php esc_html_e( 'Naprawa', 'autoserwis' ); ?></h3>
-					<p><?php esc_html_e( 'Nasi fachowcy wykonują ustalone prace zgodnie ze sztuką i z dbałością o każdy detal.', 'autoserwis' ); ?></p>
-				</li>
-				<li class="process-step reveal" style="--d:.24s">
-					<span class="process-step__num">04</span>
-					<h3><?php esc_html_e( 'Odbiór auta', 'autoserwis' ); ?></h3>
-					<p><?php esc_html_e( 'Odbierasz sprawny i gotowy do drogi samochód. Prosto, konkretnie i bez niepotrzebnych komplikacji.', 'autoserwis' ); ?></p>
-				</li>
-			</ol>
-		</div>
-	</section>
-
-	<!-- ============================================================
 	     ZAKRES USŁUG
 	============================================================ -->
 	<section class="section services" id="zakres">
@@ -252,6 +211,47 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					</span>
 				</a>
 			</div>
+		</div>
+	</section>
+
+	<!-- ============================================================
+	     PROCES
+	============================================================ -->
+	<section class="section process" id="proces">
+		<div class="container">
+			<header class="section-head reveal">
+				<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Jak działamy', 'autoserwis' ); ?></p>
+				<h2 class="section-head__title">
+					<?php esc_html_e( 'Prosty proces.', 'autoserwis' ); ?>
+					<span class="accent"><?php esc_html_e( 'Zadowolony klient.', 'autoserwis' ); ?></span>
+				</h2>
+				<p class="section-head__lead">
+					<?php esc_html_e( 'Bez zbędnych formalności. Kontaktujesz się z nami, ustalamy zakres prac, a my zajmujemy się resztą.', 'autoserwis' ); ?>
+				</p>
+			</header>
+
+			<ol class="process-grid">
+				<li class="process-step reveal">
+					<span class="process-step__num">01</span>
+					<h3><?php esc_html_e( 'Kontakt', 'autoserwis' ); ?></h3>
+					<p><?php esc_html_e( 'Zadzwoń do nas i opowiedz, czego potrzebuje Twój samochód. Umówimy się na wizytę.', 'autoserwis' ); ?></p>
+				</li>
+				<li class="process-step reveal" style="--d:.08s">
+					<span class="process-step__num">02</span>
+					<h3><?php esc_html_e( 'Diagnoza', 'autoserwis' ); ?></h3>
+					<p><?php esc_html_e( 'Oglądamy samochód, oceniamy zakres naprawy i przedstawiamy Ci konkretne rozwiązanie.', 'autoserwis' ); ?></p>
+				</li>
+				<li class="process-step reveal" style="--d:.16s">
+					<span class="process-step__num">03</span>
+					<h3><?php esc_html_e( 'Naprawa', 'autoserwis' ); ?></h3>
+					<p><?php esc_html_e( 'Nasi fachowcy wykonują ustalone prace zgodnie ze sztuką i z dbałością o każdy detal.', 'autoserwis' ); ?></p>
+				</li>
+				<li class="process-step reveal" style="--d:.24s">
+					<span class="process-step__num">04</span>
+					<h3><?php esc_html_e( 'Odbiór auta', 'autoserwis' ); ?></h3>
+					<p><?php esc_html_e( 'Odbierasz sprawny i gotowy do drogi samochód. Prosto, konkretnie i bez niepotrzebnych komplikacji.', 'autoserwis' ); ?></p>
+				</li>
+			</ol>
 		</div>
 	</section>
 
