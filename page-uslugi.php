@@ -68,8 +68,10 @@ $services = autoserwis_services();
 							<?php // Przycisk działa tylko na wąskich ekranach — na desktopie CSS go ukrywa. ?>
 							<button type="button" class="service-detail__toggle" data-service-toggle
 								aria-expanded="false" aria-controls="usluga-<?php echo esc_attr( $service['slug'] ); ?>-tresc">
-								<span class="service-detail__toggle-text" data-label-more="<?php esc_attr_e( 'Pokaż szczegóły', 'autoserwis' ); ?>" data-label-less="<?php esc_attr_e( 'Zwiń szczegóły', 'autoserwis' ); ?>"><?php esc_html_e( 'Pokaż szczegóły', 'autoserwis' ); ?></span>
-								<span class="service-detail__toggle-icon" aria-hidden="true"></span>
+								<span class="service-detail__toggle-text sr-only"
+									data-label-more="<?php echo esc_attr( sprintf( __( 'Pokaż szczegóły: %s', 'autoserwis' ), $service['title'] ) ); ?>"
+									data-label-less="<?php echo esc_attr( sprintf( __( 'Zwiń szczegóły: %s', 'autoserwis' ), $service['title'] ) ); ?>"><?php echo esc_html( sprintf( __( 'Pokaż szczegóły: %s', 'autoserwis' ), $service['title'] ) ); ?></span>
+								<span class="service-detail__chevron" aria-hidden="true"></span>
 							</button>
 						</div>
 					</article>
