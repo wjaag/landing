@@ -1198,7 +1198,8 @@ p { margin: 0; }
 	box-shadow: var(--shadow-md);
 	border-color: transparent;
 }
-.process-detail__num {
+.process-detail__num,
+.process-detail__icon {
 	flex-shrink: 0;
 	display: grid;
 	place-items: center;
@@ -1211,7 +1212,9 @@ p { margin: 0; }
 	font-weight: 900;
 	transition: background-color var(--t-fast), color var(--t-fast);
 }
-.process-detail:hover .process-detail__num { background: var(--c-red); color: var(--c-white); }
+.process-detail__icon svg { display: block; }
+.process-detail:hover .process-detail__num,
+.process-detail:hover .process-detail__icon { background: var(--c-red); color: var(--c-white); }
 .process-detail__body { display: grid; gap: 8px; }
 .process-detail__body h2 { font-size: 20px; font-weight: 900; }
 .process-detail__body > p { color: var(--c-gray-600); font-size: 14.5px; }
@@ -1266,7 +1269,9 @@ p { margin: 0; }
 .contact-card h2 { font-size: 19px; font-weight: 900; }
 .contact-card > p { color: var(--c-gray-600); font-size: 14.5px; }
 .contact-card small { font-size: 12.5px; }
-.contact-card .contact-item__num { background: rgba(217, 35, 35, 0.1); }
+.contact-card .contact-item__num,
+.contact-card .contact-item__icon { background: rgba(217, 35, 35, 0.1); }
+.contact-card:hover .contact-item__icon { background: var(--c-red); color: var(--c-white); }
 .contact-card__note { color: var(--c-gray-600); font-size: 14px; }
 .contact-card__phones { display: grid; gap: 12px; padding-block: 6px; }
 .contact-card .button { justify-self: start; }

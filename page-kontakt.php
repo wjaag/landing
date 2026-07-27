@@ -42,7 +42,7 @@ $tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 			<div class="contact-page__grid">
 
 				<div class="contact-card contact-card--phones reveal">
-					<span class="contact-item__num">01</span>
+					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M21.5 16.9v2.6a1.8 1.8 0 0 1-2 1.8 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.9 4.6a1.8 1.8 0 0 1 1.8-2h2.6a1.8 1.8 0 0 1 1.8 1.6c.1.9.3 1.8.6 2.7a1.8 1.8 0 0 1-.4 1.9L8.1 10a15 15 0 0 0 5.6 5.6l1.2-1.2a1.8 1.8 0 0 1 1.9-.4c.9.3 1.8.5 2.7.6a1.8 1.8 0 0 1 1.6 1.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 					<h2><?php esc_html_e( 'Zadzwoń do nas', 'autoserwis' ); ?></h2>
 					<p class="contact-card__note"><?php esc_html_e( 'Najszybsza droga — od razu ustalimy, co dalej.', 'autoserwis' ); ?></p>
 					<div class="contact-card__phones">
@@ -61,7 +61,7 @@ $tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 				</div>
 
 				<div class="contact-card reveal" style="--d:.08s">
-					<span class="contact-item__num">02</span>
+					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 					<h2><?php esc_html_e( 'Adres', 'autoserwis' ); ?></h2>
 					<p>
 						<?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?><br>
@@ -73,7 +73,7 @@ $tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 				</div>
 
 				<div class="contact-card reveal" style="--d:.16s">
-					<span class="contact-item__num">03</span>
+					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 					<h2><?php esc_html_e( 'Godziny otwarcia', 'autoserwis' ); ?></h2>
 					<dl class="contact-card__hours">
 						<div>

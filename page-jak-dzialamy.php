@@ -14,6 +14,7 @@ $tel_mob = autoserwis_get( 'phone_mobile', '509 499 101' );
 $steps = array(
 	array(
 		'title' => __( 'Kontakt', 'autoserwis' ),
+		'icon'  => '<path d="M21.5 16.9v2.6a1.8 1.8 0 0 1-2 1.8 18.6 18.6 0 0 1-8.1-2.9 18.3 18.3 0 0 1-5.6-5.6A18.6 18.6 0 0 1 2.9 4.6a1.8 1.8 0 0 1 1.8-2h2.6a1.8 1.8 0 0 1 1.8 1.6c.1.9.3 1.8.6 2.7a1.8 1.8 0 0 1-.4 1.9L8.1 10a15 15 0 0 0 5.6 5.6l1.2-1.2a1.8 1.8 0 0 1 1.9-.4c.9.3 1.8.5 2.7.6a1.8 1.8 0 0 1 1.6 1.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
 		'desc'  => __( 'Zadzwoń do nas i opowiedz, czego potrzebuje Twój samochód. Umówimy się na wizytę w dogodnym terminie.', 'autoserwis' ),
 		'items' => array(
 			__( 'Rozmowa telefoniczna lub wizyta na miejscu', 'autoserwis' ),
@@ -23,6 +24,7 @@ $steps = array(
 	),
 	array(
 		'title' => __( 'Diagnoza', 'autoserwis' ),
+		'icon'  => '<circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m20.5 20.5-4.8-4.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 11h1.6l1.2-2.2 1.4 4 1.1-1.8h1.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
 		'desc'  => __( 'Oglądamy samochód, oceniamy zakres naprawy i przedstawiamy Ci konkretne rozwiązanie.', 'autoserwis' ),
 		'items' => array(
 			__( 'Oględziny i diagnostyka komputerowa', 'autoserwis' ),
@@ -32,6 +34,7 @@ $steps = array(
 	),
 	array(
 		'title' => __( 'Naprawa', 'autoserwis' ),
+		'icon'  => '<path d="M15.5 3.8a5 5 0 0 0-6.1 6.6L3.6 16.2a2 2 0 0 0 2.8 2.8l5.8-5.8a5 5 0 0 0 6.6-6.1l-2.9 2.9-2.8-.7-.7-2.8 2.9-2.9Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
 		'desc'  => __( 'Nasi fachowcy wykonują ustalone prace zgodnie ze sztuką i z dbałością o każdy detal.', 'autoserwis' ),
 		'items' => array(
 			__( 'Sprawdzone części i materiały', 'autoserwis' ),
@@ -41,6 +44,7 @@ $steps = array(
 	),
 	array(
 		'title' => __( 'Odbiór auta', 'autoserwis' ),
+		'icon'  => '<circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m11.5 11.5 8 8M17 17l2-2M14.5 14.5l1.5-1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
 		'desc'  => __( 'Odbierasz sprawny i gotowy do drogi samochód. Prosto, konkretnie i bez niepotrzebnych komplikacji.', 'autoserwis' ),
 		'items' => array(
 			__( 'Wspólne oględziny wykonanych prac', 'autoserwis' ),
@@ -81,7 +85,7 @@ $steps = array(
 			<ol class="process-full__list">
 				<?php foreach ( $steps as $i => $step ) : ?>
 					<li class="process-detail reveal" style="--d:<?php echo esc_attr( ( $i % 2 ) * 0.08 ); ?>s">
-						<span class="process-detail__num"><?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+						<span class="process-detail__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="26" height="26"><?php echo $step['icon']; // phpcs:ignore WordPress.Security.EscapeOutput ?></svg></span>
 						<div class="process-detail__body">
 							<h2><?php echo esc_html( $step['title'] ); ?></h2>
 							<p><?php echo esc_html( $step['desc'] ); ?></p>
