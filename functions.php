@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'AUTOSERWIS_VERSION', '1.6.0' );
+define( 'AUTOSERWIS_VERSION', '1.6.1' );
 
 /* -------------------------------------------------------------------------
  * Konfiguracja motywu
@@ -134,6 +134,7 @@ function autoserwis_get( $key, $default = '' ) {
  * i odnośników z innych sekcji.
  *
  * Klucz „slug” wyznacza kotwicę (#usluga-slug) przy kafelku na /uslugi/.
+ * Klucz „short” to skrót widoczny na zwiniętej karcie (mobile).
  * Slugi są stałe i niezależne od tłumaczenia tytułu, więc odnośniki
  * nie psują się po zmianie treści.
  *
@@ -143,6 +144,7 @@ function autoserwis_services() {
 	return array(
 		array(
 			'slug'  => 'mechanika',
+			'short' => __( 'Diagnostyka i naprawy', 'autoserwis' ),
 			'image' => 'service-mechanics.webp',
 			'title' => __( 'Mechanika i diagnostyka', 'autoserwis' ),
 			'desc'  => __( 'Kompleksowe naprawy mechaniczne — od drobnych usterek po poważne remonty. Diagnostyka komputerowa pozwala szybko znaleźć źródło problemu.', 'autoserwis' ),
@@ -156,6 +158,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'po-kolizji',
+			'short' => __( 'Bezgotówkowo z OC sprawcy', 'autoserwis' ),
 			'image' => 'service-collision.webp',
 			'title' => __( 'Pomoc po kolizji i naprawy powypadkowe', 'autoserwis' ),
 			'desc'  => __( 'Miałeś stłuczkę lub wypadek? Zajmiemy się wszystkim — od oględzin i wyceny, przez kontakt z ubezpieczycielem, aż po pełną naprawę auta.', 'autoserwis' ),
@@ -168,6 +171,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'blacharstwo',
+			'short' => __( 'Karoseria i nadwozie', 'autoserwis' ),
 			'image' => 'service-bodywork.webp',
 			'title' => __( 'Blacharstwo', 'autoserwis' ),
 			'desc'  => __( 'Naprawy karoserii i elementów nadwozia — przywracamy autu fabryczny wygląd i geometrię, zgodnie ze sztuką blacharską.', 'autoserwis' ),
@@ -180,6 +184,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'lakiernictwo',
+			'short' => __( 'Komora i dobór koloru', 'autoserwis' ),
 			'image' => 'service-paint.webp',
 			'title' => __( 'Lakiernictwo', 'autoserwis' ),
 			'desc'  => __( 'Precyzyjne lakierowanie elementów auta w komorze lakierniczej. Idealne dopasowanie koloru i trwałe wykończenie.', 'autoserwis' ),
@@ -192,6 +197,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'odszkodowania',
+			'short' => __( 'Ponad 100 wygranych spraw', 'autoserwis' ),
 			'image'    => 'extra-legal.webp',
 			'title'    => __( 'Dochodzenie odszkodowań', 'autoserwis' ),
 			'desc'     => __( 'Otoczymy Cię pełną opieką prawną, abyś spokojnie mógł dochodzić swoich praw. Mamy na koncie ponad 100 wygranych spraw!', 'autoserwis' ),
@@ -205,6 +211,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'klimatyzacja',
+			'short' => __( 'Serwis od ręki', 'autoserwis' ),
 			'image' => 'extra-ac.webp',
 			'title' => __( 'Klimatyzacja', 'autoserwis' ),
 			'desc'  => __( 'Serwisujemy klimatyzacje od ręki w każdego rodzaju pojazdach.', 'autoserwis' ),
@@ -216,6 +223,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'auto-zastepcze',
+			'short' => __( 'Na czas naprawy', 'autoserwis' ),
 			'image' => 'extra-replacement.webp',
 			'title' => __( 'Auto zastępcze', 'autoserwis' ),
 			'desc'  => __( 'Na czas naprawy oferujemy auto zastępcze — nie zostaniesz bez środka transportu.', 'autoserwis' ),
@@ -227,6 +235,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'skup-pojazdow',
+			'short' => __( 'Wycena od ręki', 'autoserwis' ),
 			'image' => 'extra-buyout.webp',
 			'title' => __( 'Skup pojazdów', 'autoserwis' ),
 			'desc'  => __( 'Chcesz sprzedać auto? Przyjedź, dogadamy się! Uczciwa wycena na miejscu.', 'autoserwis' ),
@@ -238,6 +247,7 @@ function autoserwis_services() {
 		),
 		array(
 			'slug'  => 'konserwacja',
+			'short' => __( 'Ochrona antykorozyjna', 'autoserwis' ),
 			'image' => 'extra-maintenance.webp',
 			'title' => __( 'Konserwacja pojazdów', 'autoserwis' ),
 			'desc'  => __( 'Przeprowadzamy pełną konserwację pojazdów — chronimy auto przed korozją i upływem czasu.', 'autoserwis' ),

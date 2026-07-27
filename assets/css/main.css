@@ -1057,24 +1057,24 @@ p { margin: 0; }
 /* Rozwijanie kafelka usługi — tylko wąskie ekrany.
    Klasę .is-collapsible nadaje JS, więc bez skryptu treść zostaje. */
 .service-detail__toggle { display: none; }
+.service-detail__short { display: none; }
 
 @media (max-width: 900px) {
-	/* Wersja skrócona: zwarty wiersz ze zdjęciem w tle — jak lista
-	   miast w Pogodzie iOS. Cały wiersz jest przyciskiem. */
+	/* ---- Wersja skrócona: wiersz listy (jak Pogoda iOS) ---- */
 	.service-detail.is-collapsible {
 		position: relative;
 		display: block;
-		min-height: 104px;
+		min-height: 76px;
 		border-color: transparent;
-		border-radius: 18px;
+		border-radius: 16px;
 		background: var(--c-graphite);
-		transition: min-height 320ms cubic-bezier(0.22, 1, 0.36, 1),
-			border-radius 320ms ease, box-shadow var(--t-fast);
+		transition: min-height 300ms cubic-bezier(0.22, 1, 0.36, 1),
+			border-radius 300ms ease, box-shadow var(--t-fast);
 	}
 	.service-detail.is-collapsible:hover { transform: none; }
 	.service-detail.is-collapsible:active { transform: scale(0.988); }
 
-	/* Zdjęcie staje się tłem wiersza. */
+	/* Zdjęcie jako tło wiersza. */
 	.service-detail.is-collapsible .service-detail__media {
 		position: absolute;
 		inset: 0;
@@ -1090,38 +1090,39 @@ p { margin: 0; }
 		content: "";
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(105deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.62) 55%, rgba(10, 10, 10, 0.34) 100%);
-		transition: background 320ms ease;
+		background: linear-gradient(100deg, rgba(10, 10, 10, 0.9) 0%, rgba(10, 10, 10, 0.66) 58%, rgba(10, 10, 10, 0.36) 100%);
 	}
-	.service-detail.is-collapsible .service-card__tag { z-index: 2; }
+	/* Plakietka rozprasza w wierszu — wraca po rozwinięciu. */
+	.service-detail.is-collapsible .service-card__tag { display: none; }
 
-	/* Treść nad tłem. */
 	.service-detail.is-collapsible .service-detail__body {
 		position: relative;
 		z-index: 1;
-		display: block;
-		min-height: 104px;
-		padding: 18px 58px 18px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2px;
+		min-height: 76px;
+		padding: 14px 52px 14px 18px;
 		color: var(--c-white);
 	}
-	.service-detail.is-collapsible .service-detail__num {
-		display: block;
-		margin-bottom: 4px;
-		color: rgba(255, 255, 255, 0.6);
-		font-size: 11px;
-		letter-spacing: 0.12em;
-	}
+	/* Numer zabiera miejsce, a nic nie wnosi w skrócie. */
+	.service-detail.is-collapsible .service-detail__num { display: none; }
 	.service-detail.is-collapsible .service-detail__body h2 {
-		font-size: 19px;
+		font-size: 16.5px;
 		line-height: 1.25;
 		color: var(--c-white);
-		text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+		text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
 	}
-	.service-detail.is-collapsible .service-detail__body > p,
-	.service-detail.is-collapsible .service-detail__list li { color: rgba(255, 255, 255, 0.82); }
-	.service-detail.is-collapsible .service-detail__list li::before { background: var(--c-red); }
+	.service-detail.is-collapsible .service-detail__short {
+		display: block;
+		font-size: 12.5px;
+		font-weight: 600;
+		line-height: 1.3;
+		color: rgba(255, 255, 255, 0.72);
+	}
 
-	/* Cały wiersz klikalny — przycisk rozciągnięty na kartę. */
+	/* Cały wiersz klikalny. */
 	.service-detail.is-collapsible .service-detail__toggle {
 		position: absolute;
 		inset: 0;
@@ -1136,30 +1137,29 @@ p { margin: 0; }
 	.service-detail.is-collapsible .service-detail__toggle:focus-visible {
 		outline: 2px solid var(--c-red);
 		outline-offset: 3px;
-		border-radius: 18px;
+		border-radius: 16px;
 	}
 
-	/* Subtelna strzałka zachęcająca do rozwinięcia. */
 	.service-detail__chevron {
 		position: absolute;
 		top: 50%;
-		right: 18px;
-		width: 26px;
-		height: 26px;
-		margin-top: -13px;
+		right: 16px;
+		width: 24px;
+		height: 24px;
+		margin-top: -12px;
 		border-radius: 50%;
 		background: rgba(255, 255, 255, 0.14);
 		backdrop-filter: blur(6px);
-		transition: background-color var(--t-fast), transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+		transition: background-color var(--t-fast), transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 	.service-detail__chevron::before {
 		content: "";
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		width: 7px;
-		height: 7px;
-		margin: -5px 0 0 -4px;
+		width: 6.5px;
+		height: 6.5px;
+		margin: -4.5px 0 0 -4px;
 		border-right: 2px solid var(--c-white);
 		border-bottom: 2px solid var(--c-white);
 		border-radius: 1px;
@@ -1167,21 +1167,23 @@ p { margin: 0; }
 	}
 	.service-detail.is-collapsible:active .service-detail__chevron { background: rgba(255, 255, 255, 0.26); }
 
-	/* Treść zwinięta — animacja bez znajomości docelowej wysokości. */
 	.service-detail.is-collapsible .service-detail__more {
 		display: grid;
 		grid-template-rows: 0fr;
 		opacity: 0;
-		transition: grid-template-rows 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+		transition: grid-template-rows 300ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
 	}
 	.service-detail.is-collapsible .service-detail__more > * { overflow: hidden; }
 
-	/* Wersja pełna — po rozwinięciu wraca układ ze zdjęciem u góry. */
+	/* ---- Wersja pełna: dokładnie karta z wersji na komputer ---- */
 	.service-detail.is-collapsible.is-open {
 		min-height: 0;
+		border: 1px solid var(--c-gray-200);
 		border-radius: var(--r-lg);
+		background: var(--c-white);
 		box-shadow: var(--shadow-md);
 	}
+	.service-detail.is-collapsible.is-open.service-detail--featured { border-color: rgba(217, 35, 35, 0.4); }
 	.service-detail.is-collapsible.is-open .service-detail__media {
 		position: relative;
 		inset: auto;
@@ -1191,39 +1193,49 @@ p { margin: 0; }
 		aspect-ratio: 16 / 9;
 		height: auto;
 	}
-	.service-detail.is-collapsible.is-open .service-detail__media::after {
-		background: linear-gradient(180deg, transparent 55%, rgba(10, 10, 10, 0.45));
-	}
+	.service-detail.is-collapsible.is-open .service-detail__media::after { display: none; }
+	.service-detail.is-collapsible.is-open .service-card__tag { display: inline-flex; z-index: 2; }
+
 	.service-detail.is-collapsible.is-open .service-detail__body {
+		display: grid;
+		gap: 10px;
+		align-content: start;
 		min-height: 0;
-		padding: 22px 20px 24px;
+		padding: 24px;
 		color: inherit;
 	}
-	.service-detail.is-collapsible.is-open .service-detail__num { color: var(--c-red); }
+	.service-detail.is-collapsible.is-open .service-detail__num {
+		display: block;
+		color: var(--c-red);
+		font-size: 12px;
+		letter-spacing: 0.08em;
+	}
 	.service-detail.is-collapsible.is-open .service-detail__body h2 {
+		font-size: 20px;
 		color: var(--c-black);
 		text-shadow: none;
 	}
-	.service-detail.is-collapsible.is-open .service-detail__body > p { color: var(--c-gray-600); }
-	.service-detail.is-collapsible.is-open .service-detail__list li { color: var(--c-graphite); }
+	/* Skrót ustępuje pełnemu opisowi. */
+	.service-detail.is-collapsible.is-open .service-detail__short { display: none; }
 	.service-detail.is-collapsible.is-open .service-detail__more {
 		grid-template-rows: 1fr;
 		opacity: 1;
-		margin-top: 10px;
 	}
+	.service-detail.is-collapsible.is-open .service-detail__more > p { color: var(--c-gray-600); font-size: 14.5px; }
+	.service-detail.is-collapsible.is-open .service-detail__list li { color: var(--c-graphite); }
 
-	/* Po rozwinięciu przycisk zwija się do samej strzałki, żeby nie
-	   przechwytywał kliknięć w treść. */
+	/* Po rozwinięciu przycisk kurczy się do rogu zdjęcia, żeby nie
+	   przechwytywał kliknięć w treść karty. */
 	.service-detail.is-collapsible.is-open .service-detail__toggle {
 		inset: 0 0 auto auto;
 		width: 44px;
 		height: 44px;
-		margin: 10px 10px 0 0;
+		margin: 8px 8px 0 0;
 	}
 	.service-detail.is-collapsible.is-open .service-detail__chevron {
 		top: 50%;
-		right: 9px;
-		background: rgba(0, 0, 0, 0.32);
+		right: 10px;
+		background: rgba(0, 0, 0, 0.42);
 		transform: rotate(180deg);
 	}
 }

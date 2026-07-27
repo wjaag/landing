@@ -55,6 +55,8 @@ $services = autoserwis_services();
 						<div class="service-detail__body">
 							<span class="service-detail__num"><?php echo esc_html( str_pad( (string) ( $i + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
 							<h2><?php echo esc_html( $service['title'] ); ?></h2>
+							<?php // Skrót widoczny tylko na zwiniętej karcie (mobile). ?>
+							<p class="service-detail__short"><?php echo esc_html( $service['short'] ); ?></p>
 
 							<div class="service-detail__more" id="usluga-<?php echo esc_attr( $service['slug'] ); ?>-tresc">
 								<p><?php echo esc_html( $service['desc'] ); ?></p>
