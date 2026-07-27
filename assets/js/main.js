@@ -117,64 +117,53 @@
 	const compactQuery = window.matchMedia('(max-width: 900px)');
 
 	if (serviceCards.length) {
-		const applyCompact = (card, compact) => {
-			const toggle = card.querySelector('[data-service-toggle]');
-			if (!toggle) return;
-
-			if (compact) {
-				card.classList.add('is-collapsible');
-				// Kafelek wskazany kotwicą otwieramy od razu.
-				const open = card.id && card.id === decodeURIComponent(location.hash).slice(1);
-				card.classList.toggle('is-open', open);
-				toggle.setAttribute('aria-expanded', String(open));
-				syncLabel(toggle, open);
-			} else {
-				card.classList.remove('is-collapsible', 'is-open');
-				toggle.setAttribute('aria-expanded', 'false');
-				syncLabel(toggle, false);
-			}
-		};
-
-		function syncLabel(toggle, open) {
+		const syncLabel = (toggle, open) => {
 			const text = toggle.querySelector('.service-detail__toggle-text');
 			if (!text) return;
 			const label = open ? text.dataset.labelLess : text.dataset.labelMore;
 			if (label) text.textContent = label;
-		}
+		};
+
+		const setOpen = (card, open) => {
+			const toggle = card.querySelector('[data-service-toggle]');
+			card.classList.toggle('is-open', open);
+			if (toggle) {
+				toggle.setAttribute('aria-expanded', String(open));
+				syncLabel(toggle, open);
+			}
+		};
+
+		// Karta wskazana kotwicą ma być od razu rozwinięta.
+		const openFromHash = () => {
+			if (!compactQuery.matches) return;
+			const id = decodeURIComponent(window.location.hash).slice(1);
+			if (!id) return;
+			const target = document.getElementById(id);
+			if (target && target.classList.contains('service-detail')) setOpen(target, true);
+		};
 
 		serviceCards.forEach((card) => {
 			const toggle = card.querySelector('[data-service-toggle]');
 			if (!toggle) return;
-
-			toggle.addEventListener('click', () => {
-				if (!card.classList.contains('is-collapsible')) return;
-				const open = !card.classList.contains('is-open');
-				card.classList.toggle('is-open', open);
-				toggle.setAttribute('aria-expanded', String(open));
-				syncLabel(toggle, open);
-			});
-
-			applyCompact(card, compactQuery.matches);
+			toggle.addEventListener('click', () => setOpen(card, !card.classList.contains('is-open')));
 		});
 
+		// Powrót na szeroki ekran: stan otwarcia przestaje mieć znaczenie,
+		// bo CSS pokazuje wtedy pełne karty.
 		const onBreakpoint = () => {
-			serviceCards.forEach((card) => applyCompact(card, compactQuery.matches));
+			if (compactQuery.matches) return;
+			serviceCards.forEach((card) => setOpen(card, false));
 		};
-		compactQuery.addEventListener('change', onBreakpoint);
 
-		// Wejście z odnośnika #usluga-... rozwija właściwy kafelek.
-		window.addEventListener('hashchange', () => {
-			if (!compactQuery.matches) return;
-			const target = document.getElementById(decodeURIComponent(location.hash).slice(1));
-			if (target && target.classList.contains('is-collapsible')) {
-				const toggle = target.querySelector('[data-service-toggle]');
-				target.classList.add('is-open');
-				if (toggle) {
-					toggle.setAttribute('aria-expanded', 'true');
-					syncLabel(toggle, true);
-				}
-			}
-		});
+		// Starsze Safari/iOS nie ma addEventListener na MediaQueryList.
+		if (typeof compactQuery.addEventListener === 'function') {
+			compactQuery.addEventListener('change', onBreakpoint);
+		} else if (typeof compactQuery.addListener === 'function') {
+			compactQuery.addListener(onBreakpoint);
+		}
+
+		window.addEventListener('hashchange', openFromHash);
+		openFromHash();
 	}
 
 	/* ------------------------------------------------------------
