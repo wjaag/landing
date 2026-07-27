@@ -25,6 +25,13 @@ function autoserwis_setup() {
 	) );
 	add_theme_support( 'html5', array( 'search-form', 'gallery', 'caption', 'style', 'script', 'navigation-widgets' ) );
 	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'automatic-feed-links' );
+
+	// Edytor blokowy: podgląd w edytorze ma odpowiadać stronie.
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'assets/css/editor.css' );
 
 	register_nav_menus( array(
 		'primary' => __( 'Menu główne', 'autoserwis' ),
@@ -265,6 +272,46 @@ function autoserwis_services() {
 			),
 		),
 	);
+}
+
+/**
+ * Czy stroną zarządza kreator (Elementor, Beaver Builder, Divi, WPBakery)?
+ *
+ * Kreatory dostarczają własny nagłówek strony i układ, więc motyw nie
+ * dokłada wtedy swojego tytułu ani okruszków — inaczej pojawiłyby się
+ * dwa nagłówki nad tą samą treścią.
+ *
+ * @param int|null $post_id Identyfikator strony (domyślnie bieżąca).
+ * @return bool
+ */
+function autoserwis_is_page_builder( $post_id = null ) {
+	$post_id = $post_id ? $post_id : get_the_ID();
+
+	if ( ! $post_id ) {
+		return false;
+	}
+
+	// Elementor.
+	if ( did_action( 'elementor/loaded' ) && get_post_meta( $post_id, '_elementor_edit_mode', true ) ) {
+		return true;
+	}
+
+	// Beaver Builder.
+	if ( get_post_meta( $post_id, '_fl_builder_enabled', true ) ) {
+		return true;
+	}
+
+	// Divi.
+	if ( function_exists( 'et_pb_is_pagebuilder_used' ) && et_pb_is_pagebuilder_used( $post_id ) ) {
+		return true;
+	}
+
+	// WPBakery.
+	if ( get_post_meta( $post_id, '_wpb_vc_js_status', true ) === 'true' ) {
+		return true;
+	}
+
+	return false;
 }
 
 /**

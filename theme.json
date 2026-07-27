@@ -1,0 +1,68 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "720px",
+			"wideSize": "1180px"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"custom": true,
+			"palette": [
+				{ "slug": "red", "color": "#d92323", "name": "Czerwony" },
+				{ "slug": "black", "color": "#111111", "name": "Czarny" },
+				{ "slug": "graphite", "color": "#181818", "name": "Grafitowy" },
+				{ "slug": "gray-600", "color": "#6b6b6b", "name": "Szary tekst" },
+				{ "slug": "gray-200", "color": "#e8e8e6", "name": "Jasna linia" },
+				{ "slug": "gray-100", "color": "#f5f5f3", "name": "Tło sekcji" },
+				{ "slug": "white", "color": "#ffffff", "name": "Biały" }
+			]
+		},
+		"typography": {
+			"customFontSize": true,
+			"lineHeight": true,
+			"dropCap": false,
+			"fontFamilies": [
+				{
+					"slug": "inter",
+					"name": "Inter",
+					"fontFamily": "Inter, system-ui, -apple-system, 'Segoe UI', sans-serif"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small", "size": "13.5px", "name": "Mały" },
+				{ "slug": "medium", "size": "16px", "name": "Średni" },
+				{ "slug": "large", "size": "clamp(1.5rem, 1.2rem + 1.2vw, 2rem)", "name": "Duży" },
+				{ "slug": "x-large", "size": "clamp(2rem, 1.5rem + 2.4vw, 3rem)", "name": "Bardzo duży" }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "rem", "%", "vw" ],
+			"padding": true,
+			"margin": true
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--white)",
+			"text": "var(--wp--preset--color--black)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--inter)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.65"
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var(--wp--preset--color--red)" },
+				":hover": { "color": { "text": "var(--wp--preset--color--black)" } }
+			},
+			"h1": { "typography": { "fontWeight": "900", "lineHeight": "1.1" } },
+			"h2": { "typography": { "fontWeight": "900", "lineHeight": "1.15" } },
+			"h3": { "typography": { "fontWeight": "800", "lineHeight": "1.25" } }
+		}
+	}
+}
