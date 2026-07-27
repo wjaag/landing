@@ -1354,6 +1354,144 @@ p { margin: 0; }
 /* Motyw nie ma stopki — landing kończy się sekcją „Kontakt”. */
 
 /* ----------------------------------------------------------------
+   10a. Strona 404
+---------------------------------------------------------------- */
+.error-page {
+	padding-block: clamp(32px, 4vw, 64px) clamp(48px, 6vw, 88px);
+	background:
+		radial-gradient(1000px 460px at 80% -10%, rgba(217, 35, 35, 0.07), transparent 60%),
+		linear-gradient(180deg, var(--c-gray-100), var(--c-white) 72%);
+}
+.error-page__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+	gap: clamp(28px, 4vw, 64px);
+	align-items: center;
+}
+
+/* Wielka cyfra jako element graficzny — obrys zamiast wypełnienia,
+   żeby nie przytłaczała nagłówka. */
+.error-page__code {
+	margin: clamp(4px, 1vw, 10px) 0 clamp(2px, 0.8vw, 8px);
+	font-size: clamp(5rem, 3rem + 9vw, 9rem);
+	font-weight: 900;
+	line-height: 0.86;
+	letter-spacing: -0.05em;
+	color: transparent;
+	-webkit-text-stroke: 2px var(--c-gray-200);
+	user-select: none;
+}
+
+.error-page__title {
+	font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem);
+	font-weight: 900;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+}
+.error-page__title .accent { display: block; }
+
+.error-page__lead {
+	margin-top: clamp(12px, 1.4vw, 16px);
+	max-width: 48ch;
+	color: var(--c-gray-600);
+	font-size: var(--fs-lead);
+}
+
+.error-page__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin-top: clamp(20px, 2.4vw, 28px);
+}
+.error-page__actions > * { min-width: 0; }
+/* Lista numerów otwiera się w górę — przycisk stoi nisko w kolumnie. */
+.error-page__actions .call-menu__list {
+	top: auto;
+	bottom: calc(100% + 10px);
+	right: auto;
+	left: 0;
+	transform: translateY(6px);
+}
+.error-page__actions .call-menu.is-open .call-menu__list { transform: translateY(0); }
+
+.error-page__links {
+	display: grid;
+	gap: 10px;
+	margin: clamp(28px, 3.4vw, 40px) 0 0;
+	padding: clamp(24px, 3vw, 32px) 0 0;
+	border-top: 1px solid var(--c-gray-200);
+	list-style: none;
+}
+.error-link {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 14px 16px;
+	border: 1px solid var(--c-gray-200);
+	border-radius: var(--r-md);
+	background: var(--c-white);
+	transition: border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
+}
+.error-link:hover {
+	border-color: var(--c-red);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+.error-link__icon {
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 12px;
+	background: rgba(217, 35, 35, 0.1);
+	color: var(--c-red);
+	transition: background-color var(--t-fast), color var(--t-fast);
+}
+.error-link__icon svg { display: block; }
+.error-link:hover .error-link__icon { background: var(--c-red); color: var(--c-white); }
+.error-link__body {
+	display: grid;
+	gap: 2px;
+	min-width: 0;
+	color: var(--c-gray-600);
+	font-size: 13.5px;
+	line-height: 1.45;
+}
+.error-link__body strong { color: var(--c-black); font-size: 15.5px; font-weight: 800; }
+.error-link__arrow {
+	margin-left: auto;
+	flex-shrink: 0;
+	color: var(--c-gray-400);
+	transition: color var(--t-fast), transform var(--t-fast);
+}
+.error-link:hover .error-link__arrow { color: var(--c-red); transform: translate(2px, -2px); }
+
+.error-page__figure {
+	position: relative;
+	margin: 0;
+	border-radius: var(--r-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-md);
+}
+.error-page__figure img {
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+	display: block;
+	filter: grayscale(1) contrast(1.04);
+}
+.error-page__figure::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(200deg, rgba(217, 35, 35, 0.18), transparent 45%, rgba(10, 10, 10, 0.5));
+	pointer-events: none;
+}
+
+/* ----------------------------------------------------------------
    10b. Stopka — podpis autora
 ---------------------------------------------------------------- */
 .site-credit {
@@ -1398,6 +1536,9 @@ p { margin: 0; }
 	.services-full__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.contact-page__grid { grid-template-columns: 1fr; }
 	.contact-page__map { height: clamp(300px, 60vw, 420px); }
+	.error-page__grid { grid-template-columns: 1fr; }
+	.error-page__figure { order: -1; }
+	.error-page__figure img { aspect-ratio: 16 / 9; }
 	.stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
