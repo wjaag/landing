@@ -440,40 +440,4 @@ remove_action( 'wp_head', 'wlwmanifest_link' );
 remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wp_shortlink_wp_head' );
 
-/**
- * Dane strukturalne (JSON-LD) dla lokalnego biznesu.
- */
-function autoserwis_schema() {
-	if ( ! is_front_page() ) {
-		return;
-	}
-	$schema = array(
-		'@context'     => 'https://schema.org',
-		'@type'        => 'AutoRepair',
-		'name'         => get_bloginfo( 'name' ),
-		'url'          => home_url( '/' ),
-		'telephone'    => preg_replace( '/\s+/', '', autoserwis_get( 'phone_mobile', '509 499 101' ) ),
-		'address'      => array(
-			'@type'           => 'PostalAddress',
-			'streetAddress'   => 'ul. Sowińskiego 26',
-			'addressLocality' => 'Szczecin',
-			'addressCountry'  => 'PL',
-		),
-		'openingHoursSpecification' => array(
-			array(
-				'@type'     => 'OpeningHoursSpecification',
-				'dayOfWeek' => array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ),
-				'opens'     => '09:00',
-				'closes'    => '17:00',
-			),
-			array(
-				'@type'     => 'OpeningHoursSpecification',
-				'dayOfWeek' => 'Saturday',
-				'opens'     => '09:00',
-				'closes'    => '14:00',
-			),
-		),
-	);
-	echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
-}
-add_action( 'wp_head', 'autoserwis_schema' );
+require get_template_directory() . '/inc/seo.php';
