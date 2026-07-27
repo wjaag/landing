@@ -36,7 +36,31 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 					<p class="hero__lead">
 						<?php esc_html_e( 'Kompleksowy serwis samochodowy, blacharstwo i lakiernictwo. Zajmiemy się Twoim autem od diagnozy aż po odbiór gotowego samochodu.', 'autoserwis' ); ?>
 					</p>
+				</div>
 
+				<div class="hero__aside reveal reveal--delay">
+					<figure class="hero__figure">
+						<picture>
+							<source media="(max-width: 640px)" srcset="<?php echo esc_url( "$img/hero-workshop-sm.webp" ); ?>">
+							<img src="<?php echo esc_url( "$img/hero-workshop.webp" ); ?>"
+								alt="<?php esc_attr_e( 'Auto Sikora — warsztat samochodowy w Szczecinie', 'autoserwis' ); ?>"
+								width="1600" height="898" fetchpriority="high" decoding="async">
+						</picture>
+						<figcaption class="hero__facts">
+							<span class="hero__fact">
+								<small><?php esc_html_e( 'Adres', 'autoserwis' ); ?></small>
+								<strong><?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?></strong>
+							</span>
+							<span class="hero__fact">
+								<small><?php esc_html_e( 'Pon.–Pt.', 'autoserwis' ); ?></small>
+								<strong><?php echo esc_html( autoserwis_get( 'hours_week', '09:00 – 17:00' ) ); ?></strong>
+							</span>
+							<span class="hero__fact">
+								<small><?php esc_html_e( 'Sobota', 'autoserwis' ); ?></small>
+								<strong><?php echo esc_html( autoserwis_get( 'hours_saturday', '09:00 – 14:00' ) ); ?></strong>
+							</span>
+						</figcaption>
+					</figure>
 					<div class="hero__phones">
 						<a class="hero__phone" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
 							<span class="hero__phone-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="6" y="2" width="12" height="20" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
@@ -54,29 +78,6 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 						</a>
 					</div>
 				</div>
-
-				<figure class="hero__figure reveal reveal--delay">
-					<picture>
-						<source media="(max-width: 640px)" srcset="<?php echo esc_url( "$img/hero-workshop-sm.webp" ); ?>">
-						<img src="<?php echo esc_url( "$img/hero-workshop.webp" ); ?>"
-							alt="<?php esc_attr_e( 'Auto Sikora — warsztat samochodowy w Szczecinie', 'autoserwis' ); ?>"
-							width="1600" height="898" fetchpriority="high" decoding="async">
-					</picture>
-					<figcaption class="hero__facts">
-						<span class="hero__fact">
-							<small><?php esc_html_e( 'Adres', 'autoserwis' ); ?></small>
-							<strong><?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?></strong>
-						</span>
-						<span class="hero__fact">
-							<small><?php esc_html_e( 'Pon.–Pt.', 'autoserwis' ); ?></small>
-							<strong><?php echo esc_html( autoserwis_get( 'hours_week', '09:00 – 17:00' ) ); ?></strong>
-						</span>
-						<span class="hero__fact">
-							<small><?php esc_html_e( 'Sobota', 'autoserwis' ); ?></small>
-							<strong><?php echo esc_html( autoserwis_get( 'hours_saturday', '09:00 – 14:00' ) ); ?></strong>
-						</span>
-					</figcaption>
-				</figure>
 
 			</div>
 
