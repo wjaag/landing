@@ -46,37 +46,39 @@ $tel_land  = autoserwis_get( 'phone_landline', '91 812 11 92' );
 								alt="<?php esc_attr_e( 'Auto Sikora — warsztat samochodowy w Szczecinie', 'autoserwis' ); ?>"
 								width="1600" height="898" fetchpriority="high" decoding="async">
 						</picture>
-						<figcaption class="hero__facts">
-							<span class="hero__fact">
-								<small><?php esc_html_e( 'Adres', 'autoserwis' ); ?></small>
-								<strong><?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?></strong>
+						<figcaption class="hero__overlay">
+							<span class="hero__facts">
+								<span class="hero__fact">
+									<small><?php esc_html_e( 'Adres', 'autoserwis' ); ?></small>
+									<strong><?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?></strong>
+								</span>
+								<span class="hero__fact">
+									<small><?php esc_html_e( 'Pon.–Pt.', 'autoserwis' ); ?></small>
+									<strong><?php echo esc_html( autoserwis_get( 'hours_week', '09:00 – 17:00' ) ); ?></strong>
+								</span>
+								<span class="hero__fact">
+									<small><?php esc_html_e( 'Sobota', 'autoserwis' ); ?></small>
+									<strong><?php echo esc_html( autoserwis_get( 'hours_saturday', '09:00 – 14:00' ) ); ?></strong>
+								</span>
 							</span>
-							<span class="hero__fact">
-								<small><?php esc_html_e( 'Pon.–Pt.', 'autoserwis' ); ?></small>
-								<strong><?php echo esc_html( autoserwis_get( 'hours_week', '09:00 – 17:00' ) ); ?></strong>
-							</span>
-							<span class="hero__fact">
-								<small><?php esc_html_e( 'Sobota', 'autoserwis' ); ?></small>
-								<strong><?php echo esc_html( autoserwis_get( 'hours_saturday', '09:00 – 14:00' ) ); ?></strong>
+							<span class="hero__phones">
+								<a class="hero__phone" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
+									<span class="hero__phone-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="6" y="2" width="12" height="20" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+									<span class="hero__phone-text">
+										<small><?php esc_html_e( 'Komórkowy', 'autoserwis' ); ?></small>
+										<strong><?php echo esc_html( $tel_mob ); ?></strong>
+									</span>
+								</a>
+								<a class="hero__phone" href="<?php echo esc_attr( autoserwis_tel( $tel_land ) ); ?>">
+									<span class="hero__phone-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.7a2 2 0 0 1 1.7 2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+									<span class="hero__phone-text">
+										<small><?php esc_html_e( 'Stacjonarny', 'autoserwis' ); ?></small>
+										<strong><?php echo esc_html( $tel_land ); ?></strong>
+									</span>
+								</a>
 							</span>
 						</figcaption>
 					</figure>
-					<div class="hero__phones">
-						<a class="hero__phone" href="<?php echo esc_attr( autoserwis_tel( $tel_mob ) ); ?>">
-							<span class="hero__phone-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="6" y="2" width="12" height="20" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-							<span class="hero__phone-text">
-								<small><?php esc_html_e( 'Komórkowy', 'autoserwis' ); ?></small>
-								<strong><?php echo esc_html( $tel_mob ); ?></strong>
-							</span>
-						</a>
-						<a class="hero__phone" href="<?php echo esc_attr( autoserwis_tel( $tel_land ) ); ?>">
-							<span class="hero__phone-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.7a2 2 0 0 1 1.7 2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-							<span class="hero__phone-text">
-								<small><?php esc_html_e( 'Stacjonarny', 'autoserwis' ); ?></small>
-								<strong><?php echo esc_html( $tel_land ); ?></strong>
-							</span>
-						</a>
-					</div>
 				</div>
 
 			</div>
