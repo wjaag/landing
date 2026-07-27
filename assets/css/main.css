@@ -1087,6 +1087,110 @@ p { margin: 0; }
 .services-cta__actions > * { min-width: 0; }
 
 /* ----------------------------------------------------------------
+   9e. Kontakt — dojazd i przygotowanie do wizyty
+---------------------------------------------------------------- */
+.visit__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: clamp(28px, 4vw, 56px);
+	align-items: start;
+}
+.visit__text { display: grid; gap: 12px; }
+.visit__text p { color: var(--c-gray-600); font-size: 14.5px; line-height: 1.7; max-width: 60ch; }
+
+.visit__list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.visit__list li {
+	position: relative;
+	padding: 16px 18px 16px 46px;
+	border: 1px solid var(--c-gray-200);
+	border-radius: var(--r-md);
+	background: var(--c-white);
+	color: var(--c-gray-600);
+	font-size: 14px;
+	line-height: 1.55;
+	transition: border-color var(--t-fast);
+}
+.visit__list li:hover { border-color: rgba(217, 35, 35, 0.4); }
+.visit__list li::before {
+	content: "";
+	position: absolute;
+	top: 21px;
+	left: 18px;
+	width: 8px;
+	height: 8px;
+	border-radius: 2px;
+	background: var(--c-red);
+}
+.visit__note {
+	margin-top: 16px;
+	color: var(--c-gray-600);
+	font-size: 14.5px;
+	line-height: 1.7;
+	max-width: 60ch;
+}
+.visit__list strong { display: block; margin-bottom: 3px; color: var(--c-black); font-size: 15px; font-weight: 800; }
+
+/* ----------------------------------------------------------------
+   9d. FAQ
+---------------------------------------------------------------- */
+.faq-list { display: grid; gap: 10px; max-width: 880px; }
+
+.faq-item {
+	border: 1px solid var(--c-gray-200);
+	border-radius: var(--r-md);
+	background: var(--c-white);
+	transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.faq-item[open] { border-color: rgba(217, 35, 35, 0.4); box-shadow: var(--shadow-sm); }
+.faq-item:hover { border-color: rgba(217, 35, 35, 0.4); }
+
+.faq-item__question {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 18px 20px;
+	font-size: 16px;
+	font-weight: 800;
+	line-height: 1.35;
+	cursor: pointer;
+	list-style: none;
+}
+/* Domyślny trójkąt <details> zastępujemy własną ikoną. */
+.faq-item__question::-webkit-details-marker { display: none; }
+.faq-item__question:focus-visible { outline: 2px solid var(--c-red); outline-offset: -2px; border-radius: var(--r-md); }
+
+.faq-item__icon {
+	position: relative;
+	flex-shrink: 0;
+	width: 28px;
+	height: 28px;
+	border-radius: 9px;
+	background: rgba(217, 35, 35, 0.1);
+}
+.faq-item__icon::before,
+.faq-item__icon::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 11px;
+	height: 2px;
+	margin: -1px 0 0 -5.5px;
+	border-radius: 2px;
+	background: var(--c-red);
+	transition: transform var(--t-fast);
+}
+.faq-item__icon::after { transform: rotate(90deg); }
+.faq-item[open] .faq-item__icon::after { transform: rotate(0deg); }
+.faq-item[open] .faq-item__icon { background: var(--c-red); }
+.faq-item[open] .faq-item__icon::before,
+.faq-item[open] .faq-item__icon::after { background: var(--c-white); }
+
+.faq-item__answer { padding: 0 20px 20px; }
+.faq-item__answer p { color: var(--c-gray-600); font-size: 14.5px; line-height: 1.65; max-width: 68ch; }
+
+/* ----------------------------------------------------------------
    9c. Podstrona „Jak działamy”
 ---------------------------------------------------------------- */
 .process-full__list {
@@ -1261,6 +1365,9 @@ p { margin: 0; }
 	.service-card--featured { grid-column: span 6; min-height: 280px; }
 	.services-full__grid { grid-template-columns: 1fr; align-items: start; }
 	.contact-page__grid { grid-template-columns: 1fr; }
+	.visit__grid { grid-template-columns: 1fr; }
+	.faq-item__question { font-size: 15px; padding: 16px 16px; }
+	.faq-item__answer { padding: 0 16px 18px; }
 	.stats-grid { grid-template-columns: 1fr; }
 	.process-detail { flex-direction: column; gap: 14px; }
 }

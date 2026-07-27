@@ -95,6 +95,60 @@ $tel_land = autoserwis_get( 'phone_landline', '91 812 11 92' );
 		</div>
 	</section>
 
+	<!-- Dojazd i przygotowanie do wizyty -->
+	<section class="section section--alt visit">
+		<div class="container visit__grid">
+
+			<div class="reveal">
+				<header class="section-head section-head--left">
+					<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Dojazd', 'autoserwis' ); ?></p>
+					<h2 class="section-head__title"><?php esc_html_e( 'Jak do nas trafić', 'autoserwis' ); ?></h2>
+				</header>
+				<div class="visit__text">
+					<p>
+						<?php esc_html_e( 'Warsztat znajdziesz przy ulicy Sowińskiego 26 w Szczecinie, na Nowym Mieście, tuż przy skrzyżowaniu z Kusocińskiego. To kilka minut od centrum i dogodny dojazd zarówno od strony Potulickiej, jak i alei Piastów.', 'autoserwis' ); ?>
+					</p>
+					<p>
+						<?php esc_html_e( 'Przed budynkiem jest miejsce na pozostawienie auta — nie musisz szukać parkingu w okolicy. Jeśli przyjeżdżasz komunikacją miejską, najbliższe przystanki tramwajowe i autobusowe znajdują się przy Sowińskiego, kilkadziesiąt metrów od wjazdu.', 'autoserwis' ); ?>
+					</p>
+					<p>
+						<?php esc_html_e( 'Auto po kolizji, którym nie da się jechać? Zadzwoń — podpowiemy, jak zorganizować transport i co zrobić, żeby nie stracić prawa do odszkodowania.', 'autoserwis' ); ?>
+					</p>
+				</div>
+			</div>
+
+			<div class="reveal reveal--delay">
+				<header class="section-head section-head--left">
+					<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Przed wizytą', 'autoserwis' ); ?></p>
+					<h2 class="section-head__title"><?php esc_html_e( 'Co warto przygotować', 'autoserwis' ); ?></h2>
+				</header>
+				<ul class="visit__list">
+					<li>
+						<strong><?php esc_html_e( 'Dowód rejestracyjny', 'autoserwis' ); ?></strong>
+						<?php esc_html_e( 'Potrzebny do identyfikacji pojazdu i dokumentacji naprawy.', 'autoserwis' ); ?>
+					</li>
+					<li>
+						<strong><?php esc_html_e( 'Opis objawów', 'autoserwis' ); ?></strong>
+						<?php esc_html_e( 'Kiedy problem się pojawia, przy jakiej prędkości, czy słychać hałas — to skraca diagnozę.', 'autoserwis' ); ?>
+					</li>
+					<li>
+						<strong><?php esc_html_e( 'Numer szkody', 'autoserwis' ); ?></strong>
+						<?php esc_html_e( 'Przy naprawie powypadkowej — jeśli zgłosiłeś już sprawę ubezpieczycielowi.', 'autoserwis' ); ?>
+					</li>
+					<li>
+						<strong><?php esc_html_e( 'Historia serwisowa', 'autoserwis' ); ?></strong>
+						<?php esc_html_e( 'Jeśli ją masz. Pomaga ocenić, co wymieniano wcześniej i kiedy.', 'autoserwis' ); ?>
+					</li>
+				</ul>
+
+				<p class="visit__note">
+					<?php esc_html_e( 'Obsługujemy wszystkie marki samochodów osobowych i dostawczych — od aut kilkuletnich na gwarancji po pojazdy z długim przebiegiem. Nie odsyłamy do autoryzowanych stacji: diagnostykę komputerową, naprawy mechaniczne, blacharkę i lakiernictwo wykonujemy na miejscu, w jednym warsztacie.', 'autoserwis' ); ?>
+				</p>
+			</div>
+
+		</div>
+	</section>
+
 	<!-- Mapa -->
 	<section class="map" id="mapa" aria-label="<?php esc_attr_e( 'Mapa dojazdu', 'autoserwis' ); ?>">
 		<iframe
