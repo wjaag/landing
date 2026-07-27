@@ -727,7 +727,8 @@ p { margin: 0; }
 	box-shadow: var(--shadow-md);
 	border-color: transparent;
 }
-.process-step__num {
+.process-step__num,
+.process-step__icon {
 	display: inline-grid;
 	place-items: center;
 	width: 44px;
@@ -740,7 +741,9 @@ p { margin: 0; }
 	font-weight: 900;
 	transition: background-color var(--t-fast), color var(--t-fast);
 }
-.process-step:hover .process-step__num { background: var(--c-red); color: var(--c-white); }
+.process-step__icon svg { display: block; }
+.process-step:hover .process-step__num,
+.process-step:hover .process-step__icon { background: var(--c-red); color: var(--c-white); }
 .process-step h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
 .process-step p { color: var(--c-gray-600); font-size: 14.5px; }
 
@@ -817,6 +820,21 @@ p { margin: 0; }
 	padding: 24px;
 }
 .service-card__num { font-size: 12px; font-weight: 800; color: var(--c-red); letter-spacing: 0.08em; }
+.service-card__icon {
+	display: grid;
+	place-items: center;
+	width: 42px;
+	height: 42px;
+	margin-bottom: 4px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.22);
+	background: rgba(255, 255, 255, 0.14);
+	backdrop-filter: blur(6px);
+	color: var(--c-white);
+	transition: background-color var(--t-fast), border-color var(--t-fast);
+}
+.service-card__icon svg { display: block; }
+.service-card:hover .service-card__icon { background: var(--c-red); border-color: var(--c-red); }
 .service-card__content strong { font-size: clamp(18px, 1.6vw, 24px); font-weight: 900; letter-spacing: -0.01em; }
 .service-card__desc { font-size: 13.5px; color: rgba(255, 255, 255, 0.78); max-width: 42ch; }
 .service-card__arrow {
