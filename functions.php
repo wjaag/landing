@@ -400,6 +400,7 @@ function autoserwis_menu_items() {
 		home_url( '/' )              => __( 'Główna', 'autoserwis' ),
 		home_url( '/uslugi/' )       => __( 'Usługi', 'autoserwis' ),
 		home_url( '/jak-dzialamy/' ) => __( 'Jak działamy', 'autoserwis' ),
+		home_url( '/o-nas/' )        => __( 'O nas', 'autoserwis' ),
 		home_url( '/kontakt/' )      => __( 'Kontakt', 'autoserwis' ),
 	);
 }
@@ -430,6 +431,7 @@ function autoserwis_create_pages() {
 	$pages = array(
 		'uslugi'       => __( 'Usługi', 'autoserwis' ),
 		'jak-dzialamy' => __( 'Jak działamy', 'autoserwis' ),
+		'o-nas'        => __( 'O nas', 'autoserwis' ),
 		'kontakt'      => __( 'Kontakt', 'autoserwis' ),
 	);
 	foreach ( $pages as $slug => $title ) {

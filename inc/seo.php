@@ -150,6 +150,10 @@ function autoserwis_meta_description() {
 		return __( 'Pełna oferta warsztatu Auto Sikora w Szczecinie: mechanika i diagnostyka komputerowa, naprawy powypadkowe, blacharstwo, lakiernictwo, klimatyzacja, auto zastępcze i skup pojazdów.', 'autoserwis' );
 	}
 
+	if ( is_page( 'o-nas' ) ) {
+		return __( 'Auto Sikora — warsztat samochodowy w Szczecinie działający od 1993 roku. Mechanika, blacharstwo, lakiernictwo i obsługa szkód pod jednym dachem. Poznaj naszą historię i zasady pracy.', 'autoserwis' );
+	}
+
 	if ( is_page( 'jak-dzialamy' ) ) {
 		return __( 'Jak pracuje Auto Sikora: kontakt, diagnoza, naprawa i odbiór auta. Bez zbędnych formalności — ustalamy zakres prac i zajmujemy się resztą.', 'autoserwis' );
 	}
