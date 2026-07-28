@@ -1316,7 +1316,7 @@ p { margin: 0; }
 
 /* Przycisk z wyborem numeru w karcie kontaktu — lista otwiera się
    w górę, bo karta stoi nisko w siatce. */
-.contact-card .call-menu { justify-self: start; margin-top: 4px; }
+.contact-card .call-menu { justify-self: start; }
 .contact-card .call-menu__list {
 	top: auto;
 	bottom: calc(100% + 10px);
@@ -1325,16 +1325,46 @@ p { margin: 0; }
 	transform: translateY(6px);
 }
 .contact-card .call-menu.is-open .call-menu__list { transform: translateY(0); }
+/* Telefon i e-mail w jednym rzędzie — obok siebie, gdy jest miejsce,
+   jeden pod drugim na wąskiej karcie. */
+.contact-card__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 14px;
+	margin-top: 4px;
+}
+.contact-card__actions > * { min-width: 0; }
+
 .contact-card__mail {
-	justify-self: start;
-	margin-top: 2px;
-	font-size: clamp(15px, 1.4vw, 17px);
-	font-weight: 800;
-	color: var(--c-black);
-	word-break: break-all;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 0;
+	font-size: 14.5px;
+	font-weight: 700;
+	color: var(--c-gray-600);
 	transition: color var(--t-fast);
 }
-.contact-card__mail:hover { color: var(--c-red); }
+.contact-card__mail span:last-child {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.contact-card__mail-icon {
+	flex-shrink: 0;
+	display: grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 9px;
+	background: rgba(217, 35, 35, 0.1);
+	color: var(--c-red);
+	transition: background-color var(--t-fast), color var(--t-fast);
+}
+.contact-card__mail-icon svg { display: block; }
+.contact-card__mail:hover { color: var(--c-black); }
+.contact-card__mail:hover .contact-card__mail-icon { background: var(--c-red); color: var(--c-white); }
 
 .contact-card__link {
 	justify-self: start;
