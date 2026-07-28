@@ -26,7 +26,7 @@ $milestones = array(
 		'desc'  => __( 'Kilka lat później otworzyliśmy warsztat mechaniczny. Do holowania doszły naprawy silników, zawieszeń i układów hamulcowych oraz diagnostyka komputerowa.', 'autoserwis' ),
 	),
 	array(
-		'year' => 'obecnie',
+		'year' => 'lata 00. – dziś',
 		'title' => __( 'Kompleksowy serwis', 'autoserwis' ),
 		'desc'  => __( 'Dziś pod jednym dachem prowadzimy mechanikę, blacharstwo, lakiernictwo i obsługę szkód komunikacyjnych — od zgłoszenia u ubezpieczyciela po odbiór gotowego auta.', 'autoserwis' ),
 	),
