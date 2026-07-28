@@ -40,6 +40,7 @@ function autoserwis_business_data() {
 		'lat'        => '53.4180049',
 		'lng'        => '14.5392151',
 		'phone_mob'  => autoserwis_get( 'phone_mobile', '509 499 101' ),
+		'email'      => autoserwis_get( 'email', 'autohol@interia.pl' ),
 		'phone_land' => autoserwis_get( 'phone_landline', '91 812 11 92' ),
 	);
 }
@@ -253,6 +254,7 @@ function autoserwis_schema_business() {
 		'url'           => home_url( '/' ),
 		'image'         => get_template_directory_uri() . '/assets/images/hero-workshop.webp',
 		'telephone'     => autoserwis_tel_e164( $data['phone_mob'] ),
+		'email'         => $data['email'],
 		'priceRange'    => '$$',
 		'currenciesAccepted' => 'PLN',
 		'paymentAccepted'    => 'Gotówka, karta płatnicza, przelew, rozliczenie bezgotówkowe z ubezpieczycielem',

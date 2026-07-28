@@ -53,6 +53,16 @@ get_header();
 				</div>
 
 				<div class="contact-card reveal" style="--d:.08s">
+					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="m3.5 7 8.5 6 8.5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+					<h2><?php esc_html_e( 'Napisz do nas', 'autoserwis' ); ?></h2>
+					<p class="contact-card__note"><?php esc_html_e( 'Wolisz mailem? Opisz sprawę — odpowiadamy w dni robocze.', 'autoserwis' ); ?></p>
+					<?php $autoserwis_mail = autoserwis_get( 'email', 'autohol@interia.pl' ); ?>
+					<a class="contact-card__mail" href="mailto:<?php echo esc_attr( antispambot( $autoserwis_mail ) ); ?>">
+						<?php echo esc_html( antispambot( $autoserwis_mail ) ); ?>
+					</a>
+				</div>
+
+				<div class="contact-card reveal" style="--d:.16s">
 					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 					<h2><?php esc_html_e( 'Adres', 'autoserwis' ); ?></h2>
 					<p>
@@ -64,7 +74,7 @@ get_header();
 					</a>
 				</div>
 
-				<div class="contact-card reveal" style="--d:.16s">
+				<div class="contact-card reveal" style="--d:.24s">
 					<span class="contact-item__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" width="22" height="22"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 					<h2><?php esc_html_e( 'Godziny otwarcia', 'autoserwis' ); ?></h2>
 					<dl class="contact-card__hours">

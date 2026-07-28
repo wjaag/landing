@@ -1325,6 +1325,17 @@ p { margin: 0; }
 	transform: translateY(6px);
 }
 .contact-card .call-menu.is-open .call-menu__list { transform: translateY(0); }
+.contact-card__mail {
+	justify-self: start;
+	margin-top: 2px;
+	font-size: clamp(15px, 1.4vw, 17px);
+	font-weight: 800;
+	color: var(--c-black);
+	word-break: break-all;
+	transition: color var(--t-fast);
+}
+.contact-card__mail:hover { color: var(--c-red); }
+
 .contact-card__link {
 	justify-self: start;
 	margin-top: 2px;

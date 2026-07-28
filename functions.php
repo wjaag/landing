@@ -107,6 +107,7 @@ function autoserwis_customize_register( $wp_customize ) {
 	$fields = array(
 		'phone_landline' => array( __( 'Telefon stacjonarny', 'autoserwis' ), '91 812 11 92' ),
 		'phone_mobile'   => array( __( 'Telefon komórkowy', 'autoserwis' ), '509 499 101' ),
+		'email'          => array( __( 'Adres e-mail', 'autoserwis' ), 'autohol@interia.pl' ),
 		'address_line'   => array( __( 'Adres', 'autoserwis' ), 'ul. Sowińskiego 26, Szczecin' ),
 		'address_hint'   => array( __( 'Wskazówka dojazdu', 'autoserwis' ), 'skrzyżowanie ulic Sowińskiego i Kusocińskiego' ),
 		'hours_week'     => array( __( 'Godziny (pon.–pt.)', 'autoserwis' ), '09:00 – 17:00' ),
@@ -117,7 +118,7 @@ function autoserwis_customize_register( $wp_customize ) {
 	foreach ( $fields as $key => $data ) {
 		$wp_customize->add_setting( "autoserwis_{$key}", array(
 			'default'           => $data[1],
-			'sanitize_callback' => 'map_embed' === $key ? 'esc_url_raw' : 'sanitize_text_field',
+			'sanitize_callback' => autoserwis_customizer_sanitizer( $key ),
 		) );
 		$wp_customize->add_control( "autoserwis_{$key}", array(
 			'label'   => $data[0],
@@ -127,6 +128,22 @@ function autoserwis_customize_register( $wp_customize ) {
 	}
 }
 add_action( 'customize_register', 'autoserwis_customize_register' );
+
+/**
+ * Funkcja czyszcząca dla pola Personalizacji.
+ *
+ * @param string $key Klucz ustawienia.
+ * @return string Nazwa funkcji sanityzującej.
+ */
+function autoserwis_customizer_sanitizer( $key ) {
+	if ( 'map_embed' === $key ) {
+		return 'esc_url_raw';
+	}
+	if ( 'email' === $key ) {
+		return 'sanitize_email';
+	}
+	return 'sanitize_text_field';
+}
 
 /**
  * Pomocnik: pobierz ustawienie kontaktowe.
