@@ -1735,6 +1735,11 @@ p { margin: 0; }
 }
 .site-credit a:hover { color: var(--c-red); }
 
+@media (max-width: 640px) {
+	.site-credit { padding-block: 14px; }
+	.site-credit p { font-size: 11px; }
+}
+
 /* Strona główna kończy się ciemną sekcją kontaktu — stopka
    przejmuje jej tło, żeby nie tworzyć jasnego paska na styku. */
 .home .site-credit {

@@ -17,7 +17,7 @@ $autoserwis_author_mail = 'wjag@onet.pl';
 		<p>
 			<?php esc_html_e( 'design & code:', 'autoserwis' ); ?>
 			<a href="mailto:<?php echo esc_attr( antispambot( $autoserwis_author_mail ) ); ?>">
-				<?php esc_html_e( 'Wojciech Jagodziński', 'autoserwis' ); ?>
+				<?php esc_html_e( 'Wojciech Jagodzinski', 'autoserwis' ); ?>
 			</a>
 		</p>
 	</div>
