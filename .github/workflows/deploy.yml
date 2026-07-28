@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pobierz repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Wyślij motyw na InfinityFree
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -22,3 +22,11 @@ jobs:
           port: 21
           local-dir: ./
           server-dir: /htdocs/wp-content/themes/autoserwis/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            .dev/**
+            **/node_modules/**
+            **/*.md
+            LICENSE
