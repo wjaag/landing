@@ -100,27 +100,61 @@ $values = array(
 
 	<!-- Historia -->
 	<section class="section section--alt about-story">
-		<div class="container about-story__grid">
+		<div class="container">
+			<header class="section-head reveal">
+				<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Nasza historia', 'autoserwis' ); ?></p>
+				<h2 class="section-head__title">
+					<?php esc_html_e( 'Od lawety', 'autoserwis' ); ?>
+					<span class="accent"><?php esc_html_e( 'do pełnego serwisu.', 'autoserwis' ); ?></span>
+				</h2>
+				<p class="section-head__lead">
+					<?php esc_html_e( 'Trzy dekady w jednym miejscu — każdy etap dokładał coś, czego wcześniej nie potrafiliśmy zrobić dla klienta.', 'autoserwis' ); ?>
+				</p>
+			</header>
 
-			<div class="reveal">
-				<header class="section-head section-head--left">
-					<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'Nasza historia', 'autoserwis' ); ?></p>
-					<h2 class="section-head__title"><?php esc_html_e( 'Od lawety do pełnego serwisu', 'autoserwis' ); ?></h2>
-				</header>
+			<div class="about-story__grid">
 
-				<ol class="about-timeline about-timeline--wide">
+				<ol class="about-timeline">
 					<?php foreach ( $milestones as $i => $step ) : ?>
-						<li class="about-timeline__item" style="--d:<?php echo esc_attr( $i * 0.07 ); ?>s">
+						<li class="about-timeline__item reveal" style="--d:<?php echo esc_attr( $i * 0.07 ); ?>s">
 							<span class="about-timeline__year"><?php echo esc_html( $step['year'] ); ?></span>
-							<div>
+							<div class="about-timeline__body">
 								<h3><?php echo esc_html( $step['title'] ); ?></h3>
 								<p><?php echo esc_html( $step['desc'] ); ?></p>
 							</div>
 						</li>
 					<?php endforeach; ?>
 				</ol>
-			</div>
 
+				<aside class="about-scope reveal reveal--delay">
+					<p class="about-scope__label"><?php esc_html_e( 'Dziś pod jednym dachem', 'autoserwis' ); ?></p>
+					<p class="about-scope__intro">
+						<?php esc_html_e( 'To, co kiedyś wymagało objazdu po trzech firmach, dziś załatwiasz w jednym warsztacie.', 'autoserwis' ); ?>
+					</p>
+
+					<ul class="about-scope__list">
+						<?php
+						$scope = array( 'mechanika', 'po-kolizji', 'blacharstwo', 'lakiernictwo', 'odszkodowania' );
+						foreach ( autoserwis_services() as $service ) :
+							if ( ! in_array( $service['slug'], $scope, true ) ) {
+								continue;
+							}
+							?>
+							<li>
+								<a href="<?php echo esc_url( autoserwis_service_url( $service['slug'] ) ); ?>">
+									<span><?php echo esc_html( $service['title'] ); ?></span>
+									<span class="about-scope__arrow" aria-hidden="true">↗</span>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+
+					<a class="button button--secondary about-scope__cta" href="<?php echo esc_url( home_url( '/uslugi/' ) ); ?>">
+						<?php esc_html_e( 'Pełna oferta', 'autoserwis' ); ?> <span aria-hidden="true">→</span>
+					</a>
+				</aside>
+
+			</div>
 		</div>
 	</section>
 

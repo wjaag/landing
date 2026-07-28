@@ -1434,43 +1434,117 @@ p { margin: 0; }
 .about-hero__figure figcaption span { font-size: 13px; color: rgba(255, 255, 255, 0.78); }
 
 /* Historia zajmuje teraz pełną szerokość — oś czasu w dwóch kolumnach. */
-.about-story__grid { display: grid; gap: clamp(20px, 2.6vw, 32px); }
-.about-story__grid .section-head { margin-bottom: clamp(18px, 2.2vw, 26px); }
+.about-story__grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+	gap: clamp(28px, 4vw, 56px);
+	align-items: start;
+}
 
-.about-timeline { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.about-timeline--wide { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+/* Oś czasu — pionowa linia łącząca kolejne etapy. */
+.about-timeline {
+	position: relative;
+	display: grid;
+	gap: 14px;
+	margin: 0;
+	padding: 0 0 0 34px;
+	list-style: none;
+}
+.about-timeline::before {
+	content: "";
+	position: absolute;
+	top: 12px;
+	bottom: 12px;
+	left: 11px;
+	width: 2px;
+	background: linear-gradient(180deg, var(--c-red), rgba(217, 35, 35, 0.15));
+}
 .about-timeline__item {
-	display: flex;
-	gap: 18px;
-	padding: 18px 20px;
+	position: relative;
+	display: grid;
+	gap: 8px;
+	padding: 20px 22px;
 	border: 1px solid var(--c-gray-200);
 	border-radius: var(--r-md);
 	background: var(--c-white);
-	transition: border-color var(--t-fast), transform var(--t-fast);
+	transition: border-color var(--t-fast), transform var(--t-fast), box-shadow var(--t-fast);
 }
-.about-timeline__item:hover { border-color: rgba(217, 35, 35, 0.4); transform: translateX(3px); }
+/* Kropka na linii, na wysokości znacznika roku. */
+.about-timeline__item::before {
+	content: "";
+	position: absolute;
+	top: 26px;
+	left: -29px;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: 2px solid var(--c-white);
+	background: var(--c-red);
+	box-shadow: 0 0 0 3px rgba(217, 35, 35, 0.16);
+}
+.about-timeline__item:hover {
+	border-color: rgba(217, 35, 35, 0.4);
+	transform: translateX(3px);
+	box-shadow: var(--shadow-sm);
+}
 .about-timeline__year {
-	flex-shrink: 0;
-	align-self: flex-start;
-	min-width: 72px;
-	padding: 6px 12px;
+	justify-self: start;
+	padding: 5px 12px;
 	border-radius: 999px;
 	background: rgba(217, 35, 35, 0.1);
 	color: var(--c-red);
 	font-size: 12.5px;
 	font-weight: 900;
 	letter-spacing: 0.04em;
-	text-align: center;
 	white-space: nowrap;
 }
-.about-timeline__item h3 { font-size: 16.5px; font-weight: 800; margin-bottom: 4px; }
-.about-timeline__item p { color: var(--c-gray-600); font-size: 14px; line-height: 1.6; }
+.about-timeline__body h3 { font-size: 17px; font-weight: 800; margin-bottom: 5px; }
+.about-timeline__body p { color: var(--c-gray-600); font-size: 14.5px; line-height: 1.65; }
 
-.about-values__grid {
+/* Panel z zakresem usług — domyka historię tym, co warsztat robi dziś. */
+.about-scope {
+	position: sticky;
+	top: 96px;
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 16px;
+	gap: 12px;
+	padding: clamp(24px, 3vw, 30px);
+	border-radius: var(--r-lg);
+	background: var(--c-graphite);
+	color: var(--c-white);
 }
+.about-scope__label {
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--c-red);
+}
+.about-scope__intro { color: rgba(255, 255, 255, 0.72); font-size: 14.5px; line-height: 1.6; }
+.about-scope__list {
+	display: grid;
+	gap: 2px;
+	margin: 6px 0 0;
+	padding: 0;
+	list-style: none;
+}
+.about-scope__list a {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 12px 2px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	color: var(--c-white);
+	font-size: 15px;
+	font-weight: 700;
+	transition: color var(--t-fast), padding-left var(--t-fast);
+}
+.about-scope__list li:last-child a { border-bottom: 0; }
+.about-scope__list a:hover { color: var(--c-red); padding-left: 6px; }
+.about-scope__arrow { color: rgba(255, 255, 255, 0.4); transition: color var(--t-fast), transform var(--t-fast); }
+.about-scope__list a:hover .about-scope__arrow { color: var(--c-red); transform: translate(2px, -2px); }
+.about-scope__cta { justify-self: start; margin-top: 8px; }
+
 .about-value {
 	display: grid;
 	gap: 8px;
@@ -1687,7 +1761,8 @@ p { margin: 0; }
 	.contact-page__map { height: clamp(300px, 60vw, 420px); }
 	.about-hero__grid { grid-template-columns: 1fr; }
 	.about-hero__figure img { aspect-ratio: 16 / 9; }
-	.about-timeline--wide { grid-template-columns: 1fr; }
+	.about-story__grid { grid-template-columns: 1fr; }
+	.about-scope { position: static; }
 	.error-page__grid { grid-template-columns: 1fr; }
 	.error-page__figure { order: -1; }
 	.error-page__figure img { aspect-ratio: 16 / 9; }
@@ -1730,7 +1805,8 @@ p { margin: 0; }
 	.contact-page__grid { grid-template-columns: 1fr; }
 	.stats-grid { grid-template-columns: 1fr; }
 	.about-values__grid { grid-template-columns: 1fr; }
-	.about-timeline__item { flex-direction: column; gap: 10px; }
+	.about-timeline { padding-left: 28px; }
+	.about-timeline__item::before { left: -23px; }
 	.stat-card__bg { width: 116px; height: 116px; right: -14px; bottom: -18px; }
 	.process-detail { flex-direction: column; gap: 14px; }
 }
