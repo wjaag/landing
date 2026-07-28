@@ -172,18 +172,45 @@ $values = array(
 				</p>
 			</header>
 
-			<div class="about-values__grid">
-				<?php foreach ( $values as $i => $value ) : ?>
-					<article class="about-value reveal" style="--d:<?php echo esc_attr( ( $i % 2 ) * 0.08 ); ?>s">
-						<span class="about-value__icon" aria-hidden="true">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-								<?php echo $value['icon']; // phpcs:ignore WordPress.Security.EscapeOutput ?>
-							</svg>
-						</span>
-						<h3><?php echo esc_html( $value['title'] ); ?></h3>
-						<p><?php echo esc_html( $value['desc'] ); ?></p>
-					</article>
-				<?php endforeach; ?>
+			<div class="about-values__layout">
+
+				<div class="about-values__grid">
+					<?php foreach ( $values as $i => $value ) : ?>
+						<article class="about-value reveal" style="--d:<?php echo esc_attr( ( $i % 2 ) * 0.08 ); ?>s">
+							<span class="about-value__icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+									<?php echo $value['icon']; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+								</svg>
+							</span>
+							<h3><?php echo esc_html( $value['title'] ); ?></h3>
+							<p><?php echo esc_html( $value['desc'] ); ?></p>
+						</article>
+					<?php endforeach; ?>
+				</div>
+
+				<aside class="about-area reveal reveal--delay">
+					<h3 class="about-area__title"><?php esc_html_e( 'Gdzie i dla kogo pracujemy', 'autoserwis' ); ?></h3>
+
+					<p>
+						<?php esc_html_e( 'Warsztat mieści się przy ulicy Sowińskiego na szczecińskim Nowym Mieście, kilka minut od centrum. Do naszego serwisu samochodowego przyjeżdżają kierowcy z całego Szczecina — z Pogodna, Niebuszewa, Śródmieścia i Prawobrzeża — oraz z okolicznych gmin.', 'autoserwis' ); ?>
+					</p>
+
+					<p>
+						<?php esc_html_e( 'Obsługujemy samochody osobowe i dostawcze wszystkich marek: od aut kilkuletnich, przez pojazdy z długim przebiegiem, po samochody po kolizjach. Nie odsyłamy do autoryzowanych stacji — diagnostykę komputerową, naprawy mechaniczne, blacharkę i lakiernictwo wykonujemy na miejscu.', 'autoserwis' ); ?>
+					</p>
+
+					<ul class="about-area__list">
+						<li><?php esc_html_e( 'Naprawy mechaniczne i diagnostyka komputerowa', 'autoserwis' ); ?></li>
+						<li><?php esc_html_e( 'Blacharstwo i lakiernictwo w jednym miejscu', 'autoserwis' ); ?></li>
+						<li><?php esc_html_e( 'Szkody z OC i AC rozliczane bezgotówkowo', 'autoserwis' ); ?></li>
+						<li><?php esc_html_e( 'Auto zastępcze na czas naprawy', 'autoserwis' ); ?></li>
+					</ul>
+
+					<p class="about-area__note">
+						<?php esc_html_e( 'Nie wiesz, czy zajmiemy się Twoim autem? Zadzwoń i opisz sprawę — powiemy wprost, czy to nasza działka.', 'autoserwis' ); ?>
+					</p>
+				</aside>
+
 			</div>
 		</div>
 	</section>
