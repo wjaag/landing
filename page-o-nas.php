@@ -62,7 +62,7 @@ $values = array(
 <main id="main">
 
 	<!-- Nagłówek podstrony -->
-	<section class="section page-hero">
+	<section class="section page-hero about-hero">
 		<div class="container">
 			<nav class="breadcrumbs" aria-label="<?php esc_attr_e( 'Okruszki', 'autoserwis' ); ?>">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Strona główna', 'autoserwis' ); ?></a>
@@ -70,16 +70,31 @@ $values = array(
 				<span><?php esc_html_e( 'O nas', 'autoserwis' ); ?></span>
 			</nav>
 
-			<header class="section-head reveal">
-				<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'O nas', 'autoserwis' ); ?></p>
-				<h1 class="section-head__title">
-					<?php esc_html_e( 'Warsztat samochodowy w Szczecinie', 'autoserwis' ); ?>
-					<span class="accent"><?php esc_html_e( 'od 1993 roku.', 'autoserwis' ); ?></span>
-				</h1>
-				<p class="section-head__lead">
-					<?php esc_html_e( 'Auto Sikora to rodzinny serwis przy ulicy Sowińskiego, w którym mechanika, blacharstwo i lakiernictwo prowadzimy pod jednym dachem. Ponad trzydzieści lat pracy z kierowcami nauczyło nas jednego: liczy się bezpieczeństwo jazdy i uczciwa rozmowa o kosztach.', 'autoserwis' ); ?>
-				</p>
-			</header>
+			<div class="about-hero__grid">
+				<header class="section-head section-head--left reveal">
+					<p class="eyebrow"><span class="eyebrow__dot" aria-hidden="true"></span><?php esc_html_e( 'O nas', 'autoserwis' ); ?></p>
+					<h1 class="section-head__title">
+						<?php esc_html_e( 'Warsztat samochodowy w Szczecinie', 'autoserwis' ); ?>
+						<span class="accent"><?php esc_html_e( 'od 1993 roku.', 'autoserwis' ); ?></span>
+					</h1>
+					<p class="section-head__lead">
+						<?php esc_html_e( 'Auto Sikora to rodzinny serwis przy ulicy Sowińskiego, w którym mechanika, blacharstwo i lakiernictwo prowadzimy pod jednym dachem. Ponad trzydzieści lat pracy z kierowcami nauczyło nas jednego: liczy się bezpieczeństwo jazdy i uczciwa rozmowa o kosztach.', 'autoserwis' ); ?>
+					</p>
+				</header>
+
+				<figure class="about-hero__figure reveal reveal--delay">
+					<picture>
+						<source media="(max-width: 640px)" srcset="<?php echo esc_url( "$img/hero-workshop-sm.webp" ); ?>">
+						<img src="<?php echo esc_url( "$img/hero-workshop.webp" ); ?>"
+							alt="<?php esc_attr_e( 'Warsztat Auto Sikora przy ul. Sowińskiego w Szczecinie', 'autoserwis' ); ?>"
+							width="1600" height="898" fetchpriority="high" decoding="async">
+					</picture>
+					<figcaption>
+						<strong><?php esc_html_e( 'Auto Sikora', 'autoserwis' ); ?></strong>
+						<span><?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?></span>
+					</figcaption>
+				</figure>
+			</div>
 		</div>
 	</section>
 
@@ -93,7 +108,7 @@ $values = array(
 					<h2 class="section-head__title"><?php esc_html_e( 'Od lawety do pełnego serwisu', 'autoserwis' ); ?></h2>
 				</header>
 
-				<ol class="about-timeline">
+				<ol class="about-timeline about-timeline--wide">
 					<?php foreach ( $milestones as $i => $step ) : ?>
 						<li class="about-timeline__item" style="--d:<?php echo esc_attr( $i * 0.07 ); ?>s">
 							<span class="about-timeline__year"><?php echo esc_html( $step['year'] ); ?></span>
@@ -105,19 +120,6 @@ $values = array(
 					<?php endforeach; ?>
 				</ol>
 			</div>
-
-			<figure class="about-story__figure reveal reveal--delay">
-				<picture>
-					<source media="(max-width: 640px)" srcset="<?php echo esc_url( "$img/hero-workshop-sm.webp" ); ?>">
-					<img src="<?php echo esc_url( "$img/hero-workshop.webp" ); ?>"
-						alt="<?php esc_attr_e( 'Warsztat Auto Sikora przy ul. Sowińskiego w Szczecinie', 'autoserwis' ); ?>"
-						width="1600" height="898" loading="lazy" decoding="async">
-				</picture>
-				<figcaption>
-					<strong><?php esc_html_e( 'Auto Sikora', 'autoserwis' ); ?></strong>
-					<span><?php echo esc_html( autoserwis_get( 'address_line', 'ul. Sowińskiego 26, Szczecin' ) ); ?></span>
-				</figcaption>
-			</figure>
 
 		</div>
 	</section>

@@ -1397,14 +1397,48 @@ p { margin: 0; }
 /* ----------------------------------------------------------------
    9g. Podstrona „O nas”
 ---------------------------------------------------------------- */
-.about-story__grid {
+/* Nagłówek „O nas” — tekst i zdjęcie obok siebie. */
+.about-hero__grid {
 	display: grid;
 	grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
 	gap: clamp(28px, 4vw, 60px);
-	align-items: start;
+	align-items: center;
 }
+.about-hero__grid .section-head { margin-bottom: 0; }
 
-.about-timeline { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; counter-reset: none; }
+.about-hero__figure {
+	position: relative;
+	margin: 0;
+	border-radius: var(--r-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-md);
+}
+.about-hero__figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.about-hero__figure::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 50%, rgba(10, 10, 10, 0.85));
+	pointer-events: none;
+}
+.about-hero__figure figcaption {
+	position: absolute;
+	left: 20px;
+	bottom: 18px;
+	z-index: 2;
+	display: grid;
+	gap: 2px;
+	color: var(--c-white);
+}
+.about-hero__figure figcaption strong { font-size: 17px; font-weight: 900; }
+.about-hero__figure figcaption span { font-size: 13px; color: rgba(255, 255, 255, 0.78); }
+
+/* Historia zajmuje teraz pełną szerokość — oś czasu w dwóch kolumnach. */
+.about-story__grid { display: grid; gap: clamp(20px, 2.6vw, 32px); }
+.about-story__grid .section-head { margin-bottom: clamp(18px, 2.2vw, 26px); }
+
+.about-timeline { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.about-timeline--wide { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .about-timeline__item {
 	display: flex;
 	gap: 18px;
@@ -1431,33 +1465,6 @@ p { margin: 0; }
 }
 .about-timeline__item h3 { font-size: 16.5px; font-weight: 800; margin-bottom: 4px; }
 .about-timeline__item p { color: var(--c-gray-600); font-size: 14px; line-height: 1.6; }
-
-.about-story__figure {
-	position: relative;
-	margin: 0;
-	border-radius: var(--r-lg);
-	overflow: hidden;
-	box-shadow: var(--shadow-md);
-}
-.about-story__figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
-.about-story__figure::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(180deg, transparent 50%, rgba(10, 10, 10, 0.85));
-	pointer-events: none;
-}
-.about-story__figure figcaption {
-	position: absolute;
-	left: 20px;
-	bottom: 18px;
-	z-index: 2;
-	display: grid;
-	gap: 2px;
-	color: var(--c-white);
-}
-.about-story__figure figcaption strong { font-size: 17px; font-weight: 900; }
-.about-story__figure figcaption span { font-size: 13px; color: rgba(255, 255, 255, 0.78); }
 
 .about-values__grid {
 	display: grid;
@@ -1678,8 +1685,9 @@ p { margin: 0; }
 	.services-full__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 	.contact-page__grid { grid-template-columns: 1fr; }
 	.contact-page__map { height: clamp(300px, 60vw, 420px); }
-	.about-story__grid { grid-template-columns: 1fr; }
-	.about-story__figure img { aspect-ratio: 16 / 9; }
+	.about-hero__grid { grid-template-columns: 1fr; }
+	.about-hero__figure img { aspect-ratio: 16 / 9; }
+	.about-timeline--wide { grid-template-columns: 1fr; }
 	.error-page__grid { grid-template-columns: 1fr; }
 	.error-page__figure { order: -1; }
 	.error-page__figure img { aspect-ratio: 16 / 9; }
